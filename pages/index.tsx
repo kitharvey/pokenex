@@ -1,9 +1,30 @@
-export default function Home() {
+import { InferGetStaticPropsType } from "next"
+
+export const getStaticProps = async () => {
+  const res = await fetch("/api/hello")
+  const data = await res.json()
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: { data }, // will be passed to the page component as props
+  }
+}
+
+const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className="container">
       <main className="main">
         <h1 className="title">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
+          <p>{props.data.name}</p>
         </h1>
 
         <p className="description">
@@ -48,3 +69,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
