@@ -4,6 +4,7 @@ let connection = {}
 
 const dbConnect = async () => {
   if (connection) {
+    console.log(connection)
     return
   }
 
@@ -12,7 +13,9 @@ const dbConnect = async () => {
     useUnifiedTopology: true,
   })
 
+
   connection = db.connections[0].readyState
+  console.log(connection)
 }
 
 export default dbConnect

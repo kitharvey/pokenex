@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import User from "@models/User"
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   let user
   const { uid, displayName } = req.body
   try {
-    const isUserAlready = await User.findOne({ uid: uid, displayName: displayName })
+    const isUserAlready = await User.findOne({ uid, displayName })
     if (isUserAlready) {
       user = isUserAlready
       res.status(200).json({ user })

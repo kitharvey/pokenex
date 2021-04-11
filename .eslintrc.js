@@ -12,6 +12,9 @@ module.exports = {
       {
         files: ['**/*.ts', '**/*.tsx'],
         parser: '@typescript-eslint/parser',
+        parserOptions: {
+          project: "./tsconfig.json"
+        },
         settings: { react: { version: 'detect' } },
         env: {
           browser: true,
@@ -32,6 +35,7 @@ module.exports = {
           'prettier/prettier': ['error', {}, { usePrettierrc: true }],
           'react/prop-types': 'off',
           'react/react-in-jsx-scope': 'off',
+          'react/jsx-props-no-spreading': 'off',
           'jsx-a11y/anchor-is-valid': 'off',
           '@typescript-eslint/no-unused-vars': ["error"],
           "@typescript-eslint/explicit-function-return-type": "off",
