@@ -22,5 +22,7 @@ export default async (request: NextApiRequest, result: NextApiResponse) => {
     } catch (err) {
       result.status(400).json({ err })
     }
+  } else {
+    result.status(400).json({ message: "invalid method" })
   }
 }

@@ -8,17 +8,17 @@ export default async (request: NextApiRequest, result: NextApiResponse) => {
   const { uid, displayName } = request.body
   const { method } = request
   if (method === "DELETE") {
-      try {
-        const isUserAlready = await User.findOne({ uid, displayName })
-        if (isUserAlready) {
-          isUserAlready.remove()
-          result.json({ message: `Account was deleted` })
-        } 
-        else {
-          return result.status(404).json({ message: 'Cannot find user' })
-        }
-      } catch (err) {
-        result.status(400).json({ err })
+    try {
+      const isUserAlready = await User.findOne({ uid, displayName })
+      if (isUserAlready) {
+        isUserAlready.remove()
+        result.json({ message: `Account was deleted` })
       }
+      result.status(404).json({ message: "Cannot find user" })
+    } catch (err) {
+      result.status(400).json({ err })
+    }
+  } else {
+    result.status(400).json({ message: "invalid method" })
   }
 }
