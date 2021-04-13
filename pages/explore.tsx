@@ -1,4 +1,7 @@
+import { shuffleDeck } from "functions/GlobalFunctions"
+import { NameURLInterface } from "interfaces/Interfaces"
 import { InferGetStaticPropsType } from "next"
+import { useState } from "react"
 import { fetchList } from "../fetchFromAPI/getPokemon"
 
 export const getStaticProps = async () => {
@@ -20,8 +23,13 @@ export const getStaticProps = async () => {
 }
 
 const Explore = ({ pokemonList }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  
-  return <div>{pokemonList && <p>{pokemonList[0].name}</p>}</div>
+  const [pokemons, setPokemons] = useState<NameURLInterface[]>(pokemonList)
+
+  return (
+    <div>
+      {pokemons && pokemons.map( pokemon => <p key={pokemon.url} >{pokemon.name }</p> ) }
+    </div>
+  ) 
 }
 
 export default Explore

@@ -5,7 +5,7 @@ export const shuffleDeck = (array: NameURLInterface[]) => {
 
   while (counter > 0) {
     const index = Math.floor(Math.random() * counter)
-    counter-1
+    counter-=1
     const temp = array[counter]
     array[counter] = array[index]
     array[index] = temp
