@@ -15,7 +15,7 @@ export const shuffleDeck = (array: NameIDInterface[]) => {
 }
 
 export const getIDfromURL = (url: string) => {
-  const tempURL = url.split('/')
+  const tempURL = url.split("/")
   const id = +tempURL[tempURL.length - 2]
   return id
 }

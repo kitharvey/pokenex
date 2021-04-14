@@ -1,4 +1,4 @@
-import ExplorePage from "@components/Explore/ExplorePage"
+import GamePage from "@components/Game/GamePage"
 import { InferGetStaticPropsType } from "next"
 import { fetchList } from "../fetchFromAPI/getPokemon"
 
@@ -20,8 +20,8 @@ export const getStaticProps = async () => {
   }
 }
 
-const Explore = ({ pokemonList }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div>{pokemonList && <ExplorePage pokemonList={pokemonList} />}</div>
+const Play = ({ pokemonList }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  return <div>{pokemonList && <GamePage pokemonList={pokemonList} />}</div>
 }
 
-export default Explore
+export default Play
