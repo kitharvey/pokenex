@@ -18,3 +18,7 @@ export interface NameURLInterface {
   name: string
   url: string
 }
+export interface NameIDInterface {
+  name: string
+  id: string
+}
