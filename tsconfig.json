@@ -21,7 +21,7 @@
     "paths": {
       "@models/*": ["models/*"],
       "@utils/*": ["utils/*"],
-      "@components/*": ["components/*"],
+      "@components/*": ["components/*"]
     }
   },
 

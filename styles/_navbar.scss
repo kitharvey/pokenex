@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .nav-items {
+    margin-left: 20px;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .active {
+    color: #072ac8;
+  }
+}

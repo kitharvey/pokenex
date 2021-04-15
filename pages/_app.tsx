@@ -10,8 +10,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav />
-      <Component {...pageProps} />
+      <div className="container">
+        <Nav />
+        <Component {...pageProps} />
+      </div>
     </>
   )
 }

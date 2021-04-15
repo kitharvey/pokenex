@@ -1,8 +1,12 @@
+import Link from "next/link"
 import ActiveLink from "./ActiveLink"
 
 const Nav = () => {
   return (
-    <div>
+    <div className="navbar">
+      <h1>
+        <Link href="/"> Pokenext </Link>{" "}
+      </h1>
       <div className="web-menu">
         <ActiveLink activeClassName="active" href="/explore">
           <a className="nav-items">Explore</a>
