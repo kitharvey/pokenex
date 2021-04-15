@@ -1,5 +1,5 @@
 async function getUsers(link: string) {
-  const url = "http://localhost:3000"
+  const url = process.env.PORT || "http://localhost:3000"
   const reponse = await fetch(`${url + link}`)
     .then((response) => response.json())
     .then((data) => {
