@@ -5,10 +5,14 @@ import dbConnect from "@utils/dataBaseConnection"
 export default async (request: NextApiRequest, result: NextApiResponse) => {
   await dbConnect()
 
-  const { method, query, body } = request
+  const {
+    method,
+    query: { id },
+    body,
+  } = request
   if (method === "PATCH") {
     try {
-      const isUserAlready = await User.findById(query.id)
+      const isUserAlready = await User.findById(id)
       if (isUserAlready) {
         isUserAlready[body.key] = body[body.key]
         const user = await isUserAlready.save()
