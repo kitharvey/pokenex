@@ -1,5 +1,6 @@
 @import "config";
-@import "navbar";
+@import "@components/Nav/navbar";
+@import "@components/Leaderboard/leaderboard";
 
 a {
   color: inherit;

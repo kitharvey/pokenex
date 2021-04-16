@@ -7,11 +7,10 @@ interface LeaderboardProps {
 
 const LeaderboardPage: React.FC<LeaderboardProps> = ({ data }) => {
   return (
-    <div>
-      <h1 className="">Leader Board</h1>
+    <div className='leaderboard-page' >
       {data && (
-        <div className="">
-          <div className="">
+        <div className="table-wrapper">
+          <div className="table-head">
             <p className="">Rank</p>
             <p className="">Name</p>
             <p className="">Score</p>
@@ -20,7 +19,7 @@ const LeaderboardPage: React.FC<LeaderboardProps> = ({ data }) => {
             .filter((user) => user.score > 0)
             .sort((userA, userB) => userB.score - userA.score)
             .map((user, index) => (
-              <div className="" key={user.uid}>
+              <div className="table-row" key={user.uid}>
                 <p className="">{index + 1}</p>
                 <p className="">{user.displayName}</p>
                 <p className="">{user.score}</p>
