@@ -7,7 +7,7 @@ interface LeaderboardProps {
 
 const LeaderboardPage: React.FC<LeaderboardProps> = ({ data }) => {
   return (
-    <div className='leaderboard-page' >
+    <div className="leaderboard-page">
       {data && (
         <div className="table-wrapper">
           <div className="table-head">

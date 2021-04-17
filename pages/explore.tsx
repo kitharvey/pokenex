@@ -1,6 +1,6 @@
 import ExplorePage from "@components/Explore/ExplorePage"
 import { InferGetStaticPropsType } from "next"
-import { fetchList } from "../fetchFromAPI/getPokemon"
+import { fetchList } from "@fetchers/getPokemon"
 
 export const getStaticProps = async () => {
   const pokemonList = await fetchList()

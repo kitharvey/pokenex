@@ -34,28 +34,28 @@ body {
   }
 }
 
-.error-page{
+.error-page {
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .status-code{
-    display:inline-block;
-    border-right:1px solid rgba(0, 0, 0,.3);
-    margin:0;
-    margin-right:20px;
-    padding:10px 23px 10px 0;
-    font-size:24px;
-    font-weight:500;
-    vertical-align:top
+  .status-code {
+    display: inline-block;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 0;
+    margin-right: 20px;
+    padding: 10px 23px 10px 0;
+    font-size: 24px;
+    font-weight: 500;
+    vertical-align: top;
   }
-  .message{
-    font-size:14px;
-    font-weight:normal;
-    line-height:inherit;
-    margin:0;
-    padding:0
+  .message {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
   }
 }

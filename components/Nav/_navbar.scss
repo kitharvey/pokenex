@@ -3,38 +3,36 @@
   align-items: center;
   justify-content: space-between;
 
-  .web-menu{
+  .web-menu {
     .nav-items {
-        margin-left: 20px;
-        transition: all 0.15s ease-in-out;
-    
-        span{
-            position: relative;
-            &::after{
-                content: "";
-                position: absolute;
-                top: calc(100% + 2px);
-                left: 0;
-                right: 0;
-                transform: scale(0);
-                transition: all .1s linear;
-                height: 1px;
-                background-color: #072ac8;
-            }
-        }
-    
-        &:hover{
-            color: #072ac8;
+      margin-left: 20px;
+      transition: all 0.15s ease-in-out;
+
+      span {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          top: calc(100% + 2px);
+          left: 0;
+          right: 0;
+          transform: scale(0);
+          transition: all 0.1s linear;
+          height: 1px;
+          background-color: #072ac8;
         }
       }
-    
-      .active {
+
+      &:hover {
         color: #072ac8;
-        span::after{
-            transform: scale(1);
-        }
       }
+    }
+
+    .active {
+      color: #072ac8;
+      span::after {
+        transform: scale(1);
+      }
+    }
   }
-
-
 }

@@ -1,12 +1,18 @@
-import useSort from "hooks/useSort"
+import useRefineItems from "hooks/useRefineItems"
 import { NameIDInterface } from "interfaces/Interfaces"
+import DeckofCards from "./DeckofCards"
 
 interface ExploreProps {
   pokemonList: NameIDInterface[]
 }
 
 const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
-  const { pokemons, requestSort, setSortConfig } = useSort(pokemonList)
+  const { pokemons, requestSort, requestShuffle, requestFilter } = useRefineItems(pokemonList)
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const text = event.target.value
+    requestFilter(text)
+  }
 
   return (
     <div>
@@ -16,10 +22,11 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
       <button type="button" onClick={() => requestSort("id")}>
         sort id
       </button>
-      <button type="button" onClick={() => setSortConfig(null)}>
-        unsort
+      <button type="button" onClick={() => requestShuffle()}>
+        shuffle
       </button>
-      {pokemons && pokemons.map((pokemon) => <p key={pokemon.id}>{pokemon.name}</p>)}
+      <input type="text" placeholder="Enter pokemon name..." onChange={handleSearch} />
+      {pokemons && <DeckofCards pokemons={pokemons} /> }
     </div>
   )
 }
