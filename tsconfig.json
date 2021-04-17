@@ -22,7 +22,6 @@
       "@models/*": ["models/*"],
       "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
-      "@fetchers/*": ["fetchers/*"]
     }
   },
 

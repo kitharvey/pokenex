@@ -10,6 +10,7 @@
     "lint": "tsc --noEmit && eslint --fix **/*.ts?(x)"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.1.2",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.4",
