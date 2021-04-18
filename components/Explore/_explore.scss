@@ -1,0 +1,50 @@
+.explore-page{
+    margin-top: 40px;
+
+    .card-wrapper{
+        height: 380px;
+        width: 320px;
+        user-select: none;
+        margin: 50px 0;
+        position: relative;
+    }
+
+
+    .item-wrapper{
+        background: #FFF;
+        box-shadow: 0 5px 40px 1px #00000025;
+        border-radius: 9999px;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+        height: max-content;
+
+        label{
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        .search-wrapper{
+            display: flex;
+            align-items: center;
+            color: #999;
+
+            svg{
+                margin-right: 5px;
+            }
+
+            input{
+                border: none;
+                outline: none;
+                font-family: inherit;
+                font-size: .75rem;
+            }
+
+            &:focus-within{
+                color: #000;
+            }
+        }
+    }
+}

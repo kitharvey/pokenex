@@ -20,7 +20,9 @@
     "popmotion": "^9.3.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.3",
+    "redux": "^4.0.5",
     "sass": "^1.32.8",
     "swr": "^0.5.5"
   },
