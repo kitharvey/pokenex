@@ -9,7 +9,10 @@ const DeckofCards: React.FC<DeckofCardsProps> = ({ pokemons }) => {
   const [index, setindex] = useState<number>(0)
   return (
     <div className="card-wrapper">
-      <button type='button' onClick={() => setindex(index + 1)}> plus plus </button>
+      <button type="button" onClick={() => setindex(index + 1)}>
+        {" "}
+        plus plus{" "}
+      </button>
       <p>index: {index}</p>
       {pokemons.map((pokemon) => (
         <p key={pokemon.id}>{pokemon.name}</p>
