@@ -1,8 +1,8 @@
-import { InferGetStaticPropsType } from "next"
+import { InferGetServerSidePropsType } from "next"
 import ExplorePage from "@components/Explore/ExplorePage"
-import { fetchList } from "@modules/getPokemon"
+import { fetchList } from "@helpers/getPokemon"
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const pokemonList = await fetchList()
   if (!pokemonList) {
     return {
@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
   }
 }
 
-const Explore = ({ pokemonList }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Explore = ({ pokemonList }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return <div>{pokemonList && <ExplorePage pokemonList={pokemonList} />}</div>
 }
 

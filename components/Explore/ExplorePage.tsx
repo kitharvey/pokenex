@@ -1,4 +1,4 @@
-import useRefineItems from "hooks/useRefineItems"
+import useRefineItems from "@lib/useRefineItems"
 import { NameIDInterface } from "interfaces/Interfaces"
 import DeckofCards from "./DeckofCards"
 

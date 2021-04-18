@@ -24,9 +24,7 @@
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
       "@helpers/*": ["helpers/*"],
-      "@hooks/*": ["hooks/*"],
       "@interfaces/*": ["interfaces/*"],
-      "@modules/*": ["modules/*"],
       "@styles/*": ["styles/*"]
     }
   },
