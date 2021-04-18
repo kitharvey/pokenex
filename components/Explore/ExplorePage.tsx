@@ -20,12 +20,12 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
   }
 
   const handleUndo = () => {
-    if(index > 0) setindex(index-1)
+    if (index > 0) setindex(index - 1)
   }
 
   return (
-    <div className='explore-page' >
-     <Search handleSearch={handleSearch} />
+    <div className="explore-page">
+      <Search handleSearch={handleSearch} />
       <p>{index}</p>
       <Undo handleUndo={handleUndo} />
       {pokemons && <DeckofCards pokemons={pokemons} index={index} setindex={setindex} />}
