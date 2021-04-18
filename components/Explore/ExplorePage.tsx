@@ -26,7 +26,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
         shuffle
       </button>
       <input type="text" placeholder="Enter pokemon name..." onChange={handleSearch} />
-      {pokemons && <DeckofCards pokemons={pokemons} /> }
+      {pokemons && <DeckofCards pokemons={pokemons} />}
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { shuffleDeck, getIDfromURL } from "functions/GlobalFunctions"
+import { shuffleDeck, getIDfromURL } from "@helpers/GlobalFunctions"
 import { NameURLInterface } from "interfaces/Interfaces"
 
 const headURL = "https://pokeapi.co/"

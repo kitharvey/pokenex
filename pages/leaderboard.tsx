@@ -2,7 +2,7 @@ import useSWR from "swr"
 import { InferGetServerSidePropsType, NextPageContext } from "next"
 import absoluteUrl from "next-absolute-url"
 import LeaderboardPage from "@components/Leaderboard/LeaderboardPage"
-import getUsers from "../fetchers/getUsers"
+import getUsers from "@modules/getUsers"
 
 export const getServerSideProps = async ({ req }: NextPageContext) => {
   const { origin } = absoluteUrl(req, "localhost:3000")

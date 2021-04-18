@@ -1,5 +1,5 @@
-import { shuffleDeck } from "functions/GlobalFunctions"
-import { NameIDInterface } from "interfaces/Interfaces"
+import { shuffleDeck } from "@helpers/GlobalFunctions"
+import { NameIDInterface } from "@interfaces/Interfaces"
 import { useMemo, useState } from "react"
 
 type Key = "id" | "name"
@@ -16,7 +16,7 @@ const useRefineItems = (items: NameIDInterface[]) => {
   const [random, setRandom] = useState<number | null>(null)
 
   const refinedItems = useMemo(() => {
-    let itemsCopy = [...items]
+    const itemsCopy = [...items]
     let refinableItems = [...items]
 
     if (sortConfig && sortConfig.key) {
@@ -31,14 +31,14 @@ const useRefineItems = (items: NameIDInterface[]) => {
       })
     }
 
-    if(search) {
-      refinableItems = itemsCopy.filter( item => item.name.includes(search) )
+    if (search) {
+      refinableItems = itemsCopy.filter((item) => item.name.includes(search))
     }
 
-    if(random){
+    if (random) {
       refinableItems = shuffleDeck(itemsCopy)
     }
-    
+
     return refinableItems
   }, [items, sortConfig, search, random])
 
@@ -59,7 +59,14 @@ const useRefineItems = (items: NameIDInterface[]) => {
     setRandom(Math.random())
   }
 
-  return { pokemons: refinedItems, requestSort, requestFilter, requestShuffle, sortConfig, setSortConfig }
+  return {
+    pokemons: refinedItems,
+    requestSort,
+    requestFilter,
+    requestShuffle,
+    sortConfig,
+    setSortConfig,
+  }
 }
 
 export default useRefineItems

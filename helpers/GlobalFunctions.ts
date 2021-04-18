@@ -1,4 +1,4 @@
-import { NameIDInterface } from "interfaces/Interfaces"
+import { NameIDInterface } from "@interfaces/Interfaces"
 
 export const shuffleDeck = (array: NameIDInterface[]) => {
   let counter = array.length

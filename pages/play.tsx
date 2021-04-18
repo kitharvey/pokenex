@@ -1,6 +1,6 @@
 import GamePage from "@components/Game/GamePage"
 import { InferGetStaticPropsType } from "next"
-import { fetchList } from "../fetchers/getPokemon"
+import { fetchList } from "@modules/getPokemon"
 
 export const getStaticProps = async () => {
   const pokemonList = await fetchList()
