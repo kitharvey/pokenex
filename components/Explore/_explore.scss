@@ -1,56 +1,55 @@
-.explore-page{
-    width: 100%;
-    height: 80vh;
+.explore-page {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .card-wrapper {
+    height: 380px;
+    width: 320px;
+    user-select: none;
+    margin-bottom: 50px;
+    margin-top: 100px;
+    position: relative;
+  }
+
+  .item-wrapper {
+    background: #fff;
+    box-shadow: 0 0px 10px 1px #00000050;
+    border-radius: 9999px;
+    padding: 10px 20px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: max-content;
+    height: max-content;
 
-    .card-wrapper{
-        height: 380px;
-        width: 320px;
-        user-select: none;
-        margin-bottom: 50px;
-        margin-top: 100px;
-        position: relative;
+    label {
+      font-weight: 500;
+      margin-right: 10px;
     }
 
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      color: #999;
 
-    .item-wrapper{
-        background: #FFF;
-        box-shadow: 0 0px 10px 1px #00000050;
-        border-radius: 9999px;
-        padding: 10px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: max-content;
-        height: max-content;
+      svg {
+        margin-right: 5px;
+      }
 
-        label{
-            font-weight: 500;
-            margin-right: 10px;
-        }
+      input {
+        border: none;
+        outline: none;
+        font-family: inherit;
+        font-size: 0.75rem;
+      }
 
-        .search-wrapper{
-            display: flex;
-            align-items: center;
-            color: #999;
-
-            svg{
-                margin-right: 5px;
-            }
-
-            input{
-                border: none;
-                outline: none;
-                font-family: inherit;
-                font-size: .75rem;
-            }
-
-            &:focus-within{
-                color: #000;
-            }
-        }
+      &:focus-within {
+        color: #000;
+      }
     }
+  }
 }

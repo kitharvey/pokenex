@@ -19,7 +19,7 @@ const Undo: React.FC<UndoProps> = ({ handleUndo }) => {
         rotate: -180,
       }}
       whileHover={{
-        cursor: 'pointer'
+        cursor: "pointer",
       }}
     >
       <FaUndoAlt />
