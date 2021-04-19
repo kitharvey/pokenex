@@ -9,7 +9,7 @@ import { store } from "@utils/store"
 
 const progress = new ProgressBar({
   size: 2,
-  color: "#072ac8",
+  color: "#00b4d8",
   className: "bar-of-progress",
   delay: 100,
 })
@@ -25,8 +25,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container">
         <Nav />
+      <div className="container page">
         <Component {...pageProps} />
       </div>
     </Provider>

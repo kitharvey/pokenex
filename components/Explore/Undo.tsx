@@ -15,17 +15,11 @@ const Undo: React.FC<UndoProps> = ({ handleUndo }) => {
         borderRadius: "50%",
         padding: "10px",
       }}
-      animate={{
-        scale: 0.95,
-        y: 0,
-        opacity: 1,
-      }}
       whileTap={{
         rotate: -180,
-        scale: 0.9,
       }}
       whileHover={{
-        scale: 1.1,
+        cursor: 'pointer'
       }}
     >
       <FaUndoAlt />
