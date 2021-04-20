@@ -10,9 +10,18 @@ interface DeckProps {
   setExitX?: (x: number) => void
   index: number
   setIndex?: (x: number) => void
+  dragX: boolean | "x" | "y"
 }
 
-const Deck: React.FC<DeckProps> = ({ pokemons, cardIndex, exitX, setExitX, index, setIndex }) => {
+const Deck: React.FC<DeckProps> = ({
+  pokemons,
+  cardIndex,
+  exitX,
+  setExitX,
+  index,
+  setIndex,
+  dragX,
+}) => {
   const maximumX = 200
 
   function handleDragEnd(_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
@@ -104,7 +113,7 @@ const Deck: React.FC<DeckProps> = ({ pokemons, cardIndex, exitX, setExitX, index
             exitX={exitX}
             setExitX={setExitX}
             setIndex={setIndex}
-            drag="x"
+            drag={dragX}
           >
             {pokemons && cardIndex < pokemons.length ? (
               <p>{pokemons[cardIndex].name}</p>

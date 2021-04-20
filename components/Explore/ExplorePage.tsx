@@ -29,7 +29,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
   }
 
   return (
-    <div className="explore-page">
+    <div className="exploreplay-page">
       <Search handleSearch={handleSearch} />
 
       {pokemons && (
@@ -40,6 +40,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
           setIndex={setIndex}
           exitX={exitX}
           setExitX={setExitX}
+          dragX="x"
         />
       )}
       <Undo handleUndo={handleUndo} />
