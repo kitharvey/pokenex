@@ -25,6 +25,7 @@ interface FramerCardProps {
   setExitX?: (x: number) => void
   index: number
   setIndex?: (x: number) => void
+  handleDragEnd?: (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
   whileHover?: {
     scale?: number
     boxShadow?: string
