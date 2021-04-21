@@ -1,7 +1,7 @@
 import Deck from "@components/Cards/Deck"
+import { shuffle } from "@helpers/GlobalFunctions"
 import { NameIDInterface } from "interfaces/Interfaces"
-import { wrap } from "popmotion"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface ExploreProps {
   pokemonList: NameIDInterface[]
@@ -9,31 +9,62 @@ interface ExploreProps {
 
 const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
   const [index, setIndex] = useState<number>(0)
-  const [exitX, setExitX] = useState<number>(-1000)
-  const cardIndex = wrap(0, pokemonList.length + 1, index)
+  const [exitX, setExitX] = useState<number>(1000)
+  const [options, setOptions] = useState<number[] | null>(null)
+  const [reveal, setReveal] = useState<boolean>(false)
+  const [selected, setSelected] = useState<number | null>(null)
+  const [score, setScore] = useState<number>(0)
+  const [lives, setLives] = useState<number>(3)
 
-  const handleNext = () => {
-    if (index < pokemonList.length) setIndex(index + 1)
-    setExitX(exitX < 0 ? 1000 : -1000)
+  useEffect(() => {
+    const tempOptions: number[] = []
+    while (tempOptions.length < 3 && !tempOptions.includes(index)) {
+      tempOptions.push(Math.floor(Math.random() * pokemonList.length))
+    }
+    tempOptions.push(index)
+    const shuffledOptions = shuffle(tempOptions)
+    setOptions(shuffledOptions)
+    return () => {
+      setOptions(null)
+    }
+  }, [pokemonList, index])
+
+
+  const handleSelect = (option: number) => {
+    if (index < pokemonList.length) {
+      setSelected(option)
+      setReveal(true)
+      setExitX(Math.random() < 0.5 ? 1000 : -1000)
+
+      setTimeout(() => {
+        setIndex(index + 1)
+        setReveal(false)
+        setSelected(null)
+      }, 3000)
+    }
+    if (index === option) setScore(score + 1)
+    if (index !== option) setLives(lives - 1)
   }
 
   return (
     <div className="exploreplay-page">
-      {pokemonList && (
-        <Deck
-          pokemons={pokemonList}
-          cardIndex={cardIndex}
-          index={index}
-          setIndex={setIndex}
-          exitX={exitX}
-          setExitX={setExitX}
-          dragX={false}
-        />
-      )}
-      <button type="button" onClick={handleNext}>
-        {" "}
-        next{" "}
-      </button>
+      <p>{score}</p>
+      <p>{lives}</p>
+      <Deck
+        pokemons={pokemonList}
+        cardIndex={index}
+        index={index}
+        setIndex={setIndex}
+        exitX={exitX}
+        setExitX={setExitX}
+        dragX={false}
+      />
+      {options &&
+        options.map((option) => (
+          <button key={option} type="button" onClick={() => handleSelect(option)}>
+            {pokemonList[option].name}
+          </button>
+        ))}
     </div>
   )
 }

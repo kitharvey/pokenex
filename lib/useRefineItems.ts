@@ -1,4 +1,4 @@
-import { shuffleDeck } from "@helpers/GlobalFunctions"
+import { shuffle } from "@helpers/GlobalFunctions"
 import { NameIDInterface } from "@interfaces/Interfaces"
 import { useMemo, useState } from "react"
 
@@ -36,7 +36,7 @@ const useRefineItems = (items: NameIDInterface[]) => {
     }
 
     if (random) {
-      refinableItems = shuffleDeck(itemsCopy)
+      refinableItems = shuffle(itemsCopy)
     }
 
     return refinableItems

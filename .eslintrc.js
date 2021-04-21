@@ -42,7 +42,8 @@ module.exports = {
           "@typescript-eslint/explicit-module-boundary-types": "off",
           "no-param-reassign": ["error", { "props": false }],
           'import/no-cycle': ['error', { maxDepth: '∞' }],
-          "jsx-a11y/label-has-associated-control": "off"
+          "jsx-a11y/label-has-associated-control": "off",
+          "@typescript-eslint/no-explicit-any": "off",
         },
       },
     ],

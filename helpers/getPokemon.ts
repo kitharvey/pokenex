@@ -1,5 +1,5 @@
 import axios from "axios"
-import { shuffleDeck, getIDfromURL } from "@helpers/GlobalFunctions"
+import { shuffle, getIDfromURL } from "@helpers/GlobalFunctions"
 import { NameURLInterface } from "interfaces/Interfaces"
 
 const headURL = "https://pokeapi.co/"
@@ -10,7 +10,7 @@ export const fetchList = async () => {
     name,
     id: getIDfromURL(url),
   }))
-  const shuffledList = shuffleDeck(linktoID)
+  const shuffledList = shuffle(linktoID)
   return shuffledList
 }
 export const fetchPokemon = async (id: number) => {
@@ -19,6 +19,6 @@ export const fetchPokemon = async (id: number) => {
     name,
     id: getIDfromURL(url),
   }))
-  const shuffledList = shuffleDeck(linktoID)
+  const shuffledList = shuffle(linktoID)
   return shuffledList
 }

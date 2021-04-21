@@ -1,6 +1,6 @@
 import { NameIDInterface } from "@interfaces/Interfaces"
 import { AnimatePresence, PanInfo } from "framer-motion"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import FramerCard from "./FramerCard"
 
 interface DeckProps {
@@ -14,14 +14,16 @@ interface DeckProps {
 }
 
 const Deck: React.FC<DeckProps> = ({
-  pokemons,
-  cardIndex,
-  exitX,
-  setExitX,
-  index,
-  setIndex,
-  dragX,
-}) => {
+    pokemons,
+    cardIndex,
+    exitX,
+    setExitX,
+    index,
+    setIndex,
+    dragX,
+  }) => {
+
+  const [reveal, setReveal] = useState<boolean>(false)
   const maximumX = 200
 
   function handleDragEnd(_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
@@ -34,6 +36,15 @@ const Deck: React.FC<DeckProps> = ({
       if (setIndex) setIndex(index + 1)
     }
   }
+
+  useEffect(() => {
+    setReveal(true)
+    setTimeout(() => {
+      setReveal(false)
+    }, 3000)
+  }, [index])
+
+
 
   return (
     <div className="card-wrapper">
@@ -104,10 +115,10 @@ const Deck: React.FC<DeckProps> = ({
               scale: { duration: 0.15 },
             }}
             whileTap={{
-              cursor: "grabbing",
+              cursor: dragX ? "grabbing" : "auto",
             }}
             whileHover={{
-              cursor: "grab",
+              cursor: dragX ? "grab" : "auto",
             }}
             handleDragEnd={handleDragEnd}
             exitX={exitX}
@@ -116,7 +127,7 @@ const Deck: React.FC<DeckProps> = ({
             drag={dragX}
           >
             {pokemons && cardIndex < pokemons.length ? (
-              <p>{pokemons[cardIndex].name}</p>
+              <p>{pokemons[cardIndex].name}&nbsp;{pokemons[cardIndex].id}</p>
             ) : (
               <p>end</p>
             )}
