@@ -1,7 +1,6 @@
+import Card from "@components/Cards/Card"
 import Deck from "@components/Cards/Deck"
-// import FramerCard from "@components/Cards/FramerCard"
 import useRefineItems from "@lib/useRefineItems"
-// import { AnimatePresence } from "framer-motion"
 import { NameIDInterface } from "interfaces/Interfaces"
 import { wrap } from "popmotion"
 import { useState } from "react"
@@ -41,6 +40,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
           exitX={exitX}
           setExitX={setExitX}
           dragX="x"
+          CardComponent={Card}
         />
       )}
       <Undo handleUndo={handleUndo} />

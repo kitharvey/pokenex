@@ -15,5 +15,7 @@ export const shuffle = (array: any[]) => {
 export const getIDfromURL = (url: string) => {
   const tempURL = url.split("/")
   const id = +tempURL[tempURL.length - 2]
-  return id
+  if (id >= 10 && id < 100) return `0${id}`
+  if (id >= 100) return `${id}`
+  return `00${id}`
 }

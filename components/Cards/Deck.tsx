@@ -1,6 +1,7 @@
 import { NameIDInterface } from "@interfaces/Interfaces"
 import { AnimatePresence, PanInfo } from "framer-motion"
 import React, { useEffect, useState } from "react"
+import { CardProps } from "./Card"
 import FramerCard from "./FramerCard"
 
 interface DeckProps {
@@ -11,18 +12,19 @@ interface DeckProps {
   index: number
   setIndex?: (x: number) => void
   dragX: boolean | "x" | "y"
+  CardComponent: React.FC<CardProps>
 }
 
 const Deck: React.FC<DeckProps> = ({
-    pokemons,
-    cardIndex,
-    exitX,
-    setExitX,
-    index,
-    setIndex,
-    dragX,
-  }) => {
-
+  pokemons,
+  cardIndex,
+  exitX,
+  setExitX,
+  index,
+  setIndex,
+  dragX,
+  CardComponent
+}) => {
   const [reveal, setReveal] = useState<boolean>(false)
   const maximumX = 200
 
@@ -38,13 +40,12 @@ const Deck: React.FC<DeckProps> = ({
   }
 
   useEffect(() => {
+    console.log(index)
     setReveal(true)
     setTimeout(() => {
       setReveal(false)
     }, 3000)
   }, [index])
-
-
 
   return (
     <div className="card-wrapper">
@@ -69,7 +70,7 @@ const Deck: React.FC<DeckProps> = ({
             }}
           >
             {pokemons && cardIndex + 2 < pokemons.length ? (
-              <p>{pokemons[cardIndex + 2].name}</p>
+              <CardComponent id={pokemons[cardIndex + 2].id} />
             ) : (
               <p>end</p>
             )}
@@ -90,7 +91,7 @@ const Deck: React.FC<DeckProps> = ({
             }}
           >
             {pokemons && cardIndex + 1 < pokemons.length ? (
-              <p>{pokemons[cardIndex + 1].name}</p>
+              <CardComponent id={pokemons[cardIndex + 1].id} />
             ) : (
               <p>end</p>
             )}
@@ -127,7 +128,7 @@ const Deck: React.FC<DeckProps> = ({
             drag={dragX}
           >
             {pokemons && cardIndex < pokemons.length ? (
-              <p>{pokemons[cardIndex].name}&nbsp;{pokemons[cardIndex].id}</p>
+              <CardComponent id={pokemons[cardIndex].id} />
             ) : (
               <p>end</p>
             )}

@@ -1,7 +1,9 @@
+import Card from "@components/Cards/Card"
 import Deck from "@components/Cards/Deck"
 import { shuffle } from "@helpers/GlobalFunctions"
 import { NameIDInterface } from "interfaces/Interfaces"
 import { useEffect, useState } from "react"
+import Options from "./Options"
 
 interface ExploreProps {
   pokemonList: NameIDInterface[]
@@ -28,7 +30,6 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
       setOptions(null)
     }
   }, [pokemonList, index])
-
 
   const handleSelect = (option: number) => {
     if (index < pokemonList.length) {
@@ -58,13 +59,9 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
         exitX={exitX}
         setExitX={setExitX}
         dragX={false}
+        CardComponent={Card}
       />
-      {options &&
-        options.map((option) => (
-          <button key={option} type="button" onClick={() => handleSelect(option)}>
-            {pokemonList[option].name}
-          </button>
-        ))}
+      {options && <Options options={options} pokemonList={pokemonList} handleSelect={handleSelect} />}
     </div>
   )
 }
