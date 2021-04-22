@@ -23,11 +23,6 @@ export interface NameIDInterface {
   id: string
 }
 
-export interface NameURLInterface {
-  name: string
-  url: string
-}
-
 interface PokemonAbilities {
   ability: NameURLInterface
   is_hidden: boolean
@@ -47,12 +42,9 @@ export interface PokemonDataInterface {
   base_experience: number
   height: number
   id: number
-  is_default: boolean
-  location_area_encounters: string
   name: string
-  order: number
   species: NameURLInterface
-  types: PokemonTypes[]
+  types: string[]
   weight: number
   stats: PokemonStats[]
 }

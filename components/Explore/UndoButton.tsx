@@ -6,7 +6,7 @@ interface UndoProps {
   handleUndo: () => void
 }
 
-const Undo: React.FC<UndoProps> = ({ handleUndo }) => {
+const UndoButton: React.FC<UndoProps> = ({ handleUndo }) => {
   return (
     <motion.div
       className="item-wrapper"
@@ -27,4 +27,4 @@ const Undo: React.FC<UndoProps> = ({ handleUndo }) => {
   )
 }
 
-export default Undo
+export default UndoButton

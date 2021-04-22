@@ -1,12 +1,10 @@
 import { InferGetStaticPropsType } from "next"
 import ExplorePage from "@components/Explore/ExplorePage"
-import { fetchList } from "@helpers/getPokemon"
+import { fetchExploreList } from "@helpers/getPokemon"
 import { PokemonDataInterface } from "@interfaces/Interfaces"
 
 export const getStaticProps = async () => {
-  const list = await fetchList()
-  console.log(list)
-
+  const list = await fetchExploreList()
   return {
     props: {
       pokemons: list,

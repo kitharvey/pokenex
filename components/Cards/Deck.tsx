@@ -1,18 +1,18 @@
-import { PokemonDataInterface } from "@interfaces/Interfaces"
+// import { NameIDInterface, PokemonDataInterface } from "@interfaces/Interfaces"
 import { AnimatePresence, PanInfo } from "framer-motion"
 import React from "react"
-import { CardProps } from "./Card"
+// import { CardProps } from "./Card"
 import FramerCard from "./FramerCard"
 
 interface DeckProps {
-  pokemons: PokemonDataInterface[]
+  pokemons: any[]
   cardIndex: number
   exitX: number
   setExitX?: (x: number) => void
   index: number
   setIndex?: (x: number) => void
   dragX: boolean | "x" | "y"
-  CardComponent: React.FC<CardProps>
+  CardComponent: React.FC<any>
 }
 
 const Deck: React.FC<DeckProps> = ({

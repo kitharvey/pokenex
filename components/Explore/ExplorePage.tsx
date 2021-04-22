@@ -5,14 +5,16 @@ import { PokemonDataInterface } from "interfaces/Interfaces"
 import { wrap } from "popmotion"
 import { useState } from "react"
 import Search from "./Search"
-import Undo from "./Undo"
+import ShuffleButton from "./ShuffleButton"
+import SortButton from "./SortButton"
+import UndoButton from "./UndoButton"
 
 interface ExploreProps {
   pokemonList: PokemonDataInterface[]
 }
 
 const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
-  const { pokemons, requestFilter } = useRefineItems(pokemonList)
+  const { pokemons, requestFilter, requestSort, requestShuffle } = useRefineItems(pokemonList)
   const [index, setIndex] = useState<number>(0)
   const [exitX, setExitX] = useState<number>(0)
   const cardIndex = wrap(0, pokemons.length + 1, index)
@@ -43,7 +45,10 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
           CardComponent={Card}
         />
       )}
-      <Undo handleUndo={handleUndo} />
+      <UndoButton handleUndo={handleUndo} />
+      <SortButton title="name" sortKey="name" handleSort={requestSort} />
+      <SortButton title="id" sortKey="id" handleSort={requestSort} />
+      <ShuffleButton handleShuffle={requestShuffle} />
     </div>
   )
 }
