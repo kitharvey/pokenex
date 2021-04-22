@@ -42,7 +42,7 @@ interface PokemonStats {
   stat: NameURLInterface
 }
 
-export interface GetPokemonDataInterface {
+export interface PokemonDataInterface {
   abilities: PokemonAbilities[]
   base_experience: number
   height: number

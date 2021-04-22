@@ -1,27 +1,21 @@
-import { InferGetServerSidePropsType } from "next"
+import { InferGetStaticPropsType } from "next"
 import ExplorePage from "@components/Explore/ExplorePage"
 import { fetchList } from "@helpers/getPokemon"
+import { PokemonDataInterface } from "@interfaces/Interfaces"
 
-export const getServerSideProps = async () => {
-  const pokemonList = await fetchList()
-  if (!pokemonList) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    }
-  }
+export const getStaticProps = async () => {
+  const list = await fetchList()
+  console.log(list)
 
   return {
     props: {
-      pokemonList,
+      pokemons: list,
     },
   }
 }
 
-const Explore = ({ pokemonList }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <div>{pokemonList && <ExplorePage pokemonList={pokemonList} />}</div>
+const Explore = ({ pokemons }: InferGetStaticPropsType<PokemonDataInterface[]>) => {
+  return <div>{pokemons && <ExplorePage pokemonList={pokemons} />}</div>
 }
 
 export default Explore

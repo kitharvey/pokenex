@@ -1,15 +1,17 @@
 import Card from "@components/Cards/Card"
 import Deck from "@components/Cards/Deck"
 import { shuffle } from "@helpers/GlobalFunctions"
-import { NameIDInterface } from "interfaces/Interfaces"
+import useRefineItems from "@lib/useRefineItems"
+import { PokemonDataInterface } from "interfaces/Interfaces"
 import { useEffect, useState } from "react"
 import Options from "./Options"
 
 interface ExploreProps {
-  pokemonList: NameIDInterface[]
+  pokemonList: PokemonDataInterface[]
 }
 
 const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
+  const { pokemons } = useRefineItems(pokemonList)
   const [index, setIndex] = useState<number>(0)
   const [exitX, setExitX] = useState<number>(1000)
   const [options, setOptions] = useState<number[] | null>(null)
@@ -21,7 +23,7 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
   useEffect(() => {
     const tempOptions: number[] = []
     while (tempOptions.length < 3 && !tempOptions.includes(index)) {
-      tempOptions.push(Math.floor(Math.random() * pokemonList.length))
+      tempOptions.push(Math.floor(Math.random() * pokemons.length))
     }
     tempOptions.push(index)
     const shuffledOptions = shuffle(tempOptions)
@@ -29,10 +31,10 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
     return () => {
       setOptions(null)
     }
-  }, [pokemonList, index])
+  }, [pokemons, index])
 
   const handleSelect = (option: number) => {
-    if (index < pokemonList.length) {
+    if (index < pokemons.length) {
       setSelected(option)
       setReveal(true)
       setExitX(Math.random() < 0.5 ? 1000 : -1000)
@@ -52,7 +54,7 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
       <p>{score}</p>
       <p>{lives}</p>
       <Deck
-        pokemons={pokemonList}
+        pokemons={pokemons}
         cardIndex={index}
         index={index}
         setIndex={setIndex}
@@ -61,7 +63,7 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
         dragX={false}
         CardComponent={Card}
       />
-      {options && <Options options={options} pokemonList={pokemonList} handleSelect={handleSelect} />}
+      {options && <Options options={options} pokemonList={pokemons} handleSelect={handleSelect} />}
     </div>
   )
 }

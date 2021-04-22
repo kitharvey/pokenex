@@ -1,11 +1,11 @@
-import { NameIDInterface } from "@interfaces/Interfaces"
+import { PokemonDataInterface } from "@interfaces/Interfaces"
 import { AnimatePresence, PanInfo } from "framer-motion"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { CardProps } from "./Card"
 import FramerCard from "./FramerCard"
 
 interface DeckProps {
-  pokemons: NameIDInterface[]
+  pokemons: PokemonDataInterface[]
   cardIndex: number
   exitX: number
   setExitX?: (x: number) => void
@@ -23,9 +23,8 @@ const Deck: React.FC<DeckProps> = ({
   index,
   setIndex,
   dragX,
-  CardComponent
+  CardComponent,
 }) => {
-  const [reveal, setReveal] = useState<boolean>(false)
   const maximumX = 200
 
   function handleDragEnd(_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
@@ -38,14 +37,6 @@ const Deck: React.FC<DeckProps> = ({
       if (setIndex) setIndex(index + 1)
     }
   }
-
-  useEffect(() => {
-    console.log(index)
-    setReveal(true)
-    setTimeout(() => {
-      setReveal(false)
-    }, 3000)
-  }, [index])
 
   return (
     <div className="card-wrapper">
@@ -70,7 +61,7 @@ const Deck: React.FC<DeckProps> = ({
             }}
           >
             {pokemons && cardIndex + 2 < pokemons.length ? (
-              <CardComponent id={pokemons[cardIndex + 2].id} />
+              <CardComponent pokemon={pokemons[cardIndex + 2]} />
             ) : (
               <p>end</p>
             )}
@@ -91,7 +82,7 @@ const Deck: React.FC<DeckProps> = ({
             }}
           >
             {pokemons && cardIndex + 1 < pokemons.length ? (
-              <CardComponent id={pokemons[cardIndex + 1].id} />
+              <CardComponent pokemon={pokemons[cardIndex + 1]} />
             ) : (
               <p>end</p>
             )}
@@ -128,7 +119,7 @@ const Deck: React.FC<DeckProps> = ({
             drag={dragX}
           >
             {pokemons && cardIndex < pokemons.length ? (
-              <CardComponent id={pokemons[cardIndex].id} />
+              <CardComponent pokemon={pokemons[cardIndex]} />
             ) : (
               <p>end</p>
             )}

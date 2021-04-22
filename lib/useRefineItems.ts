@@ -1,5 +1,5 @@
 import { shuffle } from "@helpers/GlobalFunctions"
-import { NameIDInterface } from "@interfaces/Interfaces"
+import { PokemonDataInterface } from "@interfaces/Interfaces"
 import { useMemo, useState } from "react"
 
 type Key = "id" | "name"
@@ -10,14 +10,14 @@ export interface SetSortConfigProps {
   direction: Direction
 }
 
-const useRefineItems = (items: NameIDInterface[]) => {
+const useRefineItems = (items: PokemonDataInterface[]) => {
   const [sortConfig, setSortConfig] = useState<SetSortConfigProps | null>(null)
   const [search, setSearch] = useState<string | null>(null)
   const [random, setRandom] = useState<number | null>(null)
 
   const refinedItems = useMemo(() => {
     const itemsCopy = [...items]
-    let refinableItems = [...items]
+    let refinableItems = shuffle([...items])
 
     if (sortConfig && sortConfig.key) {
       refinableItems = itemsCopy.sort((a, b) => {

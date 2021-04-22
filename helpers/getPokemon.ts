@@ -1,20 +1,20 @@
+import { NameURLInterface } from "@interfaces/Interfaces"
 import axios from "axios"
-import { shuffle, getIDfromURL } from "@helpers/GlobalFunctions"
-import { NameURLInterface } from "interfaces/Interfaces"
 
 const headURL = "https://pokeapi.co/"
-
+const limit = 8
 export const fetchList = async () => {
-  const { data } = await axios.get(`${headURL}api/v2/pokemon/?limit=807&offset=0`)
-  const linktoID = data.results.map(({ name, url }: NameURLInterface) => ({
-    name,
-    id: getIDfromURL(url),
-  }))
-  const shuffledList = shuffle(linktoID)
-  return shuffledList
+  const { data: pokemonlist } = await axios.get(`${headURL}api/v2/pokemon/?limit=${limit}&offset=0`)
+  const list = Promise.all(
+    pokemonlist.results.map(async (pokemon: NameURLInterface) => {
+      const { data } = await axios.get(pokemon.url)
+      return data
+    })
+  )
+  return list
 }
-export const fetchPokemonData = async (id: number) => {
-  const { data } = await axios.get(`${headURL}api/v2/pokemon/${id}`)
+export const fetchPokemonData = async (link: string) => {
+  const { data } = await axios.get(link)
   return data
 }
 export const fetchPokemonSpeciesData = async (id: number) => {

@@ -41,7 +41,7 @@ interface FramerCardProps {
 const FramerCard: React.FC<FramerCardProps> = (props) => {
   const maximumX = 200
   const x = useMotionValue(0)
-  const rotate = useTransform(x, [-maximumX, 0, maximumX], [-5, 0, 5], {
+  const rotate = useTransform(x, [-maximumX, 0, maximumX], [-10, 0, 10], {
     clamp: false,
   })
 

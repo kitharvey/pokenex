@@ -1,14 +1,14 @@
 import Card from "@components/Cards/Card"
 import Deck from "@components/Cards/Deck"
 import useRefineItems from "@lib/useRefineItems"
-import { NameIDInterface } from "interfaces/Interfaces"
+import { PokemonDataInterface } from "interfaces/Interfaces"
 import { wrap } from "popmotion"
 import { useState } from "react"
 import Search from "./Search"
 import Undo from "./Undo"
 
 interface ExploreProps {
-  pokemonList: NameIDInterface[]
+  pokemonList: PokemonDataInterface[]
 }
 
 const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {

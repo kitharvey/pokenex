@@ -1,8 +1,8 @@
 import GamePage from "@components/Game/GamePage"
-import { InferGetServerSidePropsType } from "next"
+import { InferGetStaticPropsType } from "next"
 import { fetchList } from "@helpers/getPokemon"
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const pokemonList = await fetchList()
   if (!pokemonList) {
     return {
@@ -20,7 +20,7 @@ export const getServerSideProps = async () => {
   }
 }
 
-const Play = ({ pokemonList }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Play = ({ pokemonList }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return <div>{pokemonList && <GamePage pokemonList={pokemonList} />}</div>
 }
 
