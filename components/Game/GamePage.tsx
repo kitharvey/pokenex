@@ -1,6 +1,6 @@
 import Card from "@components/Cards/Card"
 import Deck from "@components/Cards/Deck"
-import { shuffle } from "@helpers/GlobalFunctions"
+import { getOptions, shuffle } from "@helpers/GlobalFunctions"
 import useRefineItems from "@lib/useRefineItems"
 import { PokemonDataInterface } from "interfaces/Interfaces"
 import { useEffect, useState } from "react"
@@ -14,18 +14,15 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
   const { pokemons } = useRefineItems(pokemonList)
   const [index, setIndex] = useState<number>(0)
   const [exitX, setExitX] = useState<number>(1000)
-  const [options, setOptions] = useState<number[] | null>(null)
+  const [options, setOptions] = useState<string[] | null>(null)
   const [reveal, setReveal] = useState<boolean>(false)
-  const [selected, setSelected] = useState<number | null>(null)
+  const [chosen, setChosen] = useState<string | null>(null)
   const [score, setScore] = useState<number>(0)
   const [lives, setLives] = useState<number>(3)
 
   useEffect(() => {
-    const tempOptions: number[] = []
-    while (tempOptions.length < 3 && !tempOptions.includes(index)) {
-      tempOptions.push(Math.floor(Math.random() * pokemons.length))
-    }
-    tempOptions.push(index)
+    const correctAnswer = pokemons[index].species.name
+    const tempOptions = getOptions(pokemons, correctAnswer)
     const shuffledOptions = shuffle(tempOptions)
     setOptions(shuffledOptions)
     return () => {
@@ -33,20 +30,21 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
     }
   }, [pokemons, index])
 
-  const handleSelect = (option: number) => {
+  const handleSelect = (selected: string) => {
+    const correctAnswer = pokemons[index].species.name
     if (index < pokemons.length) {
-      setSelected(option)
+      setChosen(selected)
       setReveal(true)
       setExitX(Math.random() < 0.5 ? 1000 : -1000)
 
       setTimeout(() => {
         setIndex(index + 1)
         setReveal(false)
-        setSelected(null)
+        setChosen(null)
       }, 3000)
     }
-    if (index === option) setScore(score + 1)
-    if (index !== option) setLives(lives - 1)
+    if (correctAnswer === selected) setScore(score + 1)
+    if (correctAnswer !== selected) setLives(lives - 1)
   }
 
   return (
@@ -63,7 +61,7 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonList }) => {
         dragX={false}
         CardComponent={Card}
       />
-      {options && <Options options={options} pokemonList={pokemons} handleSelect={handleSelect} />}
+      {options && <Options options={options} handleSelect={handleSelect} />}
     </div>
   )
 }

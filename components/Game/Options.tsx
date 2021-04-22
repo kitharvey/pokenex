@@ -1,18 +1,16 @@
-import { NameIDInterface } from "@interfaces/Interfaces"
 import React from "react"
 
 interface OptionsProps {
-  options: number[]
-  pokemonList: NameIDInterface[]
-  handleSelect: (option: number) => void
+  options: string[]
+  handleSelect: (option: string) => void
 }
 
-const Options: React.FC<OptionsProps> = ({ options, pokemonList, handleSelect }) => {
+const Options: React.FC<OptionsProps> = ({ options, handleSelect }) => {
   return (
     <div>
       {options.map((option) => (
         <button key={option} type="button" onClick={() => handleSelect(option)}>
-          {pokemonList[option].name}
+          {option}
         </button>
       ))}
     </div>
