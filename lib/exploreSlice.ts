@@ -5,7 +5,7 @@ interface InitialStateProps {
 }
 
 const initialState: InitialStateProps = {
-  reveal: false
+  reveal: false,
 }
 
 const pokemonSlice = createSlice({

@@ -76,7 +76,7 @@ const FramerCard: React.FC<FramerCardProps> = (props) => {
         height: "100%",
         position: "absolute",
         top: 0,
-        borderRadius: "10px",
+        borderRadius: "20px",
         x,
         rotate,
       }}

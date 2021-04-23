@@ -1,6 +1,6 @@
 import { NameURLInterface, PokemonTypes } from "@interfaces/Interfaces"
 import axios from "axios"
-import { getIDfromURL, shuffle } from "./GlobalFunctions"
+import { getIDfromURL, getPokemonImage, shuffle } from "./GlobalFunctions"
 
 const headURL = "https://pokeapi.co/"
 const limit = 8
@@ -18,7 +18,8 @@ export const fetchExploreList = async () => {
         species: data.species,
         types: data.types.map((type: PokemonTypes) => type.type.name),
         weight: data.weight,
-        stats: data.stats
+        stats: data.stats,
+        sprite: getPokemonImage(data.id),
       }
     })
   )
@@ -42,7 +43,4 @@ export const fetchPokemonData = async (link: string) => {
 export const fetchPokemonSpeciesData = async (id: number) => {
   const { data } = await axios.get(`${headURL}api/v2/pokemon-species/${id}`)
   return data
-}
-export const getPokemonImage = (id: string) => {
-  return `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${id}.png`
 }

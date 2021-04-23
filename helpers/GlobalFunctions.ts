@@ -31,3 +31,11 @@ export const getOptions = (pokemons: NameIDInterface[], correctAnswer: string) =
   }
   return [...nums]
 }
+
+export const getPokemonImage = (id: number) => {
+  let stringID
+  if (id >= 10 && id < 100) stringID = `0${id}`
+  if (id >= 100) stringID = `${id}`
+  stringID = `00${id}`
+  return `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${stringID}.png`
+}

@@ -1,5 +1,6 @@
 import React from "react"
 import { PokemonDataInterface } from "@interfaces/Interfaces"
+import Image from "next/image"
 
 export interface CardProps {
   pokemon: PokemonDataInterface
@@ -7,12 +8,13 @@ export interface CardProps {
 
 const Card: React.FC<CardProps> = ({ pokemon }) => {
   return (
-    <div>
-      <div>
-        <h1>{pokemon.species.name}</h1>
-        <h1>{pokemon.id}</h1>
-        {pokemon.types.map(type => <p key={type} >{type}</p> )}
-      </div>
+    <div className="card">
+      <p>{pokemon.species.name}</p>
+      <p>{pokemon.id}</p>
+      {pokemon.types.map((type) => (
+        <p key={type}>{type}</p>
+      ))}
+      <Image src={pokemon.sprite} alt={pokemon.species.name} width={300} height={300} />
     </div>
   )
 }

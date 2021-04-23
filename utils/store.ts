@@ -3,7 +3,7 @@ import exploreReducer from "@lib/exploreSlice"
 
 export const store = configureStore({
   reducer: {
-    explore: exploreReducer
+    explore: exploreReducer,
   },
 })
 

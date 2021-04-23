@@ -19,7 +19,6 @@ const useRefineItems = (items: PokemonDataInterface[]) => {
   const refinedItems = useMemo(() => {
     const itemsCopy = [...items]
     let refinableItems = [...items]
-
     if (sortConfig && sortConfig.key) {
       refinableItems = itemsCopy.sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -45,7 +44,7 @@ const useRefineItems = (items: PokemonDataInterface[]) => {
     }
 
     return refinableItems
-  }, [items, sortConfig, search, random])
+  }, [items, sortConfig, search, random, filterByType])
 
   const requestSort = (key: SortKey) => {
     let direction = "ascending"

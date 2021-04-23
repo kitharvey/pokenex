@@ -1,6 +1,7 @@
 .exploreplay-page {
   width: 100%;
-  height: 80vh;
+  min-height: 90vh;
+  height: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;

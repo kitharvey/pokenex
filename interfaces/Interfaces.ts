@@ -47,4 +47,5 @@ export interface PokemonDataInterface {
   types: string[]
   weight: number
   stats: PokemonStats[]
+  sprite: string
 }
