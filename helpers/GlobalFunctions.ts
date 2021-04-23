@@ -22,6 +22,12 @@ export const getIDfromURL = (url: string) => {
   return `00${id}`
 }
 
+export const getStringIDfromID = (id: number) => {
+  if (id >= 10 && id < 100) return `0${id}`
+  if (id >= 100) return `${id}`
+  return `00${id}`
+}
+
 export const getOptions = (pokemons: NameIDInterface[], correctAnswer: string) => {
   const nums = new Set([correctAnswer])
   while (nums.size < 4) {

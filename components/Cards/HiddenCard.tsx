@@ -11,9 +11,15 @@ interface ExploreCardProps {
 const HiddenCard: React.FC<ExploreCardProps> = ({ pokemon, reveal }) => {
   const imgsrc = getPokemonImage(+pokemon.id)
   return (
-    <div className="card">
+    <div className="card-container">
+      <div className='card'
+        style={{
+          background: `radial-gradient(rgba(255,255,255,0) 10%, #00b4d8 100%)`,
+        }}
+      >
       <div style={{ filter: `brightness(${reveal ? 1 : 0})` }}>
-        <Image src={imgsrc} alt="hidden pokemon" width={280} height={280} quality={50} priority />
+        <Image src={imgsrc} alt="hidden pokemon" width={260} height={260} quality={50} priority />
+      </div>
       </div>
     </div>
   )

@@ -61,7 +61,13 @@ const GamePage: React.FC<ExploreProps> = ({ pokemons }) => {
         reveal={reveal}
       />
       {options && (
-        <Options options={options} handleSelect={handleSelect} reveal={reveal} chosen={chosen} answer={pokemons[index].name} />
+        <Options
+          options={options}
+          handleSelect={handleSelect}
+          reveal={reveal}
+          chosen={chosen}
+          answer={pokemons[index].name}
+        />
       )}
     </div>
   )

@@ -10,42 +10,41 @@ interface OptionsProps {
 }
 
 const Options: React.FC<OptionsProps> = ({ options, handleSelect, reveal, chosen, answer }) => {
-
   const buttonBGColor = (opt: string) => {
     if (reveal) {
       if (opt === chosen) {
         if (chosen === answer) {
-          return '#6EE7B7'
+          return "#6EE7B7"
         }
-        return '#FCA5A5'
+        return "#FCA5A5"
       }
       if (answer === opt) {
-        return '#6EE7B7'
+        return "#6EE7B7"
       }
-      return '#FFF'
+      return "#FFF"
     }
-    return '#FFF'
+    return "#FFF"
   }
 
   return (
     <div className="options-wrapper">
       {options.map((option) => (
-          <motion.div
-            key={option}
-            className="item-wrapper option"
-            style={{
-              background: buttonBGColor(option)
-            }}
-            onClick={() => handleSelect(option)}
-            whileTap={{
-              scale: 0.95,
-            }}
-            whileHover={{
-              cursor: "pointer",
-            }}
-          >
-            <p>{option}</p>
-          </motion.div>
+        <motion.div
+          key={option}
+          className="item-wrapper option"
+          style={{
+            background: buttonBGColor(option),
+          }}
+          onClick={() => handleSelect(option)}
+          whileTap={{
+            scale: 0.95,
+          }}
+          whileHover={{
+            cursor: "pointer",
+          }}
+        >
+          <p>{option}</p>
+        </motion.div>
       ))}
     </div>
   )
