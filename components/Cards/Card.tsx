@@ -14,7 +14,14 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
       {pokemon.types.map((type) => (
         <p key={type}>{type}</p>
       ))}
-      <Image src={pokemon.sprite} alt={pokemon.species.name} width={300} height={300} />
+      <Image
+        src={pokemon.sprite}
+        alt={pokemon.species.name}
+        width={280}
+        height={280}
+        quality={50}
+        priority
+      />
     </div>
   )
 }

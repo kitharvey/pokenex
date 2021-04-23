@@ -7,7 +7,7 @@ const Nav = () => {
       <div className="container">
         <div className="navbar">
           <h1>
-            <Link href="/"> Pokenext </Link>{" "}
+            <Link href="/"> Pokénex </Link>{" "}
           </h1>
           <div className="web-menu">
             <ActiveLink activeClassName="active" href="/explore">

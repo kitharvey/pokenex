@@ -13,6 +13,7 @@ interface DeckProps {
   setIndex?: (x: number) => void
   dragX: boolean | "x" | "y"
   CardComponent: React.FC<any>
+  reveal?: boolean
 }
 
 const Deck: React.FC<DeckProps> = ({
@@ -24,6 +25,7 @@ const Deck: React.FC<DeckProps> = ({
   setIndex,
   dragX,
   CardComponent,
+  reveal,
 }) => {
   const maximumX = 200
 
@@ -61,7 +63,7 @@ const Deck: React.FC<DeckProps> = ({
             }}
           >
             {pokemons && cardIndex + 2 < pokemons.length ? (
-              <CardComponent pokemon={pokemons[cardIndex + 2]} />
+              <CardComponent pokemon={pokemons[cardIndex + 2]} reveal={reveal} />
             ) : (
               <p>end</p>
             )}
@@ -82,7 +84,7 @@ const Deck: React.FC<DeckProps> = ({
             }}
           >
             {pokemons && cardIndex + 1 < pokemons.length ? (
-              <CardComponent pokemon={pokemons[cardIndex + 1]} />
+              <CardComponent pokemon={pokemons[cardIndex + 1]} reveal={reveal} />
             ) : (
               <p>end</p>
             )}
@@ -119,7 +121,7 @@ const Deck: React.FC<DeckProps> = ({
             drag={dragX}
           >
             {pokemons && cardIndex < pokemons.length ? (
-              <CardComponent pokemon={pokemons[cardIndex]} />
+              <CardComponent pokemon={pokemons[cardIndex]} reveal={reveal} />
             ) : (
               <p>end</p>
             )}
