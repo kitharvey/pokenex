@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { FaGithub } from "react-icons/fa"
 import ActiveLink from "./ActiveLink"
 
 const Nav = () => {
@@ -6,9 +7,17 @@ const Nav = () => {
     <header>
       <div className="container">
         <div className="navbar">
-          <h1>
-            <Link href="/"> Pokénex </Link>{" "}
-          </h1>
+          <div className="title-wrapper">
+            <h1>
+              <Link href="/"> Pokénex </Link>{" "}
+            </h1>
+            <h1>
+              {" "}
+              <a href="https://github.com/kitharvey/pokenex" target="_blank" rel="noreferrer">
+                <FaGithub />
+              </a>
+            </h1>
+          </div>
           <div className="web-menu">
             <ActiveLink activeClassName="active" href="/explore">
               <a className="nav-items">

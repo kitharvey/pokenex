@@ -4,18 +4,18 @@ import React from "react"
 interface FilterByTypeProps {
   list: PokemonDataInterface[]
   handleFilterByType: (event: React.ChangeEvent<HTMLSelectElement>) => void
+  filterValue: string
 }
 
-const FilterByType: React.FC<FilterByTypeProps> = ({ list, handleFilterByType }) => {
+const FilterByType: React.FC<FilterByTypeProps> = ({ list, handleFilterByType, filterValue }) => {
   const flat = list.map((item) => item.types).flat()
   const arrUnique = Array.from(new Set(flat))
   return (
     <select
       name="filterByTypes"
       id="filterByTypes"
-      placeholder="filter by type"
-      className="item-wrapper"
       onChange={handleFilterByType}
+      value={filterValue}
     >
       <option value="">remove filter</option>
       {arrUnique.map((option) => (

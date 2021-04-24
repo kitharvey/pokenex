@@ -1,4 +1,3 @@
-import Head from "next/head"
 import Router from "next/router"
 import type { AppProps } from "next/app"
 import { Provider } from "react-redux"
@@ -21,10 +20,6 @@ Router.events.on("routeChangeError", progress.finish)
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Nav />
       <div className="container page">
         <Component {...pageProps} />

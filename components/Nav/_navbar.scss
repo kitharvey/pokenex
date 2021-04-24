@@ -1,16 +1,24 @@
-$blue-accent: #00b4d8;
+$blue-accent: #ef2b2b;
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  .title-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   h1 {
     transition: all 0.15s ease-in-out;
+    line-height: 1;
+    margin-right: 10px;
     &:hover {
       color: $blue-accent;
     }
   }
+
   .web-menu {
     .nav-items {
       margin-left: 20px;
@@ -28,6 +36,7 @@ $blue-accent: #00b4d8;
 
 header {
   width: 100%;
+  padding: 10px 0;
   background-color: #000;
   color: #fff;
   box-shadow: 0 0 10px 5px #00000050;

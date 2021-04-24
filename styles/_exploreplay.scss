@@ -8,12 +8,12 @@
   justify-content: center;
   user-select: none;
 
-  .options-wrapper{
+  .options-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    .option{
+    .option {
       margin: 0 10px;
     }
   }
@@ -34,6 +34,15 @@
     label {
       font-weight: 500;
       margin-right: 10px;
+    }
+
+    select {
+      appearance: none;
+      font-family: inherit;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.75rem;
     }
 
     .search-wrapper {

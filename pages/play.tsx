@@ -1,6 +1,7 @@
 import GamePage from "@components/Game/GamePage"
 import { InferGetServerSidePropsType } from "next"
 import { fetchPlayList } from "@helpers/getPokemon"
+import HeadTitle from "@components/HeadTitle/HeadTitle"
 
 export const getServerSideProps = async () => {
   const pokemons = await fetchPlayList()
@@ -21,7 +22,12 @@ export const getServerSideProps = async () => {
 }
 
 const Play = ({ pokemons }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <div>{pokemons && <GamePage pokemons={pokemons} />}</div>
+  return (
+    <div>
+      <HeadTitle title="Pokénex/Play" />
+      {pokemons && <GamePage pokemons={pokemons} />}
+    </div>
+  )
 }
 
 export default Play

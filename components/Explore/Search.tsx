@@ -3,28 +3,24 @@ import { FaSearch } from "react-icons/fa"
 
 interface SearchProps {
   handleSearch: (event: React.ChangeEvent<HTMLInputElement>) => void
+  searchValue: string
 }
 
-const Search: React.FC<SearchProps> = ({ handleSearch }) => {
+const Search: React.FC<SearchProps> = ({ handleSearch, searchValue }) => {
   return (
-    <div className="item-wrapper">
-      <label htmlFor="searchpokemon">Search: </label>
-      <form
-        method="GET"
-        onSubmit={(event: React.FormEvent<HTMLFormElement>) => event.preventDefault()}
-      >
-        <div className="search-wrapper">
-          <FaSearch />
-          <input
-            id="searchpokemon"
-            type="search"
-            name="q"
-            placeholder="Enter Pokemon Name..."
-            autoComplete="off"
-            onChange={handleSearch}
-          />
-        </div>
-      </form>
+    <div className="">
+      <div className="search-wrapper">
+        <FaSearch />
+        <input
+          id="searchpokemon"
+          type="search"
+          name="q"
+          placeholder="Enter Pokemon Name..."
+          autoComplete="off"
+          onChange={handleSearch}
+          value={searchValue}
+        />
+      </div>
     </div>
   )
 }

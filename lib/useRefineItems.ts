@@ -12,8 +12,8 @@ export interface SetSortConfigProps {
 
 const useRefineItems = (items: PokemonDataInterface[]) => {
   const [sortConfig, setSortConfig] = useState<SetSortConfigProps | null>(null)
-  const [search, setSearch] = useState<string | null>(null)
-  const [filterByType, setFilterByType] = useState<string | null>(null)
+  const [search, setSearch] = useState<string>("")
+  const [filterByType, setFilterByType] = useState<string>("")
   const [random, setRandom] = useState<number | null>(null)
 
   const refinedItems = useMemo(() => {
@@ -47,10 +47,10 @@ const useRefineItems = (items: PokemonDataInterface[]) => {
   }, [items, sortConfig, search, random, filterByType])
 
   const requestSort = (key: SortKey) => {
-    let direction = "ascending"
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === "ascending") {
-      direction = "descending"
-    }
+    const direction = "ascending"
+    // if (sortConfig && sortConfig.key === key && sortConfig.direction === "ascending") {
+    //   direction = "descending"
+    // }
     setSortConfig({ key, direction })
     setRandom(null)
   }
@@ -65,6 +65,8 @@ const useRefineItems = (items: PokemonDataInterface[]) => {
   }
   const requestShuffle = () => {
     setRandom(Math.random())
+    setFilterByType("")
+    setSearch("")
   }
 
   return {
@@ -75,6 +77,8 @@ const useRefineItems = (items: PokemonDataInterface[]) => {
     requestShuffle,
     sortConfig,
     setSortConfig,
+    search,
+    filterByType,
   }
 }
 

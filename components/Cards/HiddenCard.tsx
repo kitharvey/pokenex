@@ -12,14 +12,15 @@ const HiddenCard: React.FC<ExploreCardProps> = ({ pokemon, reveal }) => {
   const imgsrc = getPokemonImage(+pokemon.id)
   return (
     <div className="card-container">
-      <div className='card'
+      <div
+        className="card"
         style={{
-          background: `radial-gradient(rgba(255,255,255,0) 10%, #00b4d8 100%)`,
+          boxShadow: "inset 0 0 100px 0px #00000075",
         }}
       >
-      <div style={{ filter: `brightness(${reveal ? 1 : 0})` }}>
-        <Image src={imgsrc} alt="hidden pokemon" width={260} height={260} quality={50} priority />
-      </div>
+        <div style={{ filter: `brightness(${reveal ? 1 : 0})` }}>
+          <Image src={imgsrc} alt="hidden pokemon" width={260} height={260} quality={50} priority />
+        </div>
       </div>
     </div>
   )
