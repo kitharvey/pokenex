@@ -8,14 +8,44 @@
   justify-content: center;
   user-select: none;
 
-  .dash{
+  .gameover-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #00000080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .gameover-wrapper {
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+
+      .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .dash {
     margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 320px;
 
-    span{
+    span {
       margin-left: 5px;
       color: #ef2b2b;
     }
@@ -40,7 +70,7 @@
     justify-content: center;
     @include round-shadow;
 
-    .select-wrapper{
+    .select-wrapper {
       position: relative;
       color: #999;
 
@@ -48,7 +78,8 @@
         color: #000;
       }
 
-      select, input {
+      select,
+      input {
         appearance: none;
         font-family: inherit;
         border: none;
@@ -60,10 +91,9 @@
         max-width: 180px;
       }
 
-      select{
+      select {
         cursor: pointer;
       }
-
 
       svg {
         position: absolute;
@@ -72,7 +102,6 @@
         transform: translateY(-50%);
         pointer-events: none;
       }
-
     }
   }
 }

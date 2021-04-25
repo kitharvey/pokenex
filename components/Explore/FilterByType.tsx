@@ -1,6 +1,7 @@
 import { PokemonDataInterface } from "@interfaces/Interfaces"
 import React from "react"
-import {FiFilter} from 'react-icons/fi'
+import { FiFilter } from "react-icons/fi"
+
 interface FilterByTypeProps {
   list: PokemonDataInterface[]
   handleFilterByType: (event: React.ChangeEvent<HTMLSelectElement>) => void
@@ -13,19 +14,19 @@ const FilterByType: React.FC<FilterByTypeProps> = ({ list, handleFilterByType, f
   return (
     <div className="select-wrapper">
       <FiFilter />
-    <select
-      name="filterByTypes"
-      id="filterByTypes"
-      onChange={handleFilterByType}
-      value={filterValue}
-    >
-      <option value="">filter by type</option>
-      {arrUnique.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
+      <select
+        name="filterByTypes"
+        id="filterByTypes"
+        onChange={handleFilterByType}
+        value={filterValue}
+      >
+        <option value="">filter by type</option>
+        {arrUnique.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </div>
   )
 }

@@ -1,13 +1,13 @@
 import React from "react"
-import {FaSort} from 'react-icons/fa'
+import { FaSort } from "react-icons/fa"
+
 interface FilterByTypeProps {
   handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void
-
 }
 
 const Sort: React.FC<FilterByTypeProps> = ({ handleSort }) => {
   return (
-    <div className="select-wrapper" >
+    <div className="select-wrapper">
       <FaSort />
       <select name="sort-pokemons" id="sort-pokemons" onChange={handleSort}>
         <option value="id">sort by ID</option>

@@ -8,18 +8,18 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = ({ handleSearch, searchValue }) => {
   return (
-      <div className="select-wrapper">
-        <FaSearch />
-        <input
-          id="searchpokemon"
-          type="search"
-          name="q"
-          placeholder="Enter Pokemon Name..."
-          autoComplete="off"
-          onChange={handleSearch}
-          value={searchValue}
-        />
-      </div>
+    <div className="select-wrapper">
+      <FaSearch />
+      <input
+        id="searchpokemon"
+        type="search"
+        name="q"
+        placeholder="Enter Pokemon Name..."
+        autoComplete="off"
+        onChange={handleSearch}
+        value={searchValue}
+      />
+    </div>
   )
 }
 
