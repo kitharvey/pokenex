@@ -8,7 +8,7 @@ import { store } from "@utils/store"
 
 const progress = new ProgressBar({
   size: 2,
-  color: "#00b4d8",
+  color: "#ef2b2b",
   className: "bar-of-progress",
   delay: 100,
 })

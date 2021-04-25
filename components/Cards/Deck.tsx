@@ -97,7 +97,7 @@ const Deck: React.FC<DeckProps> = ({
             initial={{
               scale: 1,
               y: 40,
-              opacity: 1,
+              opacity: 0,
             }}
             animate={{
               scale: 1,

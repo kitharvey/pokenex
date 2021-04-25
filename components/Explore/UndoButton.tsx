@@ -14,6 +14,8 @@ const UndoButton: React.FC<UndoProps> = ({ handleUndo }) => {
       style={{
         borderRadius: "50%",
         padding: "10px",
+        background: "#fff",
+        boxShadow: "0 0px 10px 1px #00000050",
       }}
       whileTap={{
         rotate: -180,

@@ -31,7 +31,7 @@ const Options: React.FC<OptionsProps> = ({ options, handleSelect, reveal, chosen
       {options.map((option) => (
         <motion.div
           key={option}
-          className="item-wrapper option"
+          className="option"
           style={{
             background: buttonBGColor(option),
           }}
@@ -41,6 +41,7 @@ const Options: React.FC<OptionsProps> = ({ options, handleSelect, reveal, chosen
           }}
           whileHover={{
             cursor: "pointer",
+
           }}
         >
           <p>{option}</p>

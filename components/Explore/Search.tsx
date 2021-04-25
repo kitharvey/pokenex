@@ -8,8 +8,7 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = ({ handleSearch, searchValue }) => {
   return (
-    <div className="">
-      <div className="search-wrapper">
+      <div className="select-wrapper">
         <FaSearch />
         <input
           id="searchpokemon"
@@ -21,7 +20,6 @@ const Search: React.FC<SearchProps> = ({ handleSearch, searchValue }) => {
           value={searchValue}
         />
       </div>
-    </div>
   )
 }
 
