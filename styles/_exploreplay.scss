@@ -8,14 +8,23 @@
   justify-content: center;
   user-select: none;
 
+  .dash{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 320px;
+
+    span{
+      margin-left: 5px;
+      color: #ef2b2b;
+    }
+  }
+
   .options-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .option {
-      margin: 0 10px;
-    }
   }
 
   @mixin round-shadow {
@@ -30,12 +39,6 @@
     align-items: center;
     justify-content: center;
     @include round-shadow;
-
-    label {
-      font-weight: 500;
-      margin-right: 10px;
-    }
-
 
     .select-wrapper{
       position: relative;
@@ -57,6 +60,10 @@
         max-width: 180px;
       }
 
+      select{
+        cursor: pointer;
+      }
+
 
       svg {
         position: absolute;
@@ -66,27 +73,6 @@
         pointer-events: none;
       }
 
-    }
-
-    .search-wrapper {
-      display: flex;
-      align-items: center;
-      color: #999;
-
-      svg {
-        margin-right: 5px;
-      }
-
-      input {
-        border: none;
-        outline: none;
-        font-family: inherit;
-        font-size: 0.75rem;
-      }
-
-      &:focus-within {
-        color: #000;
-      }
     }
   }
 }

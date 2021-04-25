@@ -25,7 +25,7 @@ const Play = ({ pokemons }: InferGetServerSidePropsType<typeof getServerSideProp
   return (
     <div>
       <HeadTitle title="Pokénex/Play" />
-      {pokemons && <GamePage pokemons={pokemons} />}
+      {pokemons && <GamePage pokemonsList={pokemons} />}
     </div>
   )
 }
