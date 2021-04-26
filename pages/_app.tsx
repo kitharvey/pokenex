@@ -1,6 +1,7 @@
 import Router from "next/router"
 import type { AppProps } from "next/app"
-import { Provider } from "react-redux"
+import { Provider as ReduxProvider } from "react-redux"
+import { Provider as NextAuthProvider } from "next-auth/client";
 import ProgressBar from "@badrap/bar-of-progress"
 import Nav from "@components/Nav/Nav"
 import "@styles/styles.scss"
@@ -19,12 +20,15 @@ Router.events.on("routeChangeError", progress.finish)
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <Provider store={store}>
-      <Nav />
-      <div className="container mt-40">
-        <Component {...pageProps} />
-      </div>
-    </Provider>
+    <NextAuthProvider session={pageProps.session}>
+      <ReduxProvider store={store}>
+        <Nav />
+        <div className="container mt-40">
+          <Component {...pageProps} />
+        </div>
+      </ReduxProvider>
+    </NextAuthProvider>
+
   )
 }
 

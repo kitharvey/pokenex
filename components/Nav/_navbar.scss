@@ -1,4 +1,4 @@
-$blue-accent: #ff5a5f;
+$color-accent: #ff5a5f;
 
 .navbar {
   display: flex;
@@ -15,7 +15,7 @@ $blue-accent: #ff5a5f;
     line-height: 1;
     margin-right: 20px;
     &:hover {
-      color: $blue-accent;
+      color: $color-accent;
     }
   }
 
@@ -24,12 +24,16 @@ $blue-accent: #ff5a5f;
       margin-left: 20px;
       transition: all 0.15s ease-in-out;
       &:hover {
-        color: $blue-accent;
+        color: $color-accent;
+      }
+
+      span{
+        font-size: .825rem;
       }
     }
 
     .active {
-      color: $blue-accent;
+      color: $color-accent;
     }
   }
 }

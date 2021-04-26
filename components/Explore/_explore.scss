@@ -29,7 +29,7 @@
         max-width: 180px;
       }
 
-      select {
+      select:focus-within {
         cursor: pointer;
       }
 

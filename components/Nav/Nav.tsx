@@ -1,8 +1,10 @@
 import Link from "next/link"
 import { FaGithub } from "react-icons/fa"
 import ActiveLink from "./ActiveLink"
+import { signIn, signOut, useSession } from "next-auth/client";
 
 const Nav = () => {
+  const [session] = useSession();
   return (
     <header>
       <div className="container">
@@ -34,6 +36,19 @@ const Nav = () => {
                 <span>Leaderboard</span>
               </a>
             </ActiveLink>
+            
+            <div>
+            {session && session.user ? (
+          <>
+            <span>{session.user.uid}</span>
+            <span>{session.user.name}</span>
+            <button type='button' onClick={() => signOut()}>Sign Out</button>
+          </>
+        ) : (
+          <button type='button' onClick={() => signIn("github")}>Sign In</button>
+          
+        )}
+            </div>
           </div>
         </div>
       </div>
