@@ -1,4 +1,4 @@
-$blue-accent: #ef2b2b;
+$blue-accent: #ff5a5f;
 
 .navbar {
   display: flex;
@@ -10,10 +10,10 @@ $blue-accent: #ef2b2b;
     align-items: center;
   }
 
-  h1 {
+  h2 {
     transition: all 0.15s ease-in-out;
     line-height: 1;
-    margin-right: 10px;
+    margin-right: 20px;
     &:hover {
       color: $blue-accent;
     }

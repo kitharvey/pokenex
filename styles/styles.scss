@@ -2,7 +2,9 @@
 @import "@components/Nav/navbar";
 @import "@components/Leaderboard/leaderboard";
 @import "@components/Cards/card";
-@import "exploreplay";
+@import "@components/Explore/explore";
+@import "@components/Game/game";
+@import "pages";
 
 a {
   color: inherit;

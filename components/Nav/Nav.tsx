@@ -8,15 +8,15 @@ const Nav = () => {
       <div className="container">
         <div className="navbar">
           <div className="title-wrapper">
-            <h1>
+            <h2>
               <Link href="/"> Pokénex </Link>{" "}
-            </h1>
-            <h1>
+            </h2>
+            <h2>
               {" "}
               <a href="https://github.com/kitharvey/pokenex" target="_blank" rel="noreferrer">
                 <FaGithub />
               </a>
-            </h1>
+            </h2>
           </div>
           <div className="web-menu">
             <ActiveLink activeClassName="active" href="/explore">

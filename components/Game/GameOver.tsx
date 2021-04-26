@@ -1,5 +1,5 @@
 import React from "react"
-import { IoMdCloseCircle } from "react-icons/io"
+import { IoClose } from "react-icons/io5"
 
 interface GameOverProps {
   score: number
@@ -11,7 +11,7 @@ const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
     <div className="gameover-modal">
       <div className="gameover-wrapper">
         <h1 className="close-modal">
-          <IoMdCloseCircle onClick={() => handleCloseModal()} />
+          <IoClose onClick={() => handleCloseModal()} />
         </h1>
         <h1>Game Over</h1>
         <p>score: {score}</p>

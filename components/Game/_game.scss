@@ -1,0 +1,49 @@
+
+  .gameover-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #00000080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .gameover-wrapper {
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+
+      .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .dash {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 320px;
+
+    span {
+      margin-left: 5px;
+      color: #ef2b2b;
+    }
+  }
+
+  .options-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

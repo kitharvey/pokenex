@@ -8,7 +8,7 @@ const initialState: InitialStateProps = {
   reveal: false,
 }
 
-const pokemonSlice = createSlice({
+const userSlice = createSlice({
   name: "pokemon",
   initialState,
   reducers: {
@@ -18,5 +18,5 @@ const pokemonSlice = createSlice({
   },
 })
 
-export const { setReveal } = pokemonSlice.actions
-export default pokemonSlice.reducer
+export const { setReveal } = userSlice.actions
+export default userSlice.reducer

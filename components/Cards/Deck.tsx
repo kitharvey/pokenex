@@ -1,6 +1,7 @@
 // import { NameIDInterface, PokemonDataInterface } from "@interfaces/Interfaces"
 import { AnimatePresence, PanInfo } from "framer-motion"
 import React from "react"
+import EndCard from "./EndCard"
 // import { CardProps } from "./Card"
 import FramerCard from "./FramerCard"
 
@@ -65,7 +66,7 @@ const Deck: React.FC<DeckProps> = ({
             {pokemons && cardIndex + 2 < pokemons.length ? (
               <CardComponent pokemon={pokemons[cardIndex + 2]} reveal={reveal} />
             ) : (
-              <p>end</p>
+              <EndCard/>
             )}
           </FramerCard>
         )}
@@ -86,7 +87,7 @@ const Deck: React.FC<DeckProps> = ({
             {pokemons && cardIndex + 1 < pokemons.length ? (
               <CardComponent pokemon={pokemons[cardIndex + 1]} reveal={reveal} />
             ) : (
-              <p>end</p>
+              <EndCard/>
             )}
           </FramerCard>
         )}
@@ -123,7 +124,7 @@ const Deck: React.FC<DeckProps> = ({
             {pokemons && cardIndex < pokemons.length ? (
               <CardComponent pokemon={pokemons[cardIndex]} reveal={reveal} />
             ) : (
-              <p>end</p>
+              <EndCard/>
             )}
           </FramerCard>
         )}

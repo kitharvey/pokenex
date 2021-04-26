@@ -8,7 +8,7 @@ import { store } from "@utils/store"
 
 const progress = new ProgressBar({
   size: 2,
-  color: "#ef2b2b",
+  color: "#ff5a5f",
   className: "bar-of-progress",
   delay: 100,
 })
@@ -21,7 +21,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <Provider store={store}>
       <Nav />
-      <div className="container page">
+      <div className="container mt-40">
         <Component {...pageProps} />
       </div>
     </Provider>

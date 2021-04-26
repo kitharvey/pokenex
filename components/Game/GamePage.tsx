@@ -70,7 +70,7 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonsList }) => {
   }
 
   return (
-    <div className="exploreplay-page">
+    <div className="page">
       <h1>Who&apos;s that pokemon?</h1>
       <div className="dash">
         <p>score: {score}</p>
@@ -78,7 +78,7 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonsList }) => {
           {Array(lives)
             .fill(<ImHeart />)
             .map((_a, idx) => (
-              <span key={idx}>
+              <span key={Math.random() * idx}>
                 <ImHeart />
               </span>
             ))}
