@@ -1,7 +1,7 @@
 import Router from "next/router"
 import type { AppProps } from "next/app"
 import { Provider as ReduxProvider } from "react-redux"
-import { Provider as NextAuthProvider } from "next-auth/client";
+import { Provider as NextAuthProvider } from "next-auth/client"
 import ProgressBar from "@badrap/bar-of-progress"
 import Nav from "@components/Nav/Nav"
 import "@styles/styles.scss"
@@ -28,7 +28,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         </div>
       </ReduxProvider>
     </NextAuthProvider>
-
   )
 }
 

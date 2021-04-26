@@ -6,7 +6,7 @@ export default async (request: NextApiRequest, result: NextApiResponse) => {
   await dbConnect()
 
   let user
-  const { uid, displayName } = request.body
+  const { uid, name } = request.body
   const { method } = request
   if (method === "POST") {
     try {
@@ -15,7 +15,7 @@ export default async (request: NextApiRequest, result: NextApiResponse) => {
         user = isUserAlready
         result.status(200).json({ user })
       } else {
-        const newuser = new User({ uid, displayName })
+        const newuser = new User({ uid, name })
         user = await newuser.save()
         result.status(201).json({ user })
       }

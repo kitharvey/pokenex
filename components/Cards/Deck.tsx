@@ -66,7 +66,7 @@ const Deck: React.FC<DeckProps> = ({
             {pokemons && cardIndex + 2 < pokemons.length ? (
               <CardComponent pokemon={pokemons[cardIndex + 2]} reveal={reveal} />
             ) : (
-              <EndCard/>
+              <EndCard />
             )}
           </FramerCard>
         )}
@@ -87,7 +87,7 @@ const Deck: React.FC<DeckProps> = ({
             {pokemons && cardIndex + 1 < pokemons.length ? (
               <CardComponent pokemon={pokemons[cardIndex + 1]} reveal={reveal} />
             ) : (
-              <EndCard/>
+              <EndCard />
             )}
           </FramerCard>
         )}
@@ -124,7 +124,7 @@ const Deck: React.FC<DeckProps> = ({
             {pokemons && cardIndex < pokemons.length ? (
               <CardComponent pokemon={pokemons[cardIndex]} reveal={reveal} />
             ) : (
-              <EndCard/>
+              <EndCard />
             )}
           </FramerCard>
         )}

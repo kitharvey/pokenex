@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 const Play = ({ pokemons }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
-      <HeadTitle title="Pokénex/Play" />
+      <HeadTitle title="Pokénex | Play" />
       {pokemons && <GamePage pokemonsList={pokemons} />}
     </div>
   )

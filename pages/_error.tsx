@@ -1,3 +1,4 @@
+import HeadTitle from "@components/HeadTitle/HeadTitle"
 import type { NextPageContext } from "next"
 
 interface ErrorProps {
@@ -8,6 +9,7 @@ interface ErrorProps {
 function Error({ statusCode, message }: ErrorProps) {
   return (
     <div className="error-page">
+      <HeadTitle title={`Pokénex | ${statusCode}`} />
       {statusCode && <p className="status-code">{statusCode}</p>}
       {message && <p className="message">{message}</p>}
     </div>

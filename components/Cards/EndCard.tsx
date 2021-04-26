@@ -10,8 +10,15 @@ const EndCard: React.FC = () => {
           boxShadow: "inset 0 0 100px 0px #00000075",
         }}
       >
-          <Image src='/pokemon-egg.png' alt="pokemon egg" width={260} height={260} quality={50} priority />
-          <p className="name">End of Deck</p>
+        <Image
+          src="/pokemon-egg.png"
+          alt="pokemon egg"
+          width={260}
+          height={260}
+          quality={50}
+          priority
+        />
+        <p className="name">End of Deck</p>
       </div>
     </div>
   )

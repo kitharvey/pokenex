@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { FaGithub } from "react-icons/fa"
+import { FaCaretDown, FaGithub } from "react-icons/fa"
+import { signIn, signOut, useSession } from "next-auth/client"
 import ActiveLink from "./ActiveLink"
-import { signIn, signOut, useSession } from "next-auth/client";
 
 const Nav = () => {
-  const [session] = useSession();
+  const [session] = useSession()
   return (
     <header>
       <div className="container">
@@ -36,18 +36,28 @@ const Nav = () => {
                 <span>Leaderboard</span>
               </a>
             </ActiveLink>
-            
-            <div>
-            {session && session.user ? (
-          <>
-            <span>{session.user.uid}</span>
-            <span>{session.user.name}</span>
-            <button type='button' onClick={() => signOut()}>Sign Out</button>
-          </>
-        ) : (
-          <button type='button' onClick={() => signIn("github")}>Sign In</button>
-          
-        )}
+
+            <div className="dropdown-wrapper">
+              {session && session.user ? (
+                <div className="account-button">
+                  <span>
+                    {session.user.name}&nbsp;
+                    <FaCaretDown />
+                  </span>
+                  <div className="dropdown">
+                    <Link href={`/${session.user.uid}`}>
+                      <span>account</span>
+                    </Link>
+                    <button type="button" onClick={() => signOut()}>
+                      <span>sign out</span>
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button type="button" onClick={() => signIn("github")}>
+                  <span>Sign In</span>
+                </button>
+              )}
             </div>
           </div>
         </div>

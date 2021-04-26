@@ -4,7 +4,10 @@ const userSchema = new mongoose.Schema({
   uid: {
     type: String,
   },
-  displayName: {
+  name: {
+    type: String,
+  },
+  picture: {
     type: String,
   },
   favorites: [

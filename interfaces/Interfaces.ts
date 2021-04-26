@@ -9,7 +9,8 @@ export interface UserProps {
   favorites: UserFavoritesProps[]
   _id: string
   uid: string
-  displayName: string
+  name: string
+  picture: string
   score: number
   __v: number
 }

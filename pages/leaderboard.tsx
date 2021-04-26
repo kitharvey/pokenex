@@ -29,7 +29,7 @@ const Leaderboard = ({ users, origin }: InferGetServerSidePropsType<typeof getSe
   const { data } = useSWR(`${origin}/api/users`, getUsers, { initialData: users })
   return (
     <div>
-      <HeadTitle title="Pokénex/Leaderboard" />
+      <HeadTitle title="Pokénex | Leaderboard" />
       {data && <LeaderboardPage data={data} />}
     </div>
   )

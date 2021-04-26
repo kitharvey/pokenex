@@ -5,6 +5,19 @@ $color-accent: #ff5a5f;
   align-items: center;
   justify-content: space-between;
 
+  span {
+    font-size: 0.825rem;
+  }
+
+  button {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-family: inherit;
+  }
+
   .title-wrapper {
     display: flex;
     align-items: center;
@@ -19,21 +32,64 @@ $color-accent: #ff5a5f;
     }
   }
 
+  span {
+    cursor: pointer;
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
   .web-menu {
+    display: flex;
+    align-items: center;
     .nav-items {
       margin-left: 20px;
-      transition: all 0.15s ease-in-out;
-      &:hover {
-        color: $color-accent;
-      }
-
-      span{
-        font-size: .825rem;
-      }
     }
 
     .active {
       color: $color-accent;
+    }
+
+    .dropdown-wrapper {
+      margin-left: 20px;
+      .account-button {
+        position: relative;
+
+        svg {
+          transform: rotate(0deg);
+          transition: all 0.2s ease-in-out;
+        }
+        &:hover,
+        &:focus,
+        &:focus-within {
+          .dropdown {
+            opacity: 1;
+            height: 50px;
+          }
+
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+        .dropdown {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          padding: 5px 10px;
+          border-radius: 10px;
+          background: #000;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 2;
+          height: 0px;
+          min-width: 100%;
+          transition: all 0.2s ease-in-out;
+          opacity: 0;
+          box-shadow: 0 0 10px 5px #00000050;
+        }
+      }
     }
   }
 }

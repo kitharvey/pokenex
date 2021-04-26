@@ -5,11 +5,11 @@ import dbConnect from "@utils/dataBaseConnection"
 export default async (request: NextApiRequest, result: NextApiResponse) => {
   await dbConnect()
 
-  const { uid, displayName } = request.body
+  const { uid, name } = request.body
   const { method } = request
   if (method === "DELETE") {
     try {
-      const isUserAlready = await User.findOne({ uid, displayName })
+      const isUserAlready = await User.findOne({ uid, name })
       if (isUserAlready) {
         isUserAlready.remove()
         result.json({ message: `Account was deleted` })

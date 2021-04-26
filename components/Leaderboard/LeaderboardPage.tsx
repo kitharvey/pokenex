@@ -21,7 +21,7 @@ const LeaderboardPage: React.FC<LeaderboardProps> = ({ data }) => {
             .map((user, index) => (
               <div className="table-row" key={user.uid}>
                 <p className="">{index + 1}</p>
-                <p className="">{user.displayName}</p>
+                <p className="">{user.name}</p>
                 <p className="">{user.score}</p>
               </div>
             ))}
