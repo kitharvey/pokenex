@@ -28,10 +28,10 @@ export const getServerSideProps = async ({ req }: NextPageContext) => {
 const Leaderboard = ({ users, origin }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data } = useSWR(`${origin}/api/users`, getUsers, { initialData: users })
   return (
-    <div>
+    <>
       <HeadTitle title="Pokénex | Leaderboard" />
       {data && <LeaderboardPage data={data} />}
-    </div>
+    </>
   )
 }
 

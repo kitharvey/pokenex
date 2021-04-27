@@ -7,4 +7,39 @@
   align-items: center;
   justify-content: center;
   user-select: none;
+
+  .signin-button{
+    margin-top: 10px;
+    font-size: 1rem;
+    &:hover {
+      color: $color-accent-dark;
+    }
+  }
+}
+
+.error-page {
+  width: 100%;
+  min-height: 80vh;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .status-code {
+    display: inline-block;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 0;
+    margin-right: 20px;
+    padding: 10px 23px 10px 0;
+    font-size: 24px;
+    font-weight: 500;
+    vertical-align: top;
+  }
+  .message {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+  }
 }

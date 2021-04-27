@@ -15,10 +15,10 @@ export const getStaticProps = async () => {
 
 const Explore = ({ pokemons }: InferGetStaticPropsType<PokemonDataInterface[]>) => {
   return (
-    <div>
+    <>
       <HeadTitle title="Pokénex | Explore" />
       {pokemons && <ExplorePage pokemonList={pokemons} />}
-    </div>
+    </>
   )
 }
 

@@ -11,10 +11,9 @@ const Nav = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (session) {
-      console.log(session)
       dispatch(userSignIn(session.user))
     } else dispatch(signout())
-  }, [session])
+  }, [session, dispatch])
 
   return (
     <header>
@@ -56,8 +55,8 @@ const Nav = () => {
                     <FaCaretDown />
                   </span>
                   <div className="dropdown">
-                    <Link href={`/${session.user.uid}`}>
-                      <span>account</span>
+                    <Link href="/profile">
+                      <span>profile</span>
                     </Link>
                     <button type="button" onClick={() => signOut()}>
                       <span>sign out</span>

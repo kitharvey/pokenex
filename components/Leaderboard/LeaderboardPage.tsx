@@ -16,7 +16,7 @@ const LeaderboardPage: React.FC<LeaderboardProps> = ({ data }) => {
             <p className="">Score</p>
           </div>
           {data
-            .filter((user) => user.score > 0)
+            // .filter((user) => user.score > 0)
             .sort((userA, userB) => userB.score - userA.score)
             .map((user, index) => (
               <div className="table-row" key={user.uid}>
