@@ -51,7 +51,9 @@ $color-accent: #ff5a5f;
     }
 
     .dropdown-wrapper {
-      margin-left: 20px;
+      margin-left: 10px;
+      border-left: 1px solid #fff;
+      padding-left: 10px;
       .account-button {
         position: relative;
 

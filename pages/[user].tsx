@@ -1,13 +1,20 @@
 import HeadTitle from "@components/HeadTitle/HeadTitle"
+import { useAppSelector } from "@lib/reduxHooks"
 import { useRouter } from "next/router"
+import { useEffect } from "react"
 
 const User = () => {
+  const { userData } = useAppSelector((state) => state.user)
   const router = useRouter()
-  const { user } = router.query
+
+  useEffect(() => {
+    if (!userData) router.push("/")
+  }, [userData])
+
   return (
     <>
-      <HeadTitle title={`Pokénex | ${user}`} />
-      <h1>{user}</h1>
+      <HeadTitle title={`Pokénex | ${userData?.name}`} />
+      <h1>{userData?.name}</h1>
     </>
   )
 }

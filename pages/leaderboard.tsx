@@ -2,7 +2,7 @@ import useSWR from "swr"
 import { InferGetServerSidePropsType, NextPageContext } from "next"
 import absoluteUrl from "next-absolute-url"
 import LeaderboardPage from "@components/Leaderboard/LeaderboardPage"
-import getUsers from "@helpers/getUsers"
+import { getUsers } from "@helpers/getUsers"
 import HeadTitle from "@components/HeadTitle/HeadTitle"
 
 export const getServerSideProps = async ({ req }: NextPageContext) => {

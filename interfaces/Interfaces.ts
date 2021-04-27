@@ -50,3 +50,9 @@ export interface PokemonDataInterface {
   stats: PokemonStats[]
   sprite: string
 }
+
+export interface UserSessionProps {
+  name?: string | null
+  picture?: string | null
+  uid?: string | null
+}

@@ -1,10 +1,21 @@
 import Link from "next/link"
 import { FaCaretDown, FaGithub } from "react-icons/fa"
 import { signIn, signOut, useSession } from "next-auth/client"
+import { useEffect } from "react"
+import { useAppDispatch } from "@lib/reduxHooks"
+import { signout, userSignIn } from "@lib/userSlice"
 import ActiveLink from "./ActiveLink"
 
 const Nav = () => {
   const [session] = useSession()
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    if (session) {
+      console.log(session)
+      dispatch(userSignIn(session.user))
+    } else dispatch(signout())
+  }, [session])
+
   return (
     <header>
       <div className="container">

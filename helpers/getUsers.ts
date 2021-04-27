@@ -1,14 +1,12 @@
-async function getUsers(link: string) {
-  const reponse = await fetch(`${link}`)
-    .then((response) => response.json())
-    .then((data) => {
-      return data
-    })
-    .catch((error) => {
-      throw new Error(error)
-    })
+import { UserSessionProps } from "@interfaces/Interfaces"
+import axios from "axios"
 
-  return reponse
+export async function getUsers(link: string) {
+  const { data } = await axios.get(`${link}`)
+  return data
 }
 
-export default getUsers
+export const getUserData = async (body: UserSessionProps) => {
+  const { data } = await axios.post(`/api/signin`, body)
+  return data
+}
