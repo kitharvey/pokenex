@@ -8,9 +8,14 @@ const ProfilePage = () => {
   const { userData } = useAppSelector((state) => state.user)
   const [confirm, setConfirm] = useState(false)
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (userData) {
-      deleteUser(userData._id)
+      try{
+        const data = await deleteUser(userData._id)
+        if(data) alert(data.message)
+      } catch(err) {
+        alert(err)
+      }
       signOut()
     }
   }

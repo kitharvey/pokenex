@@ -1,9 +1,12 @@
+import LeaderboardPage from "@components/Leaderboard/LeaderboardPage"
+import HeadTitle from "@components/HeadTitle/HeadTitle"
+import { useSession } from "next-auth/client"
+import AccessDenied from "@components/AccessDenied/AccessDenied"
+import { getUsers } from "@helpers/getUsers"
+import { UserProps } from "@interfaces/Interfaces"
 import useSWR from "swr"
 import { InferGetServerSidePropsType, NextPageContext } from "next"
 import absoluteUrl from "next-absolute-url"
-import LeaderboardPage from "@components/Leaderboard/LeaderboardPage"
-import { getUsers } from "@helpers/getUsers"
-import HeadTitle from "@components/HeadTitle/HeadTitle"
 
 export const getServerSideProps = async ({ req }: NextPageContext) => {
   const { origin } = absoluteUrl(req, "localhost:3000")
@@ -20,13 +23,15 @@ export const getServerSideProps = async ({ req }: NextPageContext) => {
   return {
     props: {
       users,
-      origin,
     },
   }
 }
 
-const Leaderboard = ({ users, origin }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { data } = useSWR(`${origin}/api/users`, getUsers, { initialData: users })
+
+const Leaderboard = ({ users }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { data } = useSWR<UserProps[]>(`/api/users`, getUsers, { initialData: users })
+  const [session] = useSession()
+  if (!session) return <AccessDenied />
   return (
     <>
       <HeadTitle title="Pokénex | Leaderboard" />

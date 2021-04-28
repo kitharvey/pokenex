@@ -12,6 +12,16 @@
     }
     .table-row {
       font-weight: 300;
+      cursor: pointer;
+      &:hover{
+        color: $color-accent-dark;
+      }
     }
   }
+}
+
+.spinner-wrapper{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
 }

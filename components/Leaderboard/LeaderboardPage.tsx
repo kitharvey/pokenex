@@ -1,25 +1,43 @@
+import { getLeaderBoardList, selectUser } from "@lib/leaderboardSlice"
+import { useAppDispatch, useAppSelector } from "@lib/reduxHooks"
 import { UserProps } from "interfaces/Interfaces"
-import React from "react"
+import { useRouter } from "next/router"
+import React, { useEffect } from "react"
 
-interface LeaderboardProps {
+interface LeaderboardPageProps {
   data: UserProps[]
 }
 
-const LeaderboardPage: React.FC<LeaderboardProps> = ({ data }) => {
+const LeaderboardPage: React.FC<LeaderboardPageProps> = ({data}) => {
+  const router = useRouter()
+  const {list} = useAppSelector(state => state.leaderboard)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    
+    if(data) {
+      console.log({data})
+      dispatch(getLeaderBoardList(data))
+    } 
+  }, [data])
+
+  const handleSelectUser = (user: UserProps) => {
+    dispatch(selectUser(user))
+    router.push(`/user/${user.uid}`)
+  }
+
+
   return (
     <div className="leaderboard-page">
-      {data && (
+      {list && (
         <div className="table-wrapper">
           <div className="table-head">
             <p className="">Rank</p>
             <p className="">Name</p>
             <p className="">Score</p>
           </div>
-          {data
-            // .filter((user) => user.score > 0)
-            .sort((userA, userB) => userB.score - userA.score)
-            .map((user, index) => (
-              <div className="table-row" key={user.uid}>
+          {list.map((user, index) => (
+              <div className="table-row" key={user.uid} onClick={() => handleSelectUser(user) } >
                 <p className="">{index + 1}</p>
                 <p className="">{user.name}</p>
                 <p className="">{user.score}</p>
