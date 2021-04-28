@@ -5,7 +5,7 @@ import leaderboardReducer from "@lib/leaderboardSlice"
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    leaderboard: leaderboardReducer
+    leaderboard: leaderboardReducer,
   },
 })
 

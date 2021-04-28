@@ -4,16 +4,23 @@ import { signIn, signOut, useSession } from "next-auth/client"
 import { useEffect } from "react"
 import { useAppDispatch } from "@lib/reduxHooks"
 import { signout, userSignIn } from "@lib/userSlice"
+import { useRouter } from "next/router"
 import ActiveLink from "./ActiveLink"
 
 const Nav = () => {
   const [session] = useSession()
+  const router = useRouter()
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (session) {
       dispatch(userSignIn(session.user))
     } else dispatch(signout())
   }, [session, dispatch])
+
+  const handleSignOut = () => {
+    signOut()
+    router.push("/")
+  }
 
   return (
     <header>
@@ -50,15 +57,15 @@ const Nav = () => {
             <div className="dropdown-wrapper">
               {session && session.user ? (
                 <div className="account-button">
-                  <span>
-                    {session.user.name}&nbsp;
-                    <FaCaretDown />
-                  </span>
+                  <Link href="/profile">
+                    <span>
+                      {session.user.name}&nbsp;
+                      <FaCaretDown />
+                    </span>
+                  </Link>
+
                   <div className="dropdown">
-                    <Link href="/profile">
-                      <span>profile</span>
-                    </Link>
-                    <button type="button" onClick={() => signOut()}>
+                    <button type="button" onClick={handleSignOut}>
                       <span>sign out</span>
                     </button>
                   </div>

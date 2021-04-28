@@ -8,12 +8,11 @@
   justify-content: center;
   user-select: none;
 
-  .signin-button{
+  .black-button {
+    border-radius: 5px;
     margin-top: 10px;
     font-size: 1rem;
-    &:hover {
-      color: $color-accent-dark;
-    }
+    padding: 5px 10px;
   }
 }
 

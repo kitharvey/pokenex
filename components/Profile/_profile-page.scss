@@ -1,37 +1,37 @@
-.avatar{
-    border-radius: 50%;
+.avatar {
+  border-radius: 50%;
 }
 
-.delete-button{
-    margin-top: 40px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 1px solid red;
-    color: red;
+.delete-button {
+  margin-top: 40px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid red;
+  color: red;
 
-    &:hover{
-        background: red;
-        color: #FFF;
-    }
+  &:hover {
+    background: red;
+    color: #fff;
+  }
 }
 
-.buttons-wrapper{
-    display: flex;
-    align-items: center;
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
 
-    .delete-button{
-        margin: 0 5px;
-        margin-top: 10px;
-    }
-
-    .cancel{
-        border: 1px solid black;
-        color: black;
-    
-        &:hover{
-            background: black;
-            color: #FFF;
-        }
-    }
+  .delete-button {
+    margin: 0 5px;
+    margin-top: 10px;
+  }
 }
+
+.black-button {
+    border: 1px solid black;
+    color: black;
+
+    &:hover {
+      background: black;
+      color: #fff;
+    }
+  }

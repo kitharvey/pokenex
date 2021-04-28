@@ -1,4 +1,8 @@
-import React from "react"
+import { useAppDispatch } from "@lib/reduxHooks"
+import { updateScore } from "@lib/userSlice"
+import { useSession } from "next-auth/client"
+import Link from "next/link"
+import React, { useEffect } from "react"
 import { IoClose } from "react-icons/io5"
 
 interface GameOverProps {
@@ -7,6 +11,13 @@ interface GameOverProps {
 }
 
 const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
+  const dispath = useAppDispatch()
+  const [session] = useSession()
+
+  useEffect(() => {
+    if (session) dispath(updateScore(score))
+  }, [score, dispath, session])
+
   return (
     <div className="modal">
       <div className="wrapper">
@@ -15,6 +26,12 @@ const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
         </h1>
         <h1>Game Over</h1>
         <p>score: {score}</p>
+        {session && <p>best score: {score}</p>}
+        {session && (
+          <Link href="/leaderboard">
+            <span>View Leaderboard</span>
+          </Link>
+        )}
       </div>
     </div>
   )

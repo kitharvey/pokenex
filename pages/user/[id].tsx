@@ -7,7 +7,7 @@ const User = () => {
   const [session] = useSession()
   if (!session) return <AccessDenied />
 
-  return <UserPage/>
+  return <UserPage />
 }
 
 export default User

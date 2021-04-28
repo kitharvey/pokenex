@@ -1,4 +1,3 @@
-
 .navbar {
   display: flex;
   align-items: center;
@@ -22,12 +21,7 @@
     }
   }
 
-  span {
-    cursor: pointer;
-    &:hover {
-      color: $color-accent-light;
-    }
-  }
+
 
   .web-menu {
     display: flex;
@@ -56,7 +50,7 @@
         &:focus-within {
           .dropdown {
             opacity: 1;
-            height: 50px;
+            height: 30px;
           }
 
           svg {
@@ -91,4 +85,11 @@ header {
   background-color: #000;
   color: #fff;
   box-shadow: 0 0 10px 5px #00000050;
+}
+
+span {
+  cursor: pointer;
+  &:hover {
+    color: $color-accent-light;
+  }
 }

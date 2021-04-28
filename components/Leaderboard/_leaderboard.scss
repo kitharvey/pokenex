@@ -13,14 +13,16 @@
     .table-row {
       font-weight: 300;
       cursor: pointer;
-      &:hover{
-        color: $color-accent-dark;
+      border-radius: 5px;
+      transition: all .1s ease-in-out;
+      &:hover {
+        background: #00000025;
       }
     }
   }
 }
 
-.spinner-wrapper{
+.spinner-wrapper {
   position: fixed;
   bottom: 50px;
   right: 50px;

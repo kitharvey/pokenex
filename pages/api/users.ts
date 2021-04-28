@@ -2,18 +2,18 @@ import type { NextApiRequest, NextApiResponse } from "next"
 import User from "@models/User"
 import dbConnect from "@utils/dataBaseConnection"
 
-export default async (request: NextApiRequest, result: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect()
 
-  const { method } = request
+  const { method } = req
   if (method === "GET") {
     try {
       const users = await User.find()
-      result.status(200).json(users)
+      res.status(200).json(users)
     } catch (error) {
-      result.status(500).json({ message: error.message })
+      res.status(500).json({ message: error.message })
     }
   } else {
-    result.status(400).json({ message: "invalid method" })
+    res.status(400).json({ message: "invalid method" })
   }
 }

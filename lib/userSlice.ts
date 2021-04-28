@@ -1,6 +1,6 @@
-import { getUserData } from "@helpers/getUsers"
+import { getUserData, updateUserScore } from "@helpers/getUsers"
 import { UserProps, UserSessionProps } from "@interfaces/Interfaces"
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 
 export const userSignIn = createAsyncThunk("user/signin", async (data: UserSessionProps) => {
   const { user } = await getUserData(data)
@@ -43,15 +43,15 @@ const userSlice = createSlice({
     //     }
     //   }
     // },
-    // updateScore: (state, action: PayloadAction<number>) => {
-    //   const newScore = action.payload
-    //   if (state.userData) {
-    //     if (state.userData.score < newScore) {
-    //       state.userData.score = newScore
-    //       patchScore(newScore, state.userData._id)
-    //     }
-    //   }
-    // },
+    updateScore: (state, action: PayloadAction<number>) => {
+      const score = action.payload
+      if (state.userData) {
+        if (state.userData.score < score) {
+          updateUserScore(state.userData._id, "score", score)
+          state.userData.score = score
+        }
+      }
+    },
     signout: (state) => {
       state.userData = null
       state.status = null
@@ -71,5 +71,5 @@ const userSlice = createSlice({
   },
 })
 
-export const { signout } = userSlice.actions
+export const { signout, updateScore } = userSlice.actions
 export default userSlice.reducer
