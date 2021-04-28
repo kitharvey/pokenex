@@ -10,3 +10,8 @@ export const getUserData = async (body: UserSessionProps) => {
   const { data } = await axios.post(`/api/signin`, body)
   return data
 }
+
+export const deleteUser = async (id: string) => {
+  const { data } = await axios.delete(`/api/delete/${id}`)
+  return data
+}

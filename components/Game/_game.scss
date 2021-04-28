@@ -1,4 +1,4 @@
-.gameover-modal {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
 
-  .gameover-wrapper {
+  .wrapper {
     padding: 50px;
     display: flex;
     align-items: center;

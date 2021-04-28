@@ -8,8 +8,8 @@ interface GameOverProps {
 
 const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
   return (
-    <div className="gameover-modal">
-      <div className="gameover-wrapper">
+    <div className="modal">
+      <div className="wrapper">
         <h1 className="close-modal">
           <IoClose onClick={() => handleCloseModal()} />
         </h1>
