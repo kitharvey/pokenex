@@ -40,7 +40,3 @@ export const fetchPokemonData = async (link: string) => {
   const { data } = await axios.get(link)
   return data
 }
-export const fetchPokemonSpeciesData = async (id: number) => {
-  const { data } = await axios.get(`${headURL}api/v2/pokemon-species/${id}`)
-  return data
-}

@@ -14,11 +14,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       if (isUserAlready) {
         user = isUserAlready
         return res.status(200).json({ user })
-      } else {
-        const newuser = new User({ uid, name, picture })
-        user = await newuser.save()
-        return res.status(201).json({ user })
       }
+      const newuser = new User({ uid, name, picture })
+      user = await newuser.save()
+      return res.status(201).json({ user })
     } catch (err) {
       return res.status(400).json({ err })
     }

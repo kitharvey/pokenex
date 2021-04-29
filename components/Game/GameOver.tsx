@@ -11,7 +11,7 @@ interface GameOverProps {
 }
 
 const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
-  const {userData} = useAppSelector(state => state.user)
+  const { userData } = useAppSelector((state) => state.user)
   const dispath = useAppDispatch()
   const [session] = useSession()
 

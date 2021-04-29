@@ -1,9 +1,11 @@
 import Card from "@components/Cards/Card"
 import Deck from "@components/Cards/Deck"
-import useRefineItems from "@lib/useRefineItems"
+import { useAppDispatch, useAppSelector } from "@lib/reduxHooks"
 import { PokemonDataInterface } from "interfaces/Interfaces"
 import { wrap } from "popmotion"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { refineList, setSortKey, setSearch, setfilterByType } from "@lib/exploreSlice"
+import { shuffle } from "@helpers/GlobalFunctions"
 import FilterByType from "./FilterByType"
 import Search from "./Search"
 import Sort from "./Sort"
@@ -11,25 +13,49 @@ import UndoButton from "./UndoButton"
 
 interface ExploreProps {
   pokemonList: PokemonDataInterface[]
+  refinedList: PokemonDataInterface[]
 }
 
-const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
-  const {
-    pokemons,
-    requestFilter,
-    requestSort,
-    requestShuffle,
-    requestSearch,
-    search,
-    filterByType,
-  } = useRefineItems(pokemonList)
+const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {
+  const { search, filterByType, sortKey } = useAppSelector((state) => state.explore)
+  const dispatch = useAppDispatch()
   const [index, setIndex] = useState<number>(0)
   const [exitX, setExitX] = useState<number>(0)
-  const cardIndex = wrap(0, pokemons.length + 1, index)
+  const cardIndex = wrap(0, refinedList.length + 1, index)
+
+  useEffect(() => {
+    const listCopy = [...pokemonList]
+    let refinableList = [...pokemonList]
+    if (sortKey) {
+      refinableList = listCopy.sort((a, b) => {
+        if (a[sortKey] < b[sortKey]) {
+          return -1
+        }
+        if (a[sortKey] > b[sortKey]) {
+          return 1
+        }
+        return 0
+      })
+    }
+
+    if (sortKey === null) {
+      refinableList = shuffle(listCopy)
+    }
+
+    if (search) {
+      refinableList = listCopy.filter((item) => item.name.includes(search))
+    }
+
+    if (filterByType) {
+      refinableList = listCopy.filter((item) => item.types.includes(filterByType))
+    }
+
+    dispatch(refineList(refinableList))
+  }, [search, filterByType, sortKey, dispatch, pokemonList])
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const text = event.target.value
-    requestSearch(text)
+    dispatch(setSearch(text))
     setIndex(0)
   }
 
@@ -39,16 +65,16 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
 
   const handleFilterByType = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const text = event.target.value
-    requestFilter(text)
+    dispatch(setfilterByType(text))
     setIndex(0)
   }
 
   const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const text = event.target.value
     setIndex(0)
-    if (text === "id") requestSort("id")
-    else if (text === "name") requestSort("name")
-    else if (text === "shuffle") requestShuffle()
+    if (text === "id") dispatch(setSortKey("id"))
+    else if (text === "name") dispatch(setSortKey("name"))
+    else if (text === "shuffle") dispatch(setSortKey(null))
   }
 
   return (
@@ -62,9 +88,9 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList }) => {
           filterValue={filterByType}
         />
       </div>
-      {pokemons && (
+      {refinedList && (
         <Deck
-          pokemons={pokemons}
+          pokemons={refinedList}
           cardIndex={cardIndex}
           index={index}
           setIndex={setIndex}

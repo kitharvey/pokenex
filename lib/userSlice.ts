@@ -28,7 +28,7 @@ const userSlice = createSlice({
           id: fav.id,
           name: fav.name,
           types: fav.types,
-          sprite: fav.sprite
+          sprite: fav.sprite,
         }))
         if (favorites.filter((fav) => fav.id === payload.id).length > 0) {
           favorites.splice(

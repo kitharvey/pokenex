@@ -5,7 +5,7 @@ import { getSession } from "next-auth/client"
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect()
-  const session = getSession({req})
+  const session = getSession({ req })
   const { id } = req.query
   const { method } = req
   if (method === "DELETE" && session) {
