@@ -12,7 +12,8 @@
     color: #666;
     cursor: pointer;
 
-    &:focus-within, &:hover {
+    &:focus-within,
+    &:hover {
       color: #000;
     }
 

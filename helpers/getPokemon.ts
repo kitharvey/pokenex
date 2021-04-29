@@ -14,7 +14,7 @@ export const fetchExploreList = async () => {
         base_experience: data.base_experience,
         height: data.height,
         id: data.id,
-        name: data.name,
+        name: data.species.name,
         species: data.species,
         types: data.types.map((type: PokemonTypes) => type.type.name),
         weight: data.weight,

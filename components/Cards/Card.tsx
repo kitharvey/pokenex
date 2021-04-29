@@ -1,5 +1,5 @@
 import React from "react"
-import { PokemonDataInterface } from "@interfaces/Interfaces"
+import { PokemonDataInterface, UserFavoritesProps } from "@interfaces/Interfaces"
 import Image from "next/image"
 import { findColor, getTypeIcon } from "@helpers/getTypeIconsAndColor"
 import { getStringIDfromID } from "@helpers/GlobalFunctions"
@@ -9,11 +9,11 @@ import { FaRegStar, FaStar } from "react-icons/fa"
 import { useSession } from "next-auth/client"
 
 export interface CardProps {
-  pokemon: PokemonDataInterface
+  pokemon: PokemonDataInterface | UserFavoritesProps
 }
 
 const Card: React.FC<CardProps> = ({ pokemon }) => {
-  const { id, types, sprite, species } = pokemon
+  const { id, types, sprite, name } = pokemon
   const dispatch = useAppDispatch()
   const [session] = useSession()
   const { userData } = useAppSelector((state) => state.user)
@@ -32,7 +32,7 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
           <button
             className="star-wrapper"
             type="button"
-            onClick={() => dispatch(updateFavorites({ id, name: species.name, types, sprite }))}
+            onClick={() => dispatch(updateFavorites({ id, name, types, sprite }))}
           >
             {userData && userData.favorites.filter((fav) => fav.id === id).length > 0 ? (
               <span>
@@ -47,7 +47,7 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
         )}
 
         <p className="id-number">#{getStringIDfromID(id)}</p>
-        <Image src={sprite} alt={species.name} width={260} height={260} quality={50} priority />
+        <Image src={sprite} alt={name} width={260} height={260} quality={50} priority />
         <div className="types-container">
           {types.map((type) => (
             <img
@@ -63,7 +63,7 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
             />
           ))}
         </div>
-        <p className="name">{species.name}</p>
+        <p className="name">{name}</p>
       </div>
     </div>
   )

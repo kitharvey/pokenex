@@ -81,7 +81,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {
     <div className="page">
       <div className="item-wrapper">
         <Search handleSearch={handleSearch} searchValue={search} />
-        <Sort handleSort={handleSort} />
+        <Sort handleSort={handleSort} sortValue={sortKey} />
         <FilterByType
           list={pokemonList}
           handleFilterByType={handleFilterByType}

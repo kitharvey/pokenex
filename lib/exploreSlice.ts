@@ -32,7 +32,7 @@ const explore = createSlice({
     },
     setfilterByType: (state, action: PayloadAction<string>) => {
       state.filterByType = action.payload
-    }
+    },
   },
 })
 
