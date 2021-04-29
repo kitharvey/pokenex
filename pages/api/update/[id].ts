@@ -5,8 +5,7 @@ import { getSession } from "next-auth/client"
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect()
-  const session = await getSession({ req })
-
+  const session = getSession({req})
   const {
     method,
     query: { id },
@@ -18,13 +17,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       if (isUserAlready) {
         isUserAlready[body.key] = body[body.key]
         const user = await isUserAlready.save()
-        res.json({ user })
+        return res.status(202).json({ user })
       }
-      res.status(404).json({ message: "Cannot find user" })
+      return res.status(404).json({ message: "Cannot find user" })
     } catch (err) {
-      res.status(400).json({ err })
+      return res.status(400).json({ err })
     }
   } else {
-    res.status(400).json({ message: "invalid method" })
+    return res.status(400).json({ message: "invalid method or not authorized" })
   }
 }

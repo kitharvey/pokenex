@@ -2,6 +2,7 @@ export interface UserFavoritesProps {
   id: number
   name: string
   types: string[]
+  sprite: string
   _id?: string
 }
 

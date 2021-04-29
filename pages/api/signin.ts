@@ -13,16 +13,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const isUserAlready = await User.findOne({ uid })
       if (isUserAlready) {
         user = isUserAlready
-        res.status(200).json({ user })
+        return res.status(200).json({ user })
       } else {
         const newuser = new User({ uid, name, picture })
         user = await newuser.save()
-        res.status(201).json({ user })
+        return res.status(201).json({ user })
       }
     } catch (err) {
-      res.status(400).json({ err })
+      return res.status(400).json({ err })
     }
   } else {
-    res.status(400).json({ message: "invalid method" })
+    return res.status(400).json({ message: "invalid method" })
   }
 }

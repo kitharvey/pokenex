@@ -1,4 +1,4 @@
-import { useAppDispatch } from "@lib/reduxHooks"
+import { useAppDispatch, useAppSelector } from "@lib/reduxHooks"
 import { updateScore } from "@lib/userSlice"
 import { useSession } from "next-auth/client"
 import Link from "next/link"
@@ -11,6 +11,7 @@ interface GameOverProps {
 }
 
 const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
+  const {userData} = useAppSelector(state => state.user)
   const dispath = useAppDispatch()
   const [session] = useSession()
 
@@ -26,7 +27,7 @@ const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
         </h1>
         <h1>Game Over</h1>
         <p>score: {score}</p>
-        {session && <p>best score: {score}</p>}
+        {session && <p>best score: {userData?.score}</p>}
         {session && (
           <Link href="/leaderboard">
             <span>View Leaderboard</span>

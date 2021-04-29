@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
       id: Number,
       name: String,
       types: [String],
+      sprite: String,
     },
   ],
   score: {

@@ -1,5 +1,5 @@
-import { getUserData, updateUserScore } from "@helpers/getUsers"
-import { UserProps, UserSessionProps } from "@interfaces/Interfaces"
+import { getUserData, updateUserScore, updateUserFavorites } from "@helpers/getUsers"
+import { UserFavoritesProps, UserProps, UserSessionProps } from "@interfaces/Interfaces"
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 
 export const userSignIn = createAsyncThunk("user/signin", async (data: UserSessionProps) => {
@@ -21,28 +21,29 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // updateFavorites: (state, action: PayloadAction<UserFavoritesProps>) => {
-    //   const { payload } = action
-    //   if (state.userData) {
-    //     const tempFav = state.userData.favorites.map((fav) => ({
-    //       id: fav.id,
-    //       name: fav.name,
-    //       types: fav.types,
-    //     }))
-    //     if (tempFav.filter((fav) => fav.id === payload.id).length > 0) {
-    //       tempFav.splice(
-    //         tempFav.findIndex((fav) => fav.id === payload.id),
-    //         1
-    //       )
-    //       patchFavorites(tempFav, state.userData._id)
-    //       state.userData.favorites = tempFav
-    //     } else {
-    //       tempFav.push(payload)
-    //       patchFavorites(tempFav, state.userData._id)
-    //       state.userData.favorites = tempFav
-    //     }
-    //   }
-    // },
+    updateFavorites: (state, action: PayloadAction<UserFavoritesProps>) => {
+      const { payload } = action
+      if (state.userData) {
+        const favorites = state.userData.favorites.map((fav) => ({
+          id: fav.id,
+          name: fav.name,
+          types: fav.types,
+          sprite: fav.sprite
+        }))
+        if (favorites.filter((fav) => fav.id === payload.id).length > 0) {
+          favorites.splice(
+            favorites.findIndex((fav) => fav.id === payload.id),
+            1
+          )
+          updateUserFavorites(state.userData._id, "favorites", favorites)
+          state.userData.favorites = favorites
+        } else {
+          favorites.push(payload)
+          updateUserFavorites(state.userData._id, "favorites", favorites)
+          state.userData.favorites = favorites
+        }
+      }
+    },
     updateScore: (state, action: PayloadAction<number>) => {
       const score = action.payload
       if (state.userData) {
@@ -71,5 +72,5 @@ const userSlice = createSlice({
   },
 })
 
-export const { signout, updateScore } = userSlice.actions
+export const { signout, updateScore, updateFavorites } = userSlice.actions
 export default userSlice.reducer
