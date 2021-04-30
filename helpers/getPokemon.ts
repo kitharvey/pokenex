@@ -36,7 +36,12 @@ export const fetchPlayList = async () => {
   return pokemonlist
 }
 
-export const fetchPokemonData = async (link: string) => {
-  const { data } = await axios.get(link)
+
+export const fetchEvolutionData = async (id: number) => {
+  const {data} = await axios.get(`${headURL}api/v2/evolution-chain/${id}/`)
+  return data
+}
+export const fetchSpeciesData = async (id: number) => {
+  const {data} = await axios.get(`${headURL}api/v2/pokemon-species/${id}/`)
   return data
 }

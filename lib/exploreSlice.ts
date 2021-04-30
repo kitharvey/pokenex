@@ -12,7 +12,7 @@ interface InitialStateProps {
 
 const initialState: InitialStateProps = {
   refinedList: null,
-  sortKey: null,
+  sortKey: "id",
   search: "",
   filterByType: "",
 }

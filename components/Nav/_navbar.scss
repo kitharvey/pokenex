@@ -5,6 +5,10 @@
 
   span {
     font-size: 0.825rem;
+    cursor: pointer;
+    &:hover {
+      color: $color-accent-light;
+    }
   }
 
   .title-wrapper {
@@ -85,9 +89,4 @@ header {
   box-shadow: 0 0 10px 5px #00000050;
 }
 
-span {
-  cursor: pointer;
-  &:hover {
-    color: $color-accent-light;
-  }
-}
+

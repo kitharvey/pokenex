@@ -74,7 +74,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {
     setIndex(0)
     if (text === "id") dispatch(setSortKey("id"))
     else if (text === "name") dispatch(setSortKey("name"))
-    else if (text === "shuffle") dispatch(setSortKey(null))
+    else dispatch(setSortKey(null))
   }
 
   return (

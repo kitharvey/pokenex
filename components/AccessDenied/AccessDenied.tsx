@@ -9,9 +9,7 @@ const AccessDenied = () => {
       <h1>Access Denied</h1>
       <p>You must be signed in to view this page</p>
       <button className="black-button" type="button" onClick={() => signIn("github")}>
-        <span>
           Sign in with <FaGithub />
-        </span>
       </button>
     </div>
   )

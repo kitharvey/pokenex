@@ -5,6 +5,8 @@ import { UserProps } from "@interfaces/Interfaces"
 import useSWR from "swr"
 import { InferGetServerSidePropsType, NextPageContext } from "next"
 import absoluteUrl from "next-absolute-url"
+import { useSession } from "next-auth/client"
+import AccessDenied from "@components/AccessDenied/AccessDenied"
 
 export const getServerSideProps = async ({ req }: NextPageContext) => {
   const { origin } = absoluteUrl(req, "localhost:3000")
@@ -27,6 +29,8 @@ export const getServerSideProps = async ({ req }: NextPageContext) => {
 
 const Leaderboard = ({ users }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data } = useSWR<UserProps[]>(`/api/users`, getUsers, { initialData: users })
+  const [session] = useSession()
+  if (!session) return <AccessDenied />
   return (
     <>
       <HeadTitle title="Pokénex | Leaderboard" />

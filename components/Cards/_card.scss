@@ -15,15 +15,61 @@
     justify-content: center;
     flex-direction: column;
 
+    &:hover{
+      .star-wrapper, .info-wrapper{
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+
+    .icon-wrapper{
+      position: relative;
+      &:hover{
+        span{
+          opacity: 1;
+        }
+      }
+      span{
+        position: absolute;
+        top: -27px;
+        left: 50%;
+        color: #000;
+        font-size: small;
+        white-space: nowrap;
+        padding: 1px 3px;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: all .15s ease-in-out;
+      }
+    }
+
     .star-wrapper {
       position: absolute;
       top: 10px;
       right: 10px;
+      transition: all .15s ease-in-out;
+      transform: translateY(-10px);
+      opacity: 0;
       color: #fff;
       font-size: 1.5rem;
 
       &:hover {
         color: #ffc300;
+      }
+    }
+
+    .info-wrapper{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      transition: all .15s ease-in-out;
+      transform: translateY(-20px);
+      opacity: 0;
+      color: #fff;
+      font-size: 1.5rem;
+
+      &:hover {
+        color: #eee;
       }
     }
 

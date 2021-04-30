@@ -15,13 +15,14 @@ const UndoButton: React.FC<UndoProps> = ({ handleUndo }) => {
         borderRadius: "50%",
         padding: "10px",
         background: "#fff",
-        boxShadow: "0 0px 10px 1px #00000050",
+        boxShadow: "rgba(0, 0, 0, 0.314) 0 0px 10px 1px",
       }}
       whileTap={{
         rotate: -180,
       }}
       whileHover={{
         cursor: "pointer",
+        boxShadow: "rgba(0, 0, 0, 0.314) 0px 0px 15px 1px",
       }}
     >
       <FaUndoAlt />
