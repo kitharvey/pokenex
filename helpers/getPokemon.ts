@@ -36,6 +36,22 @@ export const fetchPlayList = async () => {
   return pokemonlist
 }
 
+export const fetchPokemonData = async (id: number) => {
+  const { data } = await axios.get(`${headURL}api/v2/pokemon/${id}`)
+  return {
+    abilities: data.abilities,
+    base_experience: data.base_experience,
+    height: data.height,
+    id: data.id,
+    name: data.species.name,
+    species: data.species,
+    types: data.types.map((type: PokemonTypes) => type.type.name),
+    weight: data.weight,
+    stats: data.stats,
+    sprite: getPokemonImage(data.id),
+  }
+}
+
 
 export const fetchEvolutionData = async (id: number) => {
   const {data} = await axios.get(`${headURL}api/v2/evolution-chain/${id}/`)

@@ -1,30 +1,28 @@
 import HeadTitle from "@components/HeadTitle/HeadTitle"
 import PokemonPage from "@components/PokemonPage/PokemonPage"
-import { PokemonDataInterface } from "@interfaces/Interfaces"
-import { getEvolutionData, getPokemonSpeciesData } from "@lib/pokemonSlice"
+import { getEvolutionData, getPokemonData, getPokemonSpeciesData } from "@lib/pokemonSlice"
 import { useAppDispatch, useAppSelector } from "@lib/reduxHooks"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import Case from "case"
 
 const Pokemon = () => {
-    const [pokemonData, setpokemonData] = useState<PokemonDataInterface | null>(null)
-  const {pokemonList} = useAppSelector(state => state.pokemon)
+  const {pokemonData} = useAppSelector(state => state.pokemon)
   const router = useRouter()
+  const {id} = router.query
   const dispatch = useAppDispatch()
-    const {id} = router.query
 
     useEffect(() => {
-        if(id && pokemonList){
+        if(id){
             console.log(id)
             dispatch(getEvolutionData(+id))
             dispatch(getPokemonSpeciesData(+id))
-            const data = pokemonList.filter(pokemon => pokemon.id === +id)
-            setpokemonData(data[0])
+            dispatch(getPokemonData(+id))
         }
     }, [id])
 
         return <>
-        {pokemonData && <HeadTitle title={`Pokénex | ${pokemonData.name}`} />}
+        <HeadTitle title={`${pokemonData ? "Pokénex | " + Case.capital(pokemonData.name) : "Fetching pokemon data"}`} />
           <PokemonPage />
         </>
 }

@@ -13,6 +13,7 @@
     "@badrap/bar-of-progress": "^0.1.2",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
+    "case": "^1.6.3",
     "framer-motion": "^4.1.4",
     "mongoose": "^5.12.3",
     "next": "^10.2.0",

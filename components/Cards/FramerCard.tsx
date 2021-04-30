@@ -11,7 +11,6 @@ interface FramerCardProps {
     scale: number
     y: number
     opacity: number
-    boxShadow: string
   }
   transition?: {
     scale?: { duration: number }
@@ -28,13 +27,11 @@ interface FramerCardProps {
   handleDragEnd?: (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
   whileHover?: {
     scale?: number
-    boxShadow?: string
     cursor?: string
   }
   whileTap?: {
     cursor?: string
     scale?: number
-    boxShadow?: string
   }
 }
 

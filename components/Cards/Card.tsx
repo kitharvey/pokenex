@@ -20,10 +20,6 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
   const [session] = useSession()
   const { userData } = useAppSelector((state) => state.user)
 
-  const handleMoreInfo = (_event: React.MouseEvent<HTMLButtonElement>) => {
-    router.push(`/pokemon/${id}`)
-  }
-
   return (
     <div className="card-container">
       <div
@@ -55,18 +51,18 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
           </button>
         )}
 
+        {!router.query.id && (
           <button
             className="info-wrapper"
             type="button"
-            onClick={handleMoreInfo}
+            onClick={() => router.push(`/pokemon/${id}`)}
           >
             <p className='icon-wrapper' >
             <FaInfoCircle/>
             <span>view more info</span>
             </p>
           </button>
-
-
+        )}
 
         <p className="id-number">#{getStringIDfromID(id)}</p>
         <Image src={sprite} alt={name} width={260} height={260} quality={50} priority />

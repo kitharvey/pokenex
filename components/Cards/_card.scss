@@ -4,7 +4,7 @@
   padding: 20px;
   background: #fff;
   border-radius: 20px;
-
+  box-shadow: 0 5px 25px 1px rgba(0,0,0,.5);
   .card {
     height: 100%;
     width: 100%;
@@ -27,6 +27,7 @@
       &:hover{
         span{
           opacity: 1;
+          transform: translateX(-50%) translateY(0px);
         }
       }
       span{
@@ -37,15 +38,16 @@
         font-size: small;
         white-space: nowrap;
         padding: 1px 3px;
-        transform: translateX(-50%);
+        transform: translateX(-50%) translateY(5px);
         opacity: 0;
+        pointer-events: none;
         transition: all .15s ease-in-out;
       }
     }
 
     .star-wrapper {
       position: absolute;
-      top: 10px;
+      top: 8px;
       right: 10px;
       transition: all .15s ease-in-out;
       transform: translateY(-10px);
@@ -60,7 +62,7 @@
 
     .info-wrapper{
       position: absolute;
-      top: 10px;
+      top: 8px;
       left: 10px;
       transition: all .15s ease-in-out;
       transform: translateY(-20px);

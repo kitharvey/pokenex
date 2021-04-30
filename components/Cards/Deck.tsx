@@ -57,7 +57,6 @@ const Deck: React.FC<DeckProps> = ({
               scale: 0.8,
               y: -75,
               opacity: 1,
-              boxShadow: "0 5px 25px 1px rgba(0,0,0,.5)",
             }}
             transition={{
               scale: { duration: 0.5 },
@@ -78,7 +77,6 @@ const Deck: React.FC<DeckProps> = ({
               scale: 0.9,
               y: -40,
               opacity: 1,
-              boxShadow: "0 5px 25px 1px rgba(0,0,0,.5)",
             }}
             transition={{
               scale: { duration: 0.5 },
@@ -104,7 +102,6 @@ const Deck: React.FC<DeckProps> = ({
               scale: 1,
               y: 0,
               opacity: 1,
-              boxShadow: "0 5px 25px 1px rgba(0,0,0,.5)",
             }}
             transition={{
               scale: { duration: 0.15 },

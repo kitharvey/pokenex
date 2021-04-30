@@ -1,49 +1,42 @@
 import {
   PokemonDataInterface,
   PokemonSpeciesDataInterface,
-  PokemonEvolutionChainInterface,
+  NameURLInterface,
 } from "@interfaces/Interfaces"
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { fetchEvolutionData,  fetchSpeciesData } from "@helpers/getPokemon"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { fetchEvolutionData,  fetchPokemonData,  fetchSpeciesData } from "@helpers/getPokemon"
+import { extractEvolutionChain } from "@helpers/GlobalFunctions"
 
+export const getPokemonData = createAsyncThunk("pokemon/data", async (id: number) => {
+  const  data  = await fetchPokemonData(id)
+  return data
+})
 export const getEvolutionData = createAsyncThunk("pokemon/evolution", async (id: number) => {
-  const { user } = await fetchEvolutionData(id)
-  return user
+  const  data  = await fetchEvolutionData(id)
+  const evolutionChain = extractEvolutionChain(data)
+  return evolutionChain
 })
 export const getPokemonSpeciesData = createAsyncThunk("pokemon/species", async (id: number) => {
-  const { user } = await fetchSpeciesData(id)
-  return user
+  const  data  = await fetchSpeciesData(id)
+  return data
 })
 
 interface InitialStateProps {
-  pokemonList: PokemonDataInterface[] | null
+  pokemonData: PokemonDataInterface | null
   pokemonSpeciesData: PokemonSpeciesDataInterface | null
-  evolutionData: PokemonEvolutionChainInterface | null
-  selectedPokemon: number | null
-  isShowModal: boolean
+  evolutionData: NameURLInterface[] | null
 }
 
 const initialState: InitialStateProps = {
-  pokemonList: null,
+  pokemonData: null,
   pokemonSpeciesData: null,
   evolutionData: null,
-  selectedPokemon: null,
-  isShowModal: false,
 }
 
 const pokemon = createSlice({
   name: "pokemon",
   initialState,
   reducers: {
-    getPokemonList: (state, action: PayloadAction<PokemonDataInterface[]>) => {
-      state.pokemonList = action.payload
-    },
-    selectPokemon: (state, action: PayloadAction<number>) => {
-      state.selectedPokemon = action.payload
-    },
-    showModal: (state, action: PayloadAction<boolean>) => {
-      state.isShowModal = action.payload
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(getPokemonSpeciesData.fulfilled, (state, { payload }) => {
@@ -52,8 +45,10 @@ const pokemon = createSlice({
     builder.addCase(getEvolutionData.fulfilled, (state, { payload }) => {
       state.evolutionData = payload
     })
+    builder.addCase(getPokemonData.fulfilled, (state, { payload }) => {
+      state.pokemonData = payload
+    })
   },
 })
 
-export const { getPokemonList, selectPokemon, showModal } = pokemon.actions
 export default pokemon.reducer
