@@ -1,10 +1,10 @@
-import { PokemonDataInterface } from "@interfaces/Interfaces"
+import { UserFavoritesProps } from "@interfaces/Interfaces"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export type SortKey = "id" | "name"
 
 interface InitialStateProps {
-  refinedList: PokemonDataInterface[] | null
+  refinedList: UserFavoritesProps[] | null
   sortKey: SortKey | null
   search: string
   filterByType: string
@@ -21,7 +21,7 @@ const explore = createSlice({
   name: "explore",
   initialState,
   reducers: {
-    refineList: (state, action: PayloadAction<PokemonDataInterface[]>) => {
+    refineList: (state, action: PayloadAction<UserFavoritesProps[]>) => {
       state.refinedList = action.payload
     },
     setSortKey: (state, action: PayloadAction<SortKey | null>) => {

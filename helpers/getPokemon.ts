@@ -10,15 +10,9 @@ export const fetchExploreList = async () => {
     pokemonlist.results.map(async (pokemon: NameURLInterface) => {
       const { data } = await axios.get(pokemon.url)
       return {
-        abilities: data.abilities,
-        base_experience: data.base_experience,
-        height: data.height,
         id: data.id,
         name: data.species.name,
-        species: data.species,
         types: data.types.map((type: PokemonTypes) => type.type.name),
-        weight: data.weight,
-        stats: data.stats,
         sprite: getPokemonImage(data.id),
       }
     })
@@ -52,12 +46,11 @@ export const fetchPokemonData = async (id: number) => {
   }
 }
 
-
-export const fetchEvolutionData = async (id: number) => {
-  const {data} = await axios.get(`${headURL}api/v2/evolution-chain/${id}/`)
+export const fetchEvolutionData = async (link: string) => {
+  const { data } = await axios.get(link)
   return data
 }
 export const fetchSpeciesData = async (id: number) => {
-  const {data} = await axios.get(`${headURL}api/v2/pokemon-species/${id}/`)
+  const { data } = await axios.get(`${headURL}api/v2/pokemon-species/${id}/`)
   return data
 }

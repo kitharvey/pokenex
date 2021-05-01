@@ -1,7 +1,7 @@
 import Card from "@components/Cards/Card"
 import Deck from "@components/Cards/Deck"
 import { useAppDispatch, useAppSelector } from "@lib/reduxHooks"
-import { PokemonDataInterface } from "interfaces/Interfaces"
+import { UserFavoritesProps } from "interfaces/Interfaces"
 import { wrap } from "popmotion"
 import { useEffect, useState } from "react"
 import { refineList, setSortKey, setSearch, setfilterByType } from "@lib/exploreSlice"
@@ -12,8 +12,8 @@ import Sort from "./Sort"
 import UndoButton from "./UndoButton"
 
 interface ExploreProps {
-  pokemonList: PokemonDataInterface[]
-  refinedList: PokemonDataInterface[]
+  pokemonList: UserFavoritesProps[]
+  refinedList: UserFavoritesProps[]
 }
 
 const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {

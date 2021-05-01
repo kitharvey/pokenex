@@ -1,5 +1,5 @@
 import React from "react"
-import { PokemonDataInterface, UserFavoritesProps } from "@interfaces/Interfaces"
+import { UserFavoritesProps } from "@interfaces/Interfaces"
 import Image from "next/image"
 import { findColor, getTypeIcon } from "@helpers/getTypeIconsAndColor"
 import { getStringIDfromID } from "@helpers/GlobalFunctions"
@@ -10,7 +10,7 @@ import { useSession } from "next-auth/client"
 import { useRouter } from "next/router"
 
 export interface CardProps {
-  pokemon: PokemonDataInterface | UserFavoritesProps
+  pokemon: UserFavoritesProps
 }
 
 const Card: React.FC<CardProps> = ({ pokemon }) => {
@@ -37,16 +37,15 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
             onClick={() => dispatch(updateFavorites({ id, name, types, sprite }))}
           >
             {userData && userData.favorites.filter((fav) => fav.id === id).length > 0 ? (
-              <p className='icon-wrapper' >
+              <p className="icon-wrapper">
                 <FaStar color="#ffc300" />
                 <span>remove from favorites</span>
               </p>
             ) : (
-              <p className='icon-wrapper' >
+              <p className="icon-wrapper">
                 <FaRegStar />
                 <span>add to favorites</span>
               </p>
-
             )}
           </button>
         )}
@@ -57,9 +56,9 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
             type="button"
             onClick={() => router.push(`/pokemon/${id}`)}
           >
-            <p className='icon-wrapper' >
-            <FaInfoCircle/>
-            <span>view more info</span>
+            <p className="icon-wrapper">
+              <FaInfoCircle />
+              <span>view more info</span>
             </p>
           </button>
         )}

@@ -11,7 +11,12 @@ const Sort: React.FC<FilterByTypeProps> = ({ handleSort, sortValue }) => {
   return (
     <div className="select-wrapper">
       <FaSort />
-      <select name="sort-pokemons" id="sort-pokemons" onChange={handleSort} value={sortValue ? sortValue : "shuffle"} >
+      <select
+        name="sort-pokemons"
+        id="sort-pokemons"
+        onChange={handleSort}
+        value={sortValue || "shuffle"}
+      >
         <option value="id">sort by ID</option>
         <option value="name">sort by name</option>
         <option value="shuffle">shuffle</option>

@@ -29,9 +29,7 @@ const Explore = ({ pokemons }: InferGetStaticPropsType<PokemonDataInterface[]>) 
   return (
     <>
       <HeadTitle title="Pokénex | Explore" />
-      {pokemons && refinedList && (
-        <ExplorePage pokemonList={pokemons} refinedList={refinedList} />
-      )}
+      {pokemons && refinedList && <ExplorePage pokemonList={pokemons} refinedList={refinedList} />}
     </>
   )
 }

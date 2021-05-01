@@ -4,21 +4,23 @@ import {
   NameURLInterface,
 } from "@interfaces/Interfaces"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { fetchEvolutionData,  fetchPokemonData,  fetchSpeciesData } from "@helpers/getPokemon"
+import { fetchEvolutionData, fetchPokemonData, fetchSpeciesData } from "@helpers/getPokemon"
 import { extractEvolutionChain } from "@helpers/GlobalFunctions"
 
 export const getPokemonData = createAsyncThunk("pokemon/data", async (id: number) => {
-  const  data  = await fetchPokemonData(id)
+  const data = await fetchPokemonData(id)
   return data
 })
-export const getEvolutionData = createAsyncThunk("pokemon/evolution", async (id: number) => {
-  const  data  = await fetchEvolutionData(id)
+
+export const getPokemonSpeciesData = createAsyncThunk("pokemon/species", async (id: number) => {
+  const data = await fetchSpeciesData(id)
+  return data
+})
+
+export const getEvolutionData = createAsyncThunk("pokemon/evolution", async (link: string) => {
+  const data = await fetchEvolutionData(link)
   const evolutionChain = extractEvolutionChain(data)
   return evolutionChain
-})
-export const getPokemonSpeciesData = createAsyncThunk("pokemon/species", async (id: number) => {
-  const  data  = await fetchSpeciesData(id)
-  return data
 })
 
 interface InitialStateProps {
@@ -36,8 +38,7 @@ const initialState: InitialStateProps = {
 const pokemon = createSlice({
   name: "pokemon",
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getPokemonSpeciesData.fulfilled, (state, { payload }) => {
       state.pokemonSpeciesData = payload

@@ -1,7 +1,76 @@
 .flex-wrapper{
-    // w-full grid grid-cols-2 gap-x-1
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr) ;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
 }
+
+.evolution-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .evolution-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        .evolution-img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            height: 100px ;
+            width: 100px;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.cards-container{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-gap: 40px;
+    align-items: center;
+    justify-items: center;
+    height: max-content;
+    font-size: small;
+    .container{
+        margin: 20px 0;
+        height: max-content;
+    }
+    .card-wrapper{
+        margin: 0;
+    }
+    .biotrain-content{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+
+        .flavor{
+            word-wrap: break-word;
+            margin-bottom: 10px;
+        }
+    }
+    .stats-container{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+
+        .stats{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+
+}
+
+.title{
+    font-weight: bold;
+    font-size: medium;
+}
+
+
+

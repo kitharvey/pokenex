@@ -56,7 +56,7 @@ const ProfilePage = () => {
               </button>
               <button
                 type="button"
-                className="delete-button black-button"
+                className="black-button"
                 onClick={() => setConfirm(false)}
               >
                 cancel

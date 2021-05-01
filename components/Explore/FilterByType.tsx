@@ -1,9 +1,9 @@
-import { PokemonDataInterface } from "@interfaces/Interfaces"
+import { UserFavoritesProps } from "@interfaces/Interfaces"
 import React from "react"
 import { FiFilter } from "react-icons/fi"
 
 interface FilterByTypeProps {
-  list: PokemonDataInterface[]
+  list: UserFavoritesProps[]
   handleFilterByType: (event: React.ChangeEvent<HTMLSelectElement>) => void
   filterValue: string
 }
