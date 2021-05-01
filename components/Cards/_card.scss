@@ -1,10 +1,10 @@
 .card-container {
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 10px;
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 5px 25px 1px rgba(0,0,0,.5);
+  box-shadow: 0 5px 25px 1px rgba(0, 0, 0, 0.5);
   .card {
     height: 100%;
     width: 100%;
@@ -15,33 +15,35 @@
     justify-content: center;
     flex-direction: column;
 
-    &:hover{
-      .star-wrapper, .info-wrapper{
+    &:hover {
+      .star-wrapper,
+      .info-wrapper {
         transform: translateY(0px);
         opacity: 1;
       }
     }
 
-    .icon-wrapper{
+    .icon-wrapper {
       position: relative;
-      &:hover{
-        span{
+      &:hover {
+        .tooltip {
           opacity: 1;
           transform: translateX(-50%) translateY(0px);
         }
       }
-      span{
+      .tooltip {
         position: absolute;
-        top: -27px;
+        top: -22px;
         left: 50%;
         color: #000;
-        font-size: small;
+        font-size: x-small;
         white-space: nowrap;
         padding: 1px 3px;
         transform: translateX(-50%) translateY(5px);
         opacity: 0;
+        z-index: 1000;
         pointer-events: none;
-        transition: all .15s ease-in-out;
+        transition: all 0.15s ease-in-out;
       }
     }
 
@@ -49,7 +51,7 @@
       position: absolute;
       top: 8px;
       right: 10px;
-      transition: all .15s ease-in-out;
+      transition: all 0.15s ease-in-out;
       transform: translateY(-10px);
       opacity: 0;
       color: #fff;
@@ -60,11 +62,11 @@
       }
     }
 
-    .info-wrapper{
+    .info-wrapper {
       position: absolute;
       top: 8px;
       left: 10px;
-      transition: all .15s ease-in-out;
+      transition: all 0.15s ease-in-out;
       transform: translateY(-20px);
       opacity: 0;
       color: #fff;

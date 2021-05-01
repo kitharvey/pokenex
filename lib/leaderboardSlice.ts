@@ -1,29 +1,30 @@
+import { getUsers } from "@helpers/getUsers"
 import { UserProps } from "@interfaces/Interfaces"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+
+export const getLeaderBoardList = createAsyncThunk("pokemon/data", async () => {
+  const data = await getUsers(`/api/users`)
+  return data as UserProps[]
+})
 
 interface InitialStateProps {
   list: UserProps[] | null
-  user: UserProps | null
 }
 
 const initialState: InitialStateProps = {
   list: null,
-  user: null,
 }
 
 const leaderboardList = createSlice({
   name: "leaderboard",
   initialState,
   reducers: {
-    getLeaderBoardList: (state, action: PayloadAction<UserProps[]>) => {
-      state.list = action.payload.sort((userA, userB) => userB.score - userA.score)
-    },
-
-    selectUser: (state, action: PayloadAction<UserProps>) => {
-      state.user = action.payload
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getLeaderBoardList.fulfilled, (state, { payload }) => {
+      state.list = payload.sort((userA, userB) => userB.score - userA.score)
+    })
   },
 })
 
-export const { selectUser, getLeaderBoardList } = leaderboardList.actions
 export default leaderboardList.reducer

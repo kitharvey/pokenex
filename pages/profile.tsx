@@ -8,12 +8,8 @@ const Profile = () => {
   if (!session) return <AccessDenied />
   return (
     <>
-      {session && (
-        <>
-          <HeadTitle title={`Pokénex | ${session.user.name}`} />
-          <ProfilePage />
-        </>
-      )}
+      <HeadTitle title={`${session ? `Pokénex | ${session.user.name}` : "Pokénex"}`} />
+      <ProfilePage />
     </>
   )
 }

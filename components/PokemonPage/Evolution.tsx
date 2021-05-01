@@ -6,7 +6,6 @@ import React from "react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 
-
 const Evolution = () => {
   const { evolutionData, pokemonData } = useAppSelector((state) => state.pokemon)
   const router = useRouter()
@@ -33,7 +32,9 @@ const Evolution = () => {
               className="evolution-img"
               onClick={() => router.push(`/pokemon/${+getIDfromURL(url)}`)}
               style={{
-                background: `linear-gradient(0deg, rgb(255,255,255) 0%, ${findColor(pokemonData.types[0])[1]} 80%)`,
+                background: `linear-gradient(0deg, rgb(255,255,255) 0%, ${
+                  findColor(pokemonData.types[0])[1]
+                } 80%)`,
               }}
               initial={{
                 scale: 0,
@@ -47,7 +48,7 @@ const Evolution = () => {
               }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 5px 15px 1px rgba(0,0,0,.25)",
+                boxShadow: "0 0px 15px 0px rgba(0,0,0,.25)",
               }}
               whileTap={{
                 scale: 1,

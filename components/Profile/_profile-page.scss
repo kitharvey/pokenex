@@ -1,7 +1,25 @@
 .avatar {
   border-radius: 50%;
-}
+  border: 2px solid #000;
+  width: 100px;
+  height: 100px;
 
+  img{
+    border-radius: 50%;
+  }
+}
+.profile-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .name{
+    font-size: large;
+  }
+  .score{
+    font-size: small;
+  }
+}
 .delete-button {
   margin-top: 40px;
   padding: 5px 10px;
@@ -20,7 +38,8 @@
   display: flex;
   align-items: center;
 
-  .delete-button, .black-button {
+  .delete-button,
+  .black-button {
     margin: 0 5px;
     margin-top: 10px;
   }
@@ -36,5 +55,29 @@
   &:hover {
     background: black;
     color: #fff;
+  }
+}
+
+.favorites-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  .card-wrapper {
+    margin: 10px;
+  }
+}
+
+
+.profile-wrapper{
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  height: 100%;
+
+  .profile, .favorites{
+    padding: 0 10px;
   }
 }

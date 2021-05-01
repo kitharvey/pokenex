@@ -19,7 +19,6 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
   const dispatch = useAppDispatch()
   const [session] = useSession()
   const { userData } = useAppSelector((state) => state.user)
-
   return (
     <div className="card-container">
       <div
@@ -30,7 +29,7 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
           } 100%)`,
         }}
       >
-        {session && (
+        {session && !router.query.uid && (
           <button
             className="star-wrapper"
             type="button"
@@ -39,18 +38,18 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
             {userData && userData.favorites.filter((fav) => fav.id === id).length > 0 ? (
               <p className="icon-wrapper">
                 <FaStar color="#ffc300" />
-                <span>remove from favorites</span>
+                <span className="tooltip">remove from favorites</span>
               </p>
             ) : (
               <p className="icon-wrapper">
                 <FaRegStar />
-                <span>add to favorites</span>
+                <span className="tooltip">add to favorites</span>
               </p>
             )}
           </button>
         )}
 
-        {!router.query.id && (
+        {!router.query.pid && (
           <button
             className="info-wrapper"
             type="button"
@@ -58,7 +57,7 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
           >
             <p className="icon-wrapper">
               <FaInfoCircle />
-              <span>view more info</span>
+              <span className="tooltip">view more info</span>
             </p>
           </button>
         )}

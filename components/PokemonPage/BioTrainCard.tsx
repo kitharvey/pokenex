@@ -16,9 +16,7 @@ const BioTrainCard: React.FC<LeftCardProps> = ({ pokemondata, speciesdata }) => 
         <div className="biotrain-content">
           <div className="container">
             <p className="title">Bio</p>
-            <div className="flavor">
-              {Case.sentence(getFlavorSpeech(speciesdata, pokemondata))}
-            </div>
+            <div className="flavor">{Case.sentence(getFlavorSpeech(speciesdata, pokemondata))}</div>
 
             <div className="flex flex-col w-full mt-4">
               <FlexBetween
@@ -73,26 +71,20 @@ const BioTrainCard: React.FC<LeftCardProps> = ({ pokemondata, speciesdata }) => 
 
           <div className="container">
             <p className="title">Training</p>
-              <FlexBetween category="Base Exp:" details={<p>{pokemondata.base_experience}</p>} />
-              <FlexBetween
-                category="Base Happiness:"
-                details={<p>{speciesdata.base_happiness}</p>}
-              />
-              <FlexBetween
-                category="Catch Rate:"
-                details={
-                  <p>
-                    {speciesdata.capture_rate}{" "}
-                    <span className="text-xs">
-                      ({((speciesdata.capture_rate / 255) * 100).toFixed(1)}%)
-                    </span>
-                  </p>
-                }
-              />
-              <FlexBetween
-                category="Growth Rate:"
-                details={<p>{speciesdata.growth_rate.name}</p>}
-              />
+            <FlexBetween category="Base Exp:" details={<p>{pokemondata.base_experience}</p>} />
+            <FlexBetween category="Base Happiness:" details={<p>{speciesdata.base_happiness}</p>} />
+            <FlexBetween
+              category="Catch Rate:"
+              details={
+                <p>
+                  {speciesdata.capture_rate}{" "}
+                  <span className="text-xs">
+                    ({((speciesdata.capture_rate / 255) * 100).toFixed(1)}%)
+                  </span>
+                </p>
+              }
+            />
+            <FlexBetween category="Growth Rate:" details={<p>{speciesdata.growth_rate.name}</p>} />
           </div>
         </div>
       )}

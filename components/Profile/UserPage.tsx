@@ -1,28 +1,29 @@
 import HeadTitle from "@components/HeadTitle/HeadTitle"
+import { UserProps } from "@interfaces/Interfaces"
 import { useAppSelector } from "@lib/reduxHooks"
-import Image from "next/image"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
+import ProfileComponent from "./ProfileComponent"
 
 const UserPage = () => {
-  const { user } = useAppSelector((state) => state.leaderboard)
-  if (!user) return <></>
+  const [user, setuser] = useState<UserProps | null>(null)
+  const { list } = useAppSelector((state) => state.leaderboard)
+  const router = useRouter()
+
+  useEffect(() => {
+    if(router.query.uid && list) {
+      const data = list.filter( item => item.uid === router.query.uid )[0]
+      setuser(data)
+    }
+  }, [router, list, setuser])
+  
+  if(!user) return <p>No User Found</p>
+
   return (
-    <div className="profile">
+    <>
       <HeadTitle title={`Pokénex | ${user.name}`} />
-      <div>
-        <div>
-          <Image
-            className="avatar"
-            src={user.picture}
-            alt={user.name}
-            width={60}
-            height={60}
-            quality={80}
-            priority
-          />
-          <p>{user.name}</p>
-        </div>
-      </div>
-    </div>
+      <ProfileComponent userData={user} />
+    </>
   )
 }
 

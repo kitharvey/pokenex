@@ -13,14 +13,12 @@ const PokemonPage = () => {
         Go Back
       </button>
       <div className="cards-container">
-        <div className="card-wrapper">
-          {pokemonData && <Card pokemon={pokemonData} />}
-        </div>
+        <div className="card-wrapper">{pokemonData && <Card pokemon={pokemonData} />}</div>
         <div>
           {pokemonSpeciesData && pokemonData && (
-              <BioTrainCard pokemondata={pokemonData} speciesdata={pokemonSpeciesData} />
-            )}
-            {pokemonData && <EvoStatCard pokemondata={pokemonData} />}
+            <BioTrainCard pokemondata={pokemonData} speciesdata={pokemonSpeciesData} />
+          )}
+          {pokemonData && <EvoStatCard pokemondata={pokemonData} />}
         </div>
       </div>
     </div>

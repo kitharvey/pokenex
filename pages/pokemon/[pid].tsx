@@ -20,9 +20,9 @@ const Pokemon = () => {
   }, [id, dispatch])
 
   useEffect(() => {
-    if(pokemonSpeciesData) {
+    if (pokemonSpeciesData) {
       dispatch(getEvolutionData(pokemonSpeciesData.evolution_chain.url))
-    } 
+    }
   }, [pokemonSpeciesData, dispatch])
 
   return (
