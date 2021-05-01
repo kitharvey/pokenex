@@ -16,7 +16,11 @@ const LeaderboardPage = () => {
             <p className="">Score</p>
           </div>
           {list.map((user, index) => (
-            <motion.div className="table-row" key={user.uid} onClick={() => router.push(`/user/${user.uid}`)}>
+            <motion.div
+              className="table-row"
+              key={user.uid}
+              onClick={() => router.push(`/user/${user.uid}`)}
+            >
               <p className="">{index + 1}</p>
               <p className="">{user.name}</p>
               <p className="">{user.score}</p>

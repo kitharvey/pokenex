@@ -18,8 +18,7 @@ const initialState: InitialStateProps = {
 const leaderboardList = createSlice({
   name: "leaderboard",
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getLeaderBoardList.fulfilled, (state, { payload }) => {
       state.list = payload.sort((userA, userB) => userB.score - userA.score)

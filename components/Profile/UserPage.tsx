@@ -11,13 +11,13 @@ const UserPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if(router.query.uid && list) {
-      const data = list.filter( item => item.uid === router.query.uid )[0]
+    if (router.query.uid && list) {
+      const data = list.filter((item) => item.uid === router.query.uid)[0]
       setuser(data)
     }
   }, [router, list, setuser])
-  
-  if(!user) return <p>No User Found</p>
+
+  if (!user) return <p>No User Found</p>
 
   return (
     <>
