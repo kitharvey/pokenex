@@ -63,7 +63,7 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
         )}
 
         <p className="id-number">#{getStringIDfromID(id)}</p>
-        <Image src={sprite} alt={name} width={260} height={260} quality={50} priority />
+        <Image src={sprite} alt={name} width={260} height={260} quality={50} priority  />
         <div className="types-container">
           {types.map((type) => (
             <img

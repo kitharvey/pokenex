@@ -3,7 +3,7 @@ import axios from "axios"
 import { getIDfromURL, getPokemonImage, shuffle } from "./GlobalFunctions"
 
 const headURL = "https://pokeapi.co/"
-const limit = 8
+const limit = process.env.NODE_ENV === "production" ? 807 : 8
 export const fetchExploreList = async () => {
   const { data: pokemonlist } = await axios.get(`${headURL}api/v2/pokemon/?limit=${limit}&offset=0`)
   const list = Promise.all(

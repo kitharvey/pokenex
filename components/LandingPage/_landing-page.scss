@@ -2,8 +2,20 @@
     width: 100%;
     min-height: 80vh;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .card-wrapper{
+        height: 315px;
+        width: 240px;
+
+        button{
+            display: none;
+        }
+        .name{
+            font-size: small;
+        }
+    }
 
     .button-wrapper{
         margin-top: 20px;
