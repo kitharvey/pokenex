@@ -2,9 +2,9 @@ import { getUsers } from "@helpers/getUsers"
 import { UserProps } from "@interfaces/Interfaces"
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-export const getLeaderBoardList = createAsyncThunk("pokemon/data", async () => {
+export const getLeaderBoardList = createAsyncThunk("leaderboard/list", async () => {
   const data = await getUsers(`/api/users`)
-  return data as UserProps[]
+  return data
 })
 
 interface InitialStateProps {
@@ -21,7 +21,7 @@ const leaderboardList = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getLeaderBoardList.fulfilled, (state, { payload }) => {
-      state.list = payload.sort((userA, userB) => userB.score - userA.score)
+      state.list = payload
     })
   },
 })
