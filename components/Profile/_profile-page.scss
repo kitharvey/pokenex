@@ -65,7 +65,12 @@
   flex-wrap: wrap;
   margin-top: 20px;
   .card-wrapper {
-    margin: 10px;
+    margin: 5px;
+    height: 315px;
+    width: 240px;
+    .name {
+      font-size: medium;
+    }
   }
 }
 
