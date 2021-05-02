@@ -1,10 +1,11 @@
 import HeadTitle from "@components/HeadTitle/HeadTitle"
+import LandingPage from "@components/LandingPage/LandingPage"
 
 const Home = () => {
   return (
     <>
       <HeadTitle title="Pokénex" />
-      <h1>Landing Page</h1>
+      <LandingPage/>
     </>
   )
 }

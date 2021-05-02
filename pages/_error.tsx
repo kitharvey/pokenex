@@ -32,5 +32,3 @@ Error.getInitialProps = ({ res, err }: NextPageContext) => {
 }
 
 export default Error
-
-// text commit on new remote
