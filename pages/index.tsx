@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <HeadTitle title="Pokénex" />
-      <LandingPage/>
+      <LandingPage />
     </>
   )
 }

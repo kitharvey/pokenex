@@ -1,32 +1,32 @@
-.landing-page{
-    width: 100%;
-    min-height: 80vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.landing-page {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    .card-wrapper{
-        height: 315px;
-        width: 240px;
+  .card-wrapper {
+    height: 315px;
+    width: 240px;
 
-        button{
-            display: none;
-        }
-        .name{
-            font-size: small;
-        }
+    button {
+      display: none;
     }
+    .name {
+      font-size: small;
+    }
+  }
 
-    .button-wrapper{
-        margin-top: 20px;
-        button{
-            margin-right: 10px;
-        }
+  .button-wrapper {
+    margin-top: 20px;
+    button {
+      margin-right: 10px;
     }
-    .signin{
-        font-size: smaller;
-        button:hover{
-            color: $color-accent-dark;
-        }
+  }
+  .signin {
+    font-size: smaller;
+    button:hover {
+      color: $color-accent-dark;
     }
+  }
 }
