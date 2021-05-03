@@ -1,34 +1,151 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<br />
+<p align="center">
+    <img src="./public/favicon.svg" alt="pokémon logo" width="80" height="80">
+
+  <h1 align="center">Pokénex</h1>
+
+  <p align="center">
+    Pokédex app in card style. Swipe through pokemon cards or guess who&apos;s that pokemon?.
+    <br />
+    <a href="https://github.com/kitharvey/pokenex/blob/main/README.md"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://pokenex.vercel.app/" target="_blank" >View Demo</a>
+    ·
+    <a href="https://github.com/kitharvey/pokenex/issues" target="_blank" >Report Bug</a>
+    ·
+    <a href="https://github.com/kitharvey/pokenex/issues" target="_blank" >Request Feature</a>
+    ·
+    <a href="https://github.com/kitharvey/pokenex/blob/main/How_its_made.md" target="_blank" >How it's made?</a>
+  </p>
+</p>
+
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+<br />
+<br />
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+![Pokenex Screenshot](./public/pokenex-screen.gif)
+
+There are many great pokédex apps online but I found most of them are similarly built, displayed in a grid, scroll and click a pokémon to view more details about it. So I build my own but in a different style.
+
+No mobile version yet.
+
+Features:
+
+- Swipe pokémon cards to explore
+- Add to favorites
+- Play "who's that pokémon?"
+- Climb the leaderboard
+
+Of course, I will be adding more soon or you can <a href="https://github.com/kitharvey/pokenex/issues" target="_blank" >request a feature</a>.
+
+<br />
+<br />
+
+### Built With
+
+- [PokéAPI](https://pokeapi.co/)
+- [Nextjs](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
+- [Framer](https://www.framer.com/api/motion/)
+- [next-auth](https://firebase.google.com/docs/auth)
+- [MongoDB](https://www.mongodb.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [Pokémon Assets from HybridShivam](https://github.com/HybridShivam/pokémon)
+
+<br />
+<br />
+
+<!-- GETTING STARTED -->
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running follow these simple example steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is an example of how to list things you need to use the software and how to install them.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- yarn
+  ```sh
+  npm install --global yarn
+  ```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Installation
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/kitharvey/pokenex.git
+   ```
+2. Go to project directory
+   ```sh
+   cd pokenex
+   ```
+3. Install NPM packages
+   ```sh
+   yarn
+   ```
+4. Create [MongoDB](https://www.mongodb.com/), set up your database and copy MONGODB_URI
+5. Create [Github-OAuth](https://github.com/settings/applications/new) and copy client ID and secrets
+6. Create `.env` file and add URI and keys
+   ```js
+   MONGODB_URI = "xxxxxxxxxxxxxxxxxxxxxxxx"
+   GITHUB_CLIENT_ID = "xxxxxxxxxxxxxxxxxxxxxxxx"
+   GITHUB_CLIENT_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxx"
+   AUTH_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxx"
+   JWT_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxx"
+   JWT_SIGNING_PRIVATE_KEY = "xxxxxxxxxxxxxxxxxxxxxxxx"
+   NEXTAUTH_URL = "http://localhost:3000/"
+   ```
+7. Start the application in your localhost
+   ```sh
+   yarn dev
+   ```
+   <br />
+   <br />
 
-## Learn More
+## Roadmap
 
-To learn more about Next.js, take a look at the following resources:
+This project is still under development.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<!-- See the [open issues](https://github.com/kitharvey/pokenex/issues) for a list of proposed features (and known issues). -->
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br />
+<br />
 
-## Deploy on Vercel
+<!-- CONTACT -->
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Kit Harvey - [linkedIn](https://www.linkedin.com/in/kitharvey/)
+
+Project Link: [https://github.com/kitharvey/pokenex](https://github.com/kitharvey/pokenex)
+
+<br/>
+<br/>
