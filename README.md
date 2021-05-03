@@ -73,6 +73,7 @@ Of course, I will be adding more soon or you can <a href="https://github.com/kit
 - [Nextjs](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Sass](https://sass-lang.com/)
+- [redux-toolkit](https://redux-toolkit.js.org/)
 - [Framer](https://www.framer.com/api/motion/)
 - [next-auth](https://firebase.google.com/docs/auth)
 - [MongoDB](https://www.mongodb.com/)
