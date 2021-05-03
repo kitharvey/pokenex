@@ -73,6 +73,11 @@ const Deck: React.FC<DeckProps> = ({
           <FramerCard
             key={cardIndex + 1}
             index={cardIndex + 1}
+            initial={{
+              scale: 0.8,
+              y: -75,
+              opacity: 1,
+            }}
             animate={{
               scale: 0.9,
               y: -40,

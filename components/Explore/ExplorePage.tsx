@@ -26,6 +26,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {
   useEffect(() => {
     const listCopy = [...pokemonList]
     let refinableList = [...pokemonList]
+
     if (sortKey) {
       refinableList = listCopy.sort((a, b) => {
         if (a[sortKey] < b[sortKey]) {
@@ -38,17 +39,14 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {
       })
     }
 
-    if (sortKey === null) {
+    if (search || filterByType) {
+      refinableList = listCopy.filter((item) => item.name.includes(search) && item.types.includes(filterByType))
+    }
+
+    if(!sortKey) {
       refinableList = shuffle(listCopy)
     }
 
-    if (search) {
-      refinableList = listCopy.filter((item) => item.name.includes(search))
-    }
-
-    if (filterByType) {
-      refinableList = listCopy.filter((item) => item.types.includes(filterByType))
-    }
 
     dispatch(refineList(refinableList))
   }, [search, filterByType, sortKey, dispatch, pokemonList])

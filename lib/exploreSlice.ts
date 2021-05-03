@@ -21,7 +21,7 @@ const explore = createSlice({
   name: "explore",
   initialState,
   reducers: {
-    refineList: (state, action: PayloadAction<UserFavoritesProps[]>) => {
+    refineList: (state, action: PayloadAction<UserFavoritesProps[] | null>) => {
       state.refinedList = action.payload
     },
     setSortKey: (state, action: PayloadAction<SortKey | null>) => {
