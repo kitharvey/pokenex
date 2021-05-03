@@ -4,7 +4,6 @@ import { useMemo, useState } from "react"
 
 export type SortKey = "id" | "name"
 
-
 const useRefineItems = (items: UserFavoritesProps[]) => {
   const [sortKey, setSortConfig] = useState<SortKey | null>("id")
   const [search, setSearch] = useState<string>("")

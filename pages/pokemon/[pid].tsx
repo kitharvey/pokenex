@@ -6,7 +6,6 @@ import Case from "case"
 const Pokemon = () => {
   const { pokemonData } = useAppSelector((state) => state.pokemon)
 
-
   return (
     <>
       <HeadTitle

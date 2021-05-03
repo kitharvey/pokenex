@@ -33,7 +33,7 @@ const PokemonPage = () => {
       <div className="cards-container">
         <div className="card-wrapper">{pokemonData && <Card pokemon={pokemonData} />}</div>
         <div>
-          {(pokemonSpeciesData && pokemonData) && (
+          {pokemonSpeciesData && pokemonData && (
             <BioTrainCard pokemondata={pokemonData} speciesdata={pokemonSpeciesData} />
           )}
           {pokemonData && <EvoStatCard pokemondata={pokemonData} />}

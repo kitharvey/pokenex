@@ -5,7 +5,7 @@ export type SortKey = "id" | "name"
 
 interface InitialStateProps {
   refinedList: UserFavoritesProps[] | null
-  sortKey: SortKey | null
+  sortKey: SortKey
   search: string
   filterByType: string
 }
@@ -24,7 +24,7 @@ const explore = createSlice({
     refineList: (state, action: PayloadAction<UserFavoritesProps[] | null>) => {
       state.refinedList = action.payload
     },
-    setSortKey: (state, action: PayloadAction<SortKey | null>) => {
+    setSortKey: (state, action: PayloadAction<SortKey>) => {
       state.sortKey = action.payload
     },
     setSearch: (state, action: PayloadAction<string>) => {

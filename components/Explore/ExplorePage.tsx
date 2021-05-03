@@ -5,7 +5,6 @@ import { UserFavoritesProps } from "interfaces/Interfaces"
 import { wrap } from "popmotion"
 import { useEffect, useState } from "react"
 import { refineList, setSortKey, setSearch, setfilterByType } from "@lib/exploreSlice"
-import { shuffle } from "@helpers/GlobalFunctions"
 import FilterByType from "./FilterByType"
 import Search from "./Search"
 import Sort from "./Sort"
@@ -27,26 +26,35 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {
     const listCopy = [...pokemonList]
     let refinableList = [...pokemonList]
 
-    if (sortKey) {
-      refinableList = listCopy.sort((a, b) => {
-        if (a[sortKey] < b[sortKey]) {
-          return -1
-        }
-        if (a[sortKey] > b[sortKey]) {
-          return 1
-        }
-        return 0
-      })
-    }
+    refinableList = listCopy.sort((a, b) => {
+      if (a[sortKey] < b[sortKey]) {
+        return -1
+      }
+      if (a[sortKey] > b[sortKey]) {
+        return 1
+      }
+      return 0
+    })
 
     if (search || filterByType) {
-      refinableList = listCopy.filter((item) => item.name.includes(search) && item.types.includes(filterByType))
+      refinableList = listCopy.filter((item) => {
+        if (
+          search &&
+          filterByType &&
+          item.name.includes(search) &&
+          item.types.includes(filterByType)
+        ) {
+          return item
+        }
+        if (search && !filterByType && item.name.includes(search)) {
+          return item
+        }
+        if (!search && filterByType && item.types.includes(filterByType)) {
+          return item
+        }
+        return null
+      })
     }
-
-    if(!sortKey) {
-      refinableList = shuffle(listCopy)
-    }
-
 
     dispatch(refineList(refinableList))
   }, [search, filterByType, sortKey, dispatch, pokemonList])
@@ -71,8 +79,7 @@ const ExplorePage: React.FC<ExploreProps> = ({ pokemonList, refinedList }) => {
     const text = event.target.value
     setIndex(0)
     if (text === "id") dispatch(setSortKey("id"))
-    else if (text === "name") dispatch(setSortKey("name"))
-    else dispatch(setSortKey(null))
+    if (text === "name") dispatch(setSortKey("name"))
   }
 
   return (

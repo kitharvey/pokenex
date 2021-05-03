@@ -34,17 +34,31 @@
       }
       .tooltip {
         position: absolute;
-        top: -22px;
+        top: -25px;
         left: 50%;
-        color: #000;
+        color: #fff;
         font-size: x-small;
         white-space: nowrap;
-        padding: 1px 3px;
+        padding: 2.5px 5px;
+        border-radius: 2.5px;
         transform: translateX(-50%) translateY(5px);
         opacity: 0;
         z-index: 1000;
         pointer-events: none;
         transition: all 0.15s ease-in-out;
+        background: #000;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border: 5px solid transparent;
+          border-top-color: #000;
+          transform: translate(-50%, 0);
+        }
       }
     }
 
