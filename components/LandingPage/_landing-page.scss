@@ -5,28 +5,44 @@
   justify-content: space-between;
   align-items: center;
 
-  .card-wrapper {
-    height: 315px;
-    width: 240px;
+  .right{
+    display: none;
+    @media screen and (min-width: 640px) {
+      display: block;
+    }
+    .card-wrapper {
+      height: 315px;
+      width: 240px;
+  
+      button {
+        display: none;
+      }
+      .name {
+        font-size: medium;
+      }
+    }
+  }
 
-    button {
-      display: none;
+  .left{
+    h1{
+      line-height: 1;
+      margin-bottom: 20px;
     }
-    .name {
-      font-size: medium;
+    .button-wrapper {
+      margin-top: 20px;
+      button {
+        margin-right: 10px;
+      }
+    }
+    .signin {
+      font-size: smaller;
+      button:hover {
+        color: $color-accent-dark;
+      }
     }
   }
 
-  .button-wrapper {
-    margin-top: 20px;
-    button {
-      margin-right: 10px;
-    }
-  }
-  .signin {
-    font-size: smaller;
-    button:hover {
-      color: $color-accent-dark;
-    }
-  }
+
+
+
 }

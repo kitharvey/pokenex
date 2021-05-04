@@ -20,8 +20,9 @@
     font-size: small;
   }
 }
+
+
 .delete-button {
-  margin-top: 40px;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -80,6 +81,19 @@
   grid-gap: 20px;
   width: 100%;
   height: 100%;
+
+  .profile{
+    .button-wrapper{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      .delete-button, .black-button{
+        margin-top: 10px;
+      }
+    }
+
+  }
 
   .profile,
   .favorites {

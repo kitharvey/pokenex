@@ -1,7 +1,11 @@
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: none;
+
+  @media screen and (min-width: 640px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   span {
     font-size: 0.825rem;
@@ -14,16 +18,18 @@
   .title-wrapper {
     display: flex;
     align-items: center;
-  }
 
-  h2 {
-    transition: all 0.15s ease-in-out;
-    line-height: 1;
-    margin-right: 20px;
-    &:hover {
-      color: $color-accent-light;
+    h2 {
+      transition: all 0.15s ease-in-out;
+      line-height: 1;
+      margin-right: 20px;
+      &:hover {
+        color: $color-accent-light;
+      }
     }
   }
+
+
 
   .web-menu {
     display: flex;
@@ -32,17 +38,12 @@
       margin-left: 20px;
     }
 
-    .active {
-      color: $color-accent-light;
-    }
-
     .dropdown-wrapper {
       margin-left: 10px;
       border-left: 1px solid #fff;
       padding-left: 10px;
       .account-button {
         position: relative;
-
         svg {
           transform: rotate(0deg);
           transition: all 0.2s ease-in-out;
@@ -81,10 +82,27 @@
   }
 }
 
+.navbar-mobile{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (min-width: 640px) {
+    display: none;
+  }
+
+  span {
+    font-size: 1.5rem;
+  }
+}
+
 header {
   width: 100%;
   padding: 10px 0;
   background-color: #000;
   color: #fff;
   box-shadow: 0 0 10px 5px #00000050;
+
+  .active {
+    color: $color-accent-light;
+  }
 }

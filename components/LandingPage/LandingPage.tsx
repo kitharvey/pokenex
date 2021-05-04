@@ -32,12 +32,19 @@ const LandingPage = () => {
   const [index, setIndex] = useState<number>(0)
   const [exitX, setExitX] = useState<number>(1000)
   const cardIndex = wrap(0, landingPokemons.length + 1, index)
+  let timer: ReturnType<typeof setTimeout> = setTimeout(() => '', 1000);
 
   useEffect(() => {
-    setTimeout(() => {
+    timer = setTimeout(() => {
       setIndex(index + 1)
       setExitX(Math.random() < 0.5 ? 1000 : -1000)
     }, 3000)
+
+    return () => {
+      clearTimeout(timer)
+      setIndex(0)
+      setExitX(1000)
+    }
   }, [index])
 
   return (

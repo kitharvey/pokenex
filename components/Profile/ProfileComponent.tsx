@@ -15,11 +15,16 @@ const ProfileComponent: React.FC<ProfileComponentProps> = ({ userData }) => {
   const [confirm, setConfirm] = useState(false)
   const router = useRouter()
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     if (userData) {
       deleteUser(userData._id)
       signOut()
     }
+  }
+
+  const handleSignOut = () => {
+    signOut()
+    router.push("/")
   }
   return (
     <div className="profile-wrapper">
@@ -41,9 +46,14 @@ const ProfileComponent: React.FC<ProfileComponentProps> = ({ userData }) => {
         </div>
 
         {!router.query.uid && (
-          <button type="button" onClick={() => setConfirm(true)} className="delete-button">
-            Delete Account
-          </button>
+          <div className='button-wrapper' >
+            <button type="button" onClick={handleSignOut} className="black-button">
+              Sign Out
+            </button>
+            <button type="button" onClick={() => setConfirm(true)} className="delete-button">
+              Delete Account
+            </button>
+          </div>
         )}
       </div>
 
