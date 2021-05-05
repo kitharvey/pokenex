@@ -70,7 +70,7 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonsList }) => {
   }
 
   return (
-    <div className="page">
+    <div className="page play-wrapper">
       <h1>Who&apos;s that pokemon?</h1>
       <div className="dash">
         <p>score: {score}</p>

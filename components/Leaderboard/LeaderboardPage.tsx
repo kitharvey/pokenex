@@ -1,11 +1,12 @@
-import { useAppSelector } from "@lib/reduxHooks"
+import { getUsers } from "@helpers/getUsers"
+import { UserProps } from "@interfaces/Interfaces"
 import { motion } from "framer-motion"
 import { useRouter } from "next/router"
+import useSWR from "swr"
 
 const LeaderboardPage = () => {
   const router = useRouter()
-  const { list } = useAppSelector((state) => state.leaderboard)
-
+  const {data: list} = useSWR<UserProps[]>(`/api/users`, getUsers)
   return (
     <div className="leaderboard-page">
       {list && (

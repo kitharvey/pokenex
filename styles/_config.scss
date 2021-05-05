@@ -53,10 +53,15 @@ button {
 }
 
 .card-wrapper {
-  height: 420px;
-  width: 320px;
+  height: 315px;
+  width: 240px;
   user-select: none;
   margin-bottom: 50px;
   margin-top: 75px;
   position: relative;
+
+  @media screen and (min-width: 640px) {
+    height: 420px;
+    width: 320px;
+  }
 }

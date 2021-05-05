@@ -8,7 +8,6 @@ import { useEffect } from "react"
 import { useAppDispatch } from "@lib/reduxHooks"
 import { signout, userSignIn } from "@lib/userSlice"
 import { useRouter } from "next/router"
-import { getLeaderBoardList } from "@lib/leaderboardSlice"
 import ActiveLink from "./ActiveLink"
 
 const Nav = () => {
@@ -18,7 +17,6 @@ const Nav = () => {
   useEffect(() => {
     if (session) {
       dispatch(userSignIn(session.user))
-      dispatch(getLeaderBoardList())
     } else dispatch(signout())
   }, [session, dispatch])
 

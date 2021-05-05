@@ -34,10 +34,7 @@ const Options: React.FC<OptionsProps> = ({ options, handleSelect, reveal, chosen
           className="option"
           style={{
             background: buttonBGColor(option),
-            borderRadius: "999px",
-            padding: "10px 20px",
             boxShadow: "rgba(0, 0, 0, 0.314) 0px 0px 10px 1px",
-            margin: "0 10px",
           }}
           onClick={() => handleSelect(option)}
           whileTap={{
