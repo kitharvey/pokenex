@@ -29,23 +29,41 @@
 .cards-container {
   margin-top: 40px;
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-rows: 420px 1fr;
+  grid-template-columns: unset;
   grid-gap: 40px;
   align-items: center;
   justify-items: center;
   height: max-content;
   font-size: small;
-  .container {
+  width: 100%;
+
+  .details-wrapper {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-rows: unset;
+    grid-template-columns: 320px 1fr;
+  }
+
+  .details {
     margin: 20px 0;
     height: max-content;
+    padding: 0 20px;
   }
   .card-wrapper {
     margin: 0;
   }
   .biotrain-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
 
     .flavor {
       word-wrap: break-word;

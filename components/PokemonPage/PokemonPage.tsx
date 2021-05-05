@@ -26,13 +26,13 @@ const PokemonPage = () => {
   }, [pokemonSpeciesData, dispatch])
 
   return (
-    <div className="">
+    <div>
       <button type="button" className="black-button" onClick={() => router.back()}>
         Go Back
       </button>
       <div className="cards-container">
         <div className="card-wrapper">{pokemonData && <Card pokemon={pokemonData} />}</div>
-        <div>
+        <div className="">
           {pokemonSpeciesData && pokemonData && (
             <BioTrainCard pokemondata={pokemonData} speciesdata={pokemonSpeciesData} />
           )}

@@ -8,11 +8,11 @@ interface RightCardProps {
 
 const EvoStatCard: React.FC<RightCardProps> = ({ pokemondata }) => (
   <div className="">
-    <div className="container">
+    <div className="details">
       <p className="title">Evolution</p>
       <Evolution />
     </div>
-    <div className="container">
+    <div className="details">
       <p className="title">Stats</p>
       <div className="stats-container">
         <div className="stats">

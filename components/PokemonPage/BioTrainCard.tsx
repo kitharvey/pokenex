@@ -14,7 +14,7 @@ const BioTrainCard: React.FC<LeftCardProps> = ({ pokemondata, speciesdata }) => 
     <div className="biotrain-card">
       {speciesdata && pokemondata && (
         <div className="biotrain-content">
-          <div className="container">
+          <div className="details">
             <p className="title">Bio</p>
             <div className="flavor">{Case.sentence(getFlavorSpeech(speciesdata, pokemondata))}</div>
 
@@ -69,7 +69,7 @@ const BioTrainCard: React.FC<LeftCardProps> = ({ pokemondata, speciesdata }) => 
             </div>
           </div>
 
-          <div className="container">
+          <div className="details">
             <p className="title">Training</p>
             <FlexBetween category="Base Exp:" details={<p>{pokemondata.base_experience}</p>} />
             <FlexBetween category="Base Happiness:" details={<p>{speciesdata.base_happiness}</p>} />
