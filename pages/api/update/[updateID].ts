@@ -6,14 +6,18 @@ import { getSession } from "next-auth/client"
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect()
   const session = getSession({ req })
-  const { id } = req.query
-  const { method } = req
-  if (method === "DELETE" && session) {
+  const {
+    method,
+    query: { updateID },
+    body,
+  } = req
+  if (method === "PATCH" && session) {
     try {
-      const isUserAlready = await User.findById(id)
+      const isUserAlready = await User.findById(updateID)
       if (isUserAlready) {
-        isUserAlready.remove()
-        return res.json({ message: `Account was deleted` })
+        isUserAlready[body.key] = body[body.key]
+        const user = await isUserAlready.save()
+        return res.status(202).json({ user })
       }
       return res.status(404).json({ message: "Cannot find user" })
     } catch (err) {

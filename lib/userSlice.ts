@@ -1,9 +1,9 @@
-import { getUserData, updateUserScore, updateUserFavorites } from "@helpers/getUsers"
+import { getUserSignIn, updateUserScore, updateUserFavorites } from "@helpers/getUsers"
 import { UserFavoritesProps, UserProps, UserSessionProps } from "@interfaces/Interfaces"
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 
 export const userSignIn = createAsyncThunk("user/signin", async (data: UserSessionProps) => {
-  const { user } = await getUserData(data)
+  const { user } = await getUserSignIn(data)
   return user
 })
 

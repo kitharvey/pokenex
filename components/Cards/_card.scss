@@ -34,16 +34,15 @@
       }
       .tooltip {
         position: absolute;
-        top: -25px;
+        top: -30px;
         left: 50%;
         color: #fff;
         font-size: x-small;
         white-space: nowrap;
-        padding: 2.5px 5px;
+        padding: 5px 10px;
         border-radius: 2.5px;
         transform: translateX(-50%) translateY(5px);
         opacity: 0;
-        z-index: 1000;
         pointer-events: none;
         transition: all 0.15s ease-in-out;
         background: #000;
@@ -64,13 +63,18 @@
 
     .star-wrapper {
       position: absolute;
+      z-index: 1000;
       top: 8px;
       right: 10px;
       transition: all 0.15s ease-in-out;
-      transform: translateY(-10px);
-      opacity: 0;
       color: #fff;
       font-size: 1.5rem;
+      transform: translateY(0px);
+      opacity: 1;
+      @media screen and (min-width: 640px) {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
 
       &:hover {
         color: #ffc300;
@@ -79,14 +83,18 @@
 
     .info-wrapper {
       position: absolute;
+      z-index: 1000;
       top: 8px;
       left: 10px;
       transition: all 0.15s ease-in-out;
-      transform: translateY(-20px);
-      opacity: 0;
+      transform: translateY(0px);
+      opacity: 1;
       color: #fff;
       font-size: 1.5rem;
-
+      @media screen and (min-width: 640px) {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
       &:hover {
         color: #eee;
       }

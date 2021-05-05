@@ -20,7 +20,7 @@ const LeaderboardPage = () => {
             <motion.div
               className="table-row"
               key={user.uid}
-              onClick={() => router.push(`/user/${user.uid}`)}
+              onClick={() => router.push(`/user/${user._id}`)}
             >
               <p className="">{index + 1}</p>
               <p className="">{user.name}</p>

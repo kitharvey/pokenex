@@ -6,7 +6,7 @@ export async function getUsers(link: string) {
   return data
 }
 
-export const getUserData = async (body: UserSessionProps) => {
+export const getUserSignIn = async (body: UserSessionProps) => {
   const { data } = await axios.post(`/api/signin`, body)
   return data
 }
