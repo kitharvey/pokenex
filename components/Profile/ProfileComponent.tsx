@@ -46,7 +46,7 @@ const ProfileComponent: React.FC<ProfileComponentProps> = ({ userData }) => {
         </div>
 
         {!router.query.uid && (
-          <div className='button-wrapper' >
+          <div className="button-wrapper">
             <button type="button" onClick={handleSignOut} className="black-button">
               Sign Out
             </button>

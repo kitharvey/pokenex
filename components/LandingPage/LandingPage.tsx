@@ -27,12 +27,13 @@ export const landingPokemons = [
   },
 ]
 
+let timer: ReturnType<typeof setTimeout> = setTimeout(() => "", 1000)
+
 const LandingPage = () => {
   const router = useRouter()
   const [index, setIndex] = useState<number>(0)
   const [exitX, setExitX] = useState<number>(1000)
   const cardIndex = wrap(0, landingPokemons.length + 1, index)
-  let timer: ReturnType<typeof setTimeout> = setTimeout(() => '', 1000);
 
   useEffect(() => {
     timer = setTimeout(() => {

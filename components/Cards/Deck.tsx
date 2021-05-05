@@ -28,7 +28,7 @@ const Deck: React.FC<DeckProps> = ({
   CardComponent,
   reveal,
 }) => {
-  const maximumX = 200
+  const maximumX = 100
 
   function handleDragEnd(_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
     if (info.offset.x < -maximumX) {

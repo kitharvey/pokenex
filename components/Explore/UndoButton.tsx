@@ -9,12 +9,9 @@ interface UndoProps {
 const UndoButton: React.FC<UndoProps> = ({ handleUndo }) => {
   return (
     <motion.div
-      className="item-wrapper"
+      className="undo-wrapper"
       onClick={() => handleUndo()}
       style={{
-        borderRadius: "50%",
-        padding: "10px",
-        background: "#fff",
         boxShadow: "rgba(0, 0, 0, 0.314) 0 0px 10px 1px",
       }}
       whileTap={{

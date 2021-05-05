@@ -47,25 +47,13 @@ const FramerCard: React.FC<FramerCardProps> = (props) => {
     animate,
     transition,
     exitX,
-    setExitX,
-    index,
-    setIndex,
     drag,
     whileHover,
     whileTap,
     children,
+    handleDragEnd,
   } = props
 
-  function handleDragEnd(_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
-    if (info.offset.x < -maximumX) {
-      if (setExitX) setExitX(-maximumX * 5)
-      if (setIndex) setIndex(index + 1)
-    }
-    if (info.offset.x > maximumX) {
-      if (setExitX) setExitX(maximumX * 5)
-      if (setIndex) setIndex(index + 1)
-    }
-  }
   return (
     <motion.div
       style={{

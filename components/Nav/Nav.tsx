@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { FaCaretDown, FaGithub } from "react-icons/fa"
-import { CgPlayButtonO, CgPokemon, CgProfile, CgSearch  } from "react-icons/cg"
+import { CgPlayButtonO, CgPokemon, CgProfile, CgSearch } from "react-icons/cg"
 import { IoPodiumOutline } from "react-icons/io5"
 import { VscSignIn } from "react-icons/vsc"
 import { signIn, signOut, useSession } from "next-auth/client"
@@ -30,14 +30,14 @@ const Nav = () => {
       <div className="container">
         <div className="navbar">
           <div className="title-wrapper">
-              <ActiveLink activeClassName="active" href="/">
-                <h2>Pokénex</h2>
-              </ActiveLink>
-              <a href="https://github.com/kitharvey/pokenex" target="_blank" rel="noreferrer">
-            <h2>
+            <ActiveLink activeClassName="active" href="/">
+              <h2>Pokénex</h2>
+            </ActiveLink>
+            <a href="https://github.com/kitharvey/pokenex" target="_blank" rel="noreferrer">
+              <h2>
                 <FaGithub />
-            </h2>
-              </a>
+              </h2>
+            </a>
           </div>
           <div className="web-menu">
             <ActiveLink activeClassName="active" href="/explore">
@@ -80,29 +80,41 @@ const Nav = () => {
             </div>
           </div>
         </div>
-        <div className='navbar-mobile' >
-            <ActiveLink activeClassName="active" href="/">
-                <span><CgPokemon/></span>
-              </ActiveLink>
-            <ActiveLink activeClassName="active" href="/explore">
-                <span><CgSearch/></span>
-              </ActiveLink>
-            <ActiveLink activeClassName="active" href="/play">
-                <span><CgPlayButtonO/></span>
-              </ActiveLink>
-            <ActiveLink activeClassName="active" href="/leaderboard">
-                <span><IoPodiumOutline/></span>
-              </ActiveLink>
+        <div className="navbar-mobile">
+          <ActiveLink activeClassName="active" href="/">
+            <span>
+              <CgPokemon />
+            </span>
+          </ActiveLink>
+          <ActiveLink activeClassName="active" href="/explore">
+            <span>
+              <CgSearch />
+            </span>
+          </ActiveLink>
+          <ActiveLink activeClassName="active" href="/play">
+            <span>
+              <CgPlayButtonO />
+            </span>
+          </ActiveLink>
+          <ActiveLink activeClassName="active" href="/leaderboard">
+            <span>
+              <IoPodiumOutline />
+            </span>
+          </ActiveLink>
 
-              {session && session.user ? (
-                            <ActiveLink activeClassName="active" href="/profile">
-                            <span><CgProfile/></span>
-                          </ActiveLink>
-              ) : (
-                <button type="button" onClick={() => signIn("github")}>
-                <span><VscSignIn/></span>
-              </button>
-              ) }
+          {session && session.user ? (
+            <ActiveLink activeClassName="active" href="/profile">
+              <span>
+                <CgProfile />
+              </span>
+            </ActiveLink>
+          ) : (
+            <button type="button" onClick={() => signIn("github")}>
+              <span>
+                <VscSignIn />
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </header>

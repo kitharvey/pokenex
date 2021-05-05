@@ -38,8 +38,13 @@ body {
 }
 
 .mt-40 {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 640px) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }
 
 button {
