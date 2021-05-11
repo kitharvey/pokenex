@@ -7,6 +7,10 @@
     justify-content: space-between;
   }
 
+  .active {
+    color: $color-accent-light;
+  }
+
   span {
     font-size: 0.825rem;
     cursor: pointer;
@@ -23,6 +27,7 @@
       transition: all 0.15s ease-in-out;
       line-height: 1;
       margin-right: 20px;
+      cursor: pointer;
       &:hover {
         color: $color-accent-light;
       }
@@ -97,8 +102,4 @@ header {
   background-color: #000;
   color: #fff;
   box-shadow: 0 0 10px 5px #00000050;
-
-  .active {
-    color: $color-accent-light;
-  }
 }

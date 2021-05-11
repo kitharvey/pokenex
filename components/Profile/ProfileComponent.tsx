@@ -1,4 +1,3 @@
-import Card from "@components/Cards/Card"
 import { deleteUser } from "@helpers/getUsers"
 import { UserProps } from "@interfaces/Interfaces"
 import { signOut } from "next-auth/client"
@@ -6,6 +5,7 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import React, { useState } from "react"
 import { IoClose } from "react-icons/io5"
+import Favorites from "./Favorites"
 
 interface ProfileComponentProps {
   userData: UserProps
@@ -56,22 +56,11 @@ const ProfileComponent: React.FC<ProfileComponentProps> = ({ userData }) => {
           </div>
         )}
       </div>
-
-      <div className="favorites">
-        <p className="title">Favorites</p>
-        <div className="favorites-wrapper">
-          {userData.favorites.length > 0 ? (
-            userData.favorites.map((favorite) => (
-              <div className="card-wrapper" key={favorite.id}>
-                <Card pokemon={favorite} />
-              </div>
-            ))
-          ) : (
-            <p>No Favorites</p>
-          )}
-        </div>
-      </div>
-
+      {userData.favorites.length > 0 ? (
+        <Favorites favorites={userData.favorites} />
+      ) : (
+        <p>No Favorites</p>
+      )}
       {confirm && (
         <div className="modal">
           <div className="wrapper">

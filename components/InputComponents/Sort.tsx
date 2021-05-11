@@ -1,4 +1,4 @@
-import { SortKey } from "@lib/exploreSlice"
+import { SortKey } from "@lib/useRefineItems"
 import React from "react"
 import { FaSort } from "react-icons/fa"
 
@@ -19,6 +19,7 @@ const Sort: React.FC<FilterByTypeProps> = ({ handleSort, sortValue }) => {
       >
         <option value="id">sort by ID</option>
         <option value="name">sort by name</option>
+        <option value="shuffle">shuffle</option>
       </select>
     </div>
   )

@@ -2,17 +2,17 @@ import { shuffle } from "@helpers/GlobalFunctions"
 import { UserFavoritesProps } from "@interfaces/Interfaces"
 import { useMemo, useState } from "react"
 
-export type SortKey = "id" | "name"
+export type SortKey = "id" | "name" | null
 
 const useRefineItems = (items: UserFavoritesProps[]) => {
-  const [sortKey, setSortConfig] = useState<SortKey | null>("id")
+  const [sortKey, setSortKey] = useState<SortKey>("id")
   const [search, setSearch] = useState<string>("")
   const [filterByType, setFilterByType] = useState<string>("")
-  const [random, setRandom] = useState<number | null>(null)
 
   const refinedItems = useMemo(() => {
     const itemsCopy = [...items]
     let refinableItems = [...items]
+
     if (sortKey) {
       refinableItems = itemsCopy.sort((a, b) => {
         if (a[sortKey] < b[sortKey]) {
@@ -25,39 +25,42 @@ const useRefineItems = (items: UserFavoritesProps[]) => {
       })
     }
 
-    if (search) {
-      refinableItems = itemsCopy.filter((item) => item.name.includes(search))
-    }
-
-    if (filterByType) {
-      refinableItems = itemsCopy.filter((item) => item.types.includes(filterByType))
-    }
-
-    if (random) {
+    if (!sortKey) {
       refinableItems = shuffle(itemsCopy)
     }
 
+    if (search || filterByType) {
+      refinableItems = itemsCopy.filter((item) => {
+        if (
+          search &&
+          filterByType &&
+          item.name.includes(search) &&
+          item.types.includes(filterByType)
+        ) {
+          return item
+        }
+        if (search && !filterByType && item.name.includes(search)) {
+          return item
+        }
+        if (!search && filterByType && item.types.includes(filterByType)) {
+          return item
+        }
+        return null
+      })
+    }
+
     return refinableItems
-  }, [items, sortKey, search, random, filterByType])
+  }, [items, sortKey, search, filterByType])
 
   const requestSort = (key: SortKey) => {
-    setSortConfig(key)
-    setRandom(null)
+    setSortKey(key)
   }
 
   const requestSearch = (name: string) => {
     setSearch(name.toLowerCase())
-    setRandom(null)
   }
   const requestFilter = (type: string) => {
     setFilterByType(type)
-    setRandom(null)
-  }
-  const requestShuffle = () => {
-    setRandom(Math.random())
-    setFilterByType("")
-    setSearch("")
-    setSortConfig(null)
   }
 
   return {
@@ -65,9 +68,7 @@ const useRefineItems = (items: UserFavoritesProps[]) => {
     requestSort,
     requestSearch,
     requestFilter,
-    requestShuffle,
     sortKey,
-    setSortConfig,
     search,
     filterByType,
   }
