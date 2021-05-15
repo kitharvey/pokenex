@@ -2,13 +2,13 @@ import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
 import { NextApiRequest, NextApiResponse } from "next"
 
-export default (request: NextApiRequest, result: NextApiResponse) =>
-  NextAuth(request, result, {
+export default (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, {
     providers: [
       Providers.GitHub({
         clientId: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        scope: "name picture sub",
+        scope: "read:user",
       }),
     ],
     session: {
@@ -20,6 +20,7 @@ export default (request: NextApiRequest, result: NextApiResponse) =>
     },
     callbacks: {
       session: async (session, user) => {
+        session.user = user
         session.user = {
           name: user.name,
           picture: user.picture as string,

@@ -43,8 +43,6 @@ const LandingPage = () => {
 
     return () => {
       clearTimeout(timer)
-      setIndex(0)
-      setExitX(1000)
     }
   }, [index])
 

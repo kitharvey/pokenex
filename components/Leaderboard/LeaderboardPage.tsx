@@ -1,11 +1,9 @@
 import { getUsers } from "@helpers/getUsers"
 import { UserProps } from "@interfaces/Interfaces"
-import { motion } from "framer-motion"
-import { useRouter } from "next/router"
+import Link from "next/link"
 import useSWR from "swr"
 
 const LeaderboardPage = () => {
-  const router = useRouter()
   const { data: list } = useSWR<UserProps[]>(`/api/users`, getUsers)
   return (
     <div className="leaderboard-page">
@@ -17,15 +15,13 @@ const LeaderboardPage = () => {
             <p className="">Score</p>
           </div>
           {list.map((user, index) => (
-            <motion.div
-              className="table-row"
-              key={user.uid}
-              onClick={() => router.push(`/user/${user._id}`)}
-            >
-              <p className="">{index + 1}</p>
-              <p className="">{user.name}</p>
-              <p className="">{user.score}</p>
-            </motion.div>
+            <Link key={user._id} href={`/user/${user._id}`}>
+              <div className="table-row">
+                <p className="">{index + 1}</p>
+                <p className="">{user.name}</p>
+                <p className="">{user.score}</p>
+              </div>
+            </Link>
           ))}
         </div>
       )}

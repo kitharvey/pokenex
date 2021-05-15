@@ -14,8 +14,9 @@ const Nav = () => {
   const [session] = useSession()
   const router = useRouter()
   const dispatch = useAppDispatch()
+
   useEffect(() => {
-    if (session) {
+    if (session && session.user) {
       dispatch(userSignIn(session.user))
     } else dispatch(signout())
   }, [session, dispatch])
