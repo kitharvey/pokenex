@@ -5,6 +5,7 @@ import useSWR from "swr"
 
 const LeaderboardPage = () => {
   const { data: list } = useSWR<UserProps[]>(`/api/users`, getUsers)
+
   return (
     <div className="leaderboard-page">
       {list && (
@@ -14,7 +15,7 @@ const LeaderboardPage = () => {
             <p className="">Name</p>
             <p className="">Score</p>
           </div>
-          {list.map((user, index) => (
+          {list.sort((a,b) => b.score - a.score ).map((user, index) => (
             <Link key={user._id} href={`/user/${user._id}`}>
               <div className="table-row">
                 <p className="">{index + 1}</p>
