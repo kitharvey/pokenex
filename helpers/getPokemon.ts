@@ -1,6 +1,6 @@
 import { NameURLInterface, PokemonTypes } from "@interfaces/Interfaces"
 import axios from "axios"
-import { getIDfromURL, getPokemonImage, shuffle } from "./GlobalFunctions"
+import { getIDfromURL, getPokemonImage } from "./GlobalFunctions"
 
 const headURL = "https://pokeapi.co/"
 const limit = process.env.NODE_ENV === "production" ? 807 : 8
@@ -26,7 +26,7 @@ export const fetchPlayList = async () => {
     name,
     id: getIDfromURL(url),
   }))
-  const pokemonlist = shuffle(list)
+  const pokemonlist = list
   return pokemonlist
 }
 

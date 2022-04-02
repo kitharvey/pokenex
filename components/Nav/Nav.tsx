@@ -61,10 +61,12 @@ const Nav = () => {
               {session && session.user ? (
                 <div className="account-button">
                   <Link href="/profile">
-                    <span>
-                      {session.user.name}&nbsp;
-                      <FaCaretDown />
-                    </span>
+                    <a>
+                      <span>
+                        {session.user.name}&nbsp;
+                        <FaCaretDown />
+                      </span>
+                    </a>
                   </Link>
 
                   <div className="dropdown">

@@ -15,15 +15,19 @@ const LeaderboardPage = () => {
             <p className="">Name</p>
             <p className="">Score</p>
           </div>
-          {list.sort((a,b) => b.score - a.score ).map((user, index) => (
-            <Link key={user._id} href={`/user/${user._id}`}>
-              <div className="table-row">
-                <p className="">{index + 1}</p>
-                <p className="">{user.name}</p>
-                <p className="">{user.score}</p>
-              </div>
-            </Link>
-          ))}
+          {list
+            .sort((a, b) => b.score - a.score)
+            .map((user, index) => (
+              <Link key={user._id} href={`/user/${user._id}`}>
+                <a>
+                  <div className="table-row">
+                    <p className="">{index + 1}</p>
+                    <p className="">{user.name}</p>
+                    <p className="">{user.score}</p>
+                  </div>
+                </a>
+              </Link>
+            ))}
         </div>
       )}
     </div>
