@@ -22,6 +22,12 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonsList }) => {
   const [lives, setLives] = useState<number>(3)
   const [isGameOver, setIsGameOver] = useState<boolean>(false)
   const [answer, setAnswer] = useState<string>("")
+
+  useEffect(() => {
+    const shuffledList = shuffle(pokemons)
+    setPokemons(shuffledList)
+  }, [pokemons])
+
   useEffect(() => {
     if (index < pokemons.length) {
       setAnswer(pokemons[index].name)

@@ -30,7 +30,9 @@ const GameOver: React.FC<GameOverProps> = ({ score, handleCloseModal }) => {
         {session && <p>best score: {userData?.score}</p>}
         {session && (
           <Link href="/leaderboard">
-            <span>View Leaderboard</span>
+            <a>
+              <span>View Leaderboard</span>
+            </a>
           </Link>
         )}
       </div>
