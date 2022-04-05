@@ -3,7 +3,7 @@ import { InferGetServerSidePropsType } from "next"
 import { fetchPlayList } from "@helpers/getPokemon"
 import HeadTitle from "@components/HeadTitle/HeadTitle"
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const pokemons = await fetchPlayList()
   if (!pokemons) {
     return {
@@ -21,7 +21,7 @@ export const getServerSideProps = async () => {
   }
 }
 
-const Play = ({ pokemons }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Play = ({ pokemons }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   return (
     <>
       <HeadTitle title="Pokénex | Play" />
