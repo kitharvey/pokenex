@@ -43,12 +43,8 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonsList }) => {
 
   useEffect(() => {
     if (lives <= 0 || index === pokemons.length) {
-      const shuffledList = shuffle(pokemons)
       setTimeout(() => {
         setIsGameOver(true)
-        setPokemons(shuffledList)
-        setIndex(0)
-        setLives(3)
       }, 3000)
     }
   }, [index, lives, pokemons])
@@ -71,8 +67,12 @@ const GamePage: React.FC<ExploreProps> = ({ pokemonsList }) => {
   }
 
   const handleCloseModal = () => {
+    const shuffledList = shuffle(pokemons)
     setScore(0)
     setIsGameOver(false)
+    setPokemons(shuffledList)
+    setIndex(0)
+    setLives(3)
   }
 
   return (
